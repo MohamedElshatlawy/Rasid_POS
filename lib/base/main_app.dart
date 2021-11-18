@@ -3,15 +3,13 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:rasid_jack/utilities/connection_status_singleton.dart';
-import 'package:rasid_jack/views/splash/bloc/splash_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rasid_jack/views/auth/view/login_view.dart';
 
-import 'bloc_provider.dart';
 import 'dialog/managers/dialog_manager.dart';
 import '../utilities/constants/app_colors.dart';
 import '../utilities/localization/locale_helper.dart';
 import '../utilities/localization/localizations.dart';
-import '../views/splash/view/splash_view.dart';
 import 'flavor_config.dart';
 
 // Future<void> main() async {
@@ -38,7 +36,7 @@ class _MainAppState extends State<MainApp> {
     super.initState();
     helper.onLocaleChanged = onLocaleChange;
     _specificLocalizationDelegate =
-        SpecificLocalizationDelegate(new Locale('en'));
+        SpecificLocalizationDelegate(new Locale('ar'));
   }
 
   onLocaleChange(Locale locale) {
@@ -53,31 +51,37 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     WidgetsFlutterBinding.ensureInitialized();
-    return MaterialApp(
-      navigatorKey: _navigationKey,
-      title: configuredFlavor.appTitle,
-      color: AppColors.PRIMARY_COLOR,
-      theme: ThemeData(
-        fontFamily: 'CairoRegular',
+    return ScreenUtilInit(
+      designSize: Size(428, 926),
+      builder: () => MaterialApp(
+        navigatorKey: _navigationKey,
+        title: configuredFlavor.appTitle,
+        color: AppColors.PRIMARY_COLOR,
+        theme: ThemeData(
+            fontFamily: 'Bahij_TheSansArabic',
+            canvasColor: Colors.transparent,
+            textTheme:
+                TextTheme(bodyText2: TextStyle(color: AppColors.WHITH_COLOR))),
+        debugShowCheckedModeBanner:
+            configuredFlavor.flavor == Flavors.prod ? false : true,
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          DefaultCupertinoLocalizations.delegate,
+          _specificLocalizationDelegate!
+        ],
+        supportedLocales: [Locale('en'), Locale('ar')],
+        locale: _specificLocalizationDelegate?.overriddenLocale,
+        builder: (context, widget) => Navigator(
+          onGenerateRoute: (settings) => MaterialPageRoute(
+              builder: (context) => DialogManager(
+                    child: widget,
+                  )),
+        ),
+        // home: BlocProvider<SplashBloc>(bloc: SplashBloc(), child: SplashView()),
+        home: LoginView(),
       ),
-      debugShowCheckedModeBanner:
-          configuredFlavor.flavor == Flavors.prod ? false : true,
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        DefaultCupertinoLocalizations.delegate,
-        _specificLocalizationDelegate!
-      ],
-      supportedLocales: [Locale('en'), Locale('ar')],
-      locale: _specificLocalizationDelegate?.overriddenLocale,
-      builder: (context, widget) => Navigator(
-        onGenerateRoute: (settings) => MaterialPageRoute(
-            builder: (context) => DialogManager(
-                  child: widget,
-                )),
-      ),
-      home: BlocProvider<SplashBloc>(bloc: SplashBloc(), child: SplashView()),
     );
   }
 }

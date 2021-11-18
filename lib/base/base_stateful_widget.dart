@@ -22,6 +22,7 @@ abstract class BaseState<T extends BaseStatefulWidget> extends State<T>
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   LogoutBloc? logoutBloc;
   bool isOffline = false;
+  String isappbar = '';
 
   @override
   void initState() {
@@ -30,7 +31,7 @@ abstract class BaseState<T extends BaseStatefulWidget> extends State<T>
     logoutBloc = LogoutBloc();
     listenForResponse(logoutBloc!, errorAction: () {}).listen((data) {
       hideDialog();
-     // Navigator.pushNamedAndRemoveUntil(context, "/wayToLogin", (r) => false);
+      // Navigator.pushNamedAndRemoveUntil(context, "/wayToLogin", (r) => false);
     });
     ConnectionStatusSingleton connectionStatus =
         ConnectionStatusSingleton.getInstance();
@@ -64,7 +65,7 @@ abstract class BaseState<T extends BaseStatefulWidget> extends State<T>
         body: GestureDetector(
             onTap: () => HelperMethods.unFocusKeyboard(),
             child: getBody(context)),
-          bottomNavigationBar: getBottomNavigationBar(),
+        bottomNavigationBar: getBottomNavigationBar(),
       ),
     );
   }
@@ -121,19 +122,21 @@ abstract class BaseState<T extends BaseStatefulWidget> extends State<T>
   }
 
   PreferredSizeWidget? getAppbar() {
-    return AppBar(
-      actions: buildBarPopup(),
-      // leading: buildBackButton(),
-      centerTitle: true,
-      brightness: Brightness.light,
-      automaticallyImplyLeading: false,
-      backgroundColor: AppColors.PRIMARY_COLOR,
-      elevation: 0.0,
-      title: Text(
-        getTitle(),
-        style: AppFontStyle.latoBold(16, Colors.white),
-      ),
-    );
+    return isappbar != ''
+        ? AppBar(
+            actions: buildBarPopup(),
+            leading: buildBackButton(),
+            centerTitle: true,
+            brightness: Brightness.light,
+            automaticallyImplyLeading: false,
+            backgroundColor: AppColors.PRIMARY_COLOR,
+            elevation: 0.0,
+            title: Text(
+              getTitle(),
+              style: AppFontStyle.latoBold(16, Colors.white),
+            ),
+          )
+        : null;
   }
 
   Future<bool> onWillPop() {
@@ -158,6 +161,7 @@ abstract class BaseState<T extends BaseStatefulWidget> extends State<T>
     showLoadingDialog();
     logoutBloc?.logout();
   }
+
   get getScreenKey {
     return _scaffoldKey;
   }

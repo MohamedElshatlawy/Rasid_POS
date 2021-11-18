@@ -31,9 +31,8 @@ class _SplashViewState extends BaseState<SplashView> {
         builder: (context, AsyncSnapshot<UserModel> snapshot) {
           return StreamingResult(
               subject: _splashBloc.requestStateSubject,
-              successWidget: Text(_splashBloc.requestStateSubject.value.message));
+              successWidget:
+                  Text(_splashBloc.requestStateSubject.value.message));
         });
   }
-
-
 }
