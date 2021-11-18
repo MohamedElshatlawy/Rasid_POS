@@ -1,0 +1,4 @@
+#Thu Nov 18 17:53:26 EET 2021
+base.0=E\:\\Flutter\\My work\\Rasid Jack\\Rasid_POS\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

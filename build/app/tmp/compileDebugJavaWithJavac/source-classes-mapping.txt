@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/rasid/rasid_jack/BuildConfig.java
+ com.rasid.rasid_jack.BuildConfig
