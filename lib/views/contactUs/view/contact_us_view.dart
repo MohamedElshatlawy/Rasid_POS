@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
+import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
-import 'package:rasid_jack/views/widget/custom_button.dart';
-import 'package:rasid_jack/views/widget/custom_text.dart';
+import 'package:rasid_jack/utilities/size_config.dart';
+import 'package:rasid_jack/views/home/view/home_view.dart';
+import 'package:rasid_jack/common/widgets/custom_button.dart';
+import 'package:rasid_jack/common/widgets/custom_text.dart';
 
 class ContactUsView extends BaseStatefulWidget {
   @override
@@ -14,56 +16,43 @@ class _ContactUsViewState extends BaseState<ContactUsView> {
   @override
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      alignment: Alignment.center,
-      padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 20.w),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.fill,
-          image: AssetImage('assets/images/Rectangle.png'),
-        ),
-      ),
+    return Padding(
+      padding: EdgeInsets.all(SizeConfig.padding),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: SizeConfig.padding),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CustomText(
                 text: 'تواصل معنا',
-                fontSize: 30.sp,
+                fontSize: SizeConfig.titleFontSize,
               ),
-              SizedBox(width: 10.w),
-              Image.asset('assets/images/rrr.png')
+              SizedBox(width: SizeConfig.padding),
+              Image.asset(AppAssets.contactUsImage)
             ],
           ),
-          SizedBox(height: 100.h),
-          _containerWithUnderLine('', 'supprted@rasid.com', '483828282'),
-          _containerWithUnderLine(
-              'مدير الحساب', 'سليمان العتيق', '05XXXXXXXXXXXXXXXX'),
-          SizedBox(height: 200.h),
+          SizedBox(height: SizeConfig.extraPadding),
+          CustomText(
+              text: 'supprted@rasid.com', fontSize: SizeConfig.titleFontSize),
+          CustomText(text: '483828282', fontSize: SizeConfig.titleFontSize),
+          Divider(color: AppColors.GRAY_COLOR),
+          CustomText(text: 'مدير الحساب', fontSize: SizeConfig.titleFontSize),
+          CustomText(text: 'سليمان العتيق', fontSize: SizeConfig.titleFontSize),
+          CustomText(
+              text: '05XXXXXXXXXXXX', fontSize: SizeConfig.titleFontSize),
+          Divider(color: AppColors.GRAY_COLOR),
+          SizedBox(height: SizeConfig.extraPadding * 1.3),
           CustomButton(
               buttonText: 'الدعم المباشر',
-              buttonColor: AppColors.BUTTON_COLOR,
+              press: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => HomeView())),
               borderColor: AppColors.WHITH_COLOR),
         ],
       ),
-    );
-  }
-
-  Widget _containerWithUnderLine(String text1, text2, text3) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CustomText(text: text1, fontSize: 30.sp),
-        CustomText(text: text2, fontSize: 30.sp),
-        CustomText(text: text3, fontSize: 30.sp),
-        Divider(color: AppColors.GRAY_COLOR),
-      ],
     );
   }
 }

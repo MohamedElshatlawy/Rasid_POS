@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
+import 'package:rasid_jack/common/widgets/custom_popUp.dart';
+import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
-import 'package:rasid_jack/views/widget/custom_button.dart';
-import 'package:rasid_jack/views/widget/custom_input.dart';
-import 'package:rasid_jack/views/widget/custom_text.dart';
+import 'package:rasid_jack/utilities/size_config.dart';
+import 'package:rasid_jack/common/widgets/custom_button.dart';
+import 'package:rasid_jack/common/widgets/custom_drawer.dart';
+import 'package:rasid_jack/common/widgets/custom_input.dart';
+import 'package:rasid_jack/common/widgets/custom_text.dart';
 
 class CommissionView extends BaseStatefulWidget {
   @override
@@ -17,70 +21,48 @@ class _CommissionViewState extends BaseState<CommissionView> {
   @override
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: AppColors.BLACK_COLOR,
+    return SingleChildScrollView(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              CustomText(text: 'العمولات', fontSize: 35.sp),
-              SizedBox(width: 20.w),
-              Image.asset('assets/images/Icon-crown.png')
+              CustomText(text: 'العمولات', fontSize: SizeConfig.titleFontSize),
+              SizedBox(width: SizeConfig.padding),
+              Image.asset(AppAssets.comissionImage)
             ],
           ),
+          SizedBox(height: SizeConfig.extraPadding),
           Container(
-              padding: EdgeInsets.all(5),
+              padding: EdgeInsets.all(SizeConfig.padding),
               decoration: BoxDecoration(
                   color: AppColors.PINK_COLOR, shape: BoxShape.circle),
-              child: _customContainer()),
+              child: Container(
+                padding: EdgeInsets.all(SizeConfig.padding * 4),
+                decoration: BoxDecoration(
+                    color: AppColors.DARK_GRAY_COLOR, shape: BoxShape.circle),
+                child: Column(
+                  children: [
+                    CustomText(text: '100', fontSize: SizeConfig.titleFontSize),
+                    CustomText(
+                        text: 'ريال', fontSize: SizeConfig.titleFontSize),
+                  ],
+                ),
+              )),
+          SizedBox(height: SizeConfig.extraPadding),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: EdgeInsets.symmetric(horizontal: SizeConfig.padding),
             child: CustomButton(
-                buttonText: 'سحب العمولات',
-                borderColor: AppColors.WHITH_COLOR,
-                press: () => showAppDialog(
-                    title: '',
-                    errorMessage: '',
-                    okButtonTitle: '',
-                    cancelButtonTitle: 'رحوع',
-                    content: _sendOrderPopUp()),
-                fontSize: 20.sp,
-                buttonColor: AppColors.BUTTON_COLOR),
+              buttonText: 'سحب العمولات',
+              borderColor: AppColors.WHITH_COLOR,
+              press: () => showAppDialog(
+                title: '',
+                errorMessage: '',
+                okButtonTitle: '',
+                cancelButtonTitle: 'رحوع',
+              ),
+            ),
           ),
-          SizedBox(height: 60.h),
-        ],
-      ),
-    );
-  }
-
-  Widget iconContainer(Widget icon, Function() press) {
-    return Container(
-      child: IconButton(
-        icon: icon,
-        color: AppColors.BLACK_COLOR,
-        iconSize: 30.sp,
-        onPressed: press,
-      ),
-      margin: EdgeInsets.all(7),
-      decoration: BoxDecoration(
-          color: AppColors.WHITH_COLOR,
-          borderRadius: BorderRadius.circular(10.r)),
-    );
-  }
-
-  Widget _customContainer() {
-    return Container(
-      padding: EdgeInsets.all(70),
-      decoration: BoxDecoration(
-          color: AppColors.DARK_GRAY_COLOR, shape: BoxShape.circle),
-      child: Column(
-        children: [
-          CustomText(text: '100', fontSize: 30),
-          CustomText(text: 'ريال', fontSize: 30),
         ],
       ),
     );
@@ -89,8 +71,7 @@ class _CommissionViewState extends BaseState<CommissionView> {
   @override
   PreferredSizeWidget getAppbar() {
     return AppBar(
-      actions: [iconContainer(Icon(Icons.close), () => Navigator.pop(context))],
-      leading: CustomText(text: ''),
+      actions: [buildBackButton()],
       backgroundColor: AppColors.BLACK_COLOR,
       elevation: 0.0,
     );
@@ -105,91 +86,37 @@ class _CommissionViewState extends BaseState<CommissionView> {
       Widget? content}) async {
     return showDialog(
         context: context,
-        builder: (BuildContext context) => AlertDialog(
-              backgroundColor: Colors.transparent,
-              actions: [
-                CustomButton(
-                  buttonText: cancelButtonTitle.toString(),
-                  buttonColor: AppColors.PINK_COLOR,
-                  press: () => Navigator.pop(context),
-                )
-              ],
-              content: content,
+        builder: (BuildContext context) => SingleChildScrollView(
+              child: AlertDialog(
+                backgroundColor: Colors.transparent,
+                actions: [
+                  CustomButton(
+                    buttonText: cancelButtonTitle.toString(),
+                    buttonColor: AppColors.PINK_COLOR,
+                    press: () => Navigator.pop(context),
+                  )
+                ],
+                content: content!,
+              ),
             ));
   }
 
-  Widget _dropDownWidget() {
-    return Container(
-      decoration: BoxDecoration(
-          border: Border.all(color: AppColors.WHITH_COLOR),
-          borderRadius: BorderRadius.circular(10.r)),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-          iconEnabledColor: AppColors.WHITH_COLOR,
-          isExpanded: true,
-          items: <String>['اسم البنك', 'B', 'C', 'D']
-              .map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: CustomText(text: value),
-              ),
-            );
-          }).toList(),
-          onChanged: (val) {
-            setState(() {
-              value = val!;
-            });
-          },
-          value: value,
-          dropdownColor: AppColors.DARK_GRAY_COLOR,
-        ),
-      ),
-    );
+  @override
+  Widget getDrawer() {
+    return CustomDrawer();
   }
 
-  Widget _sendOrderPopUp() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-          color: AppColors.DARK_GRAY_COLOR),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          CustomInput(hintText: 'الاسم', borderColor: AppColors.WHITH_COLOR),
-          SizedBox(height: 30.h),
-          _dropDownWidget(),
-          CustomInput(
-              hintText: 'رقم البيان', borderColor: AppColors.WHITH_COLOR),
-          SizedBox(height: 30.h),
-          CustomButton(
-            buttonText: 'ارسال طلب السحب',
-            buttonColor: AppColors.BUTTON_COLOR,
-            press: () => showAppDialog(
-                title: '',
-                errorMessage: '',
-                okButtonTitle: '',
-                cancelButtonTitle: 'رجوع',
-                content: _pullCommissionPopUp()),
-          ),
-          SizedBox(height: 10.h),
-        ],
-      ),
-    );
+  @override
+  Color getScaffoldBackgroundColor() {
+    return AppColors.BLACK_COLOR;
   }
 
-  Widget _pullCommissionPopUp() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 100),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        color: AppColors.DARK_GRAY_COLOR,
-      ),
-      child: CustomText(
-        text: 'يمكنك سحب العموله في حاله وصول قيمتها الي 1000 ريال',
-        fontSize: 20.sp,
+  @override
+  Widget buildBackButton() {
+    return IconButton(
+      onPressed: () => Navigator.of(context).pop(),
+      icon: Image(
+        image: AssetImage(AppAssets.BACK_BTN),
       ),
     );
   }

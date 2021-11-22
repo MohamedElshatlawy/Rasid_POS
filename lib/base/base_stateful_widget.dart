@@ -22,7 +22,7 @@ abstract class BaseState<T extends BaseStatefulWidget> extends State<T>
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   LogoutBloc? logoutBloc;
   bool isOffline = false;
-  String isappbar = '';
+  String isAppbar = '';
 
   @override
   void initState() {
@@ -51,21 +51,27 @@ abstract class BaseState<T extends BaseStatefulWidget> extends State<T>
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+        SystemUiOverlayStyle(statusBarColor: AppColors.transparentColor));
     SizeConfig().init(context);
     return WillPopScope(
       onWillPop: onWillPop,
-      child: Scaffold(
-        floatingActionButton: getFloatingActionButton(),
-        resizeToAvoidBottomInset: true,
-        // backgroundColor: LIGHT_GREY,
-        key: getScreenKey,
-        appBar: getAppbar(),
-        drawer: getDrawer(),
-        body: GestureDetector(
-            onTap: () => HelperMethods.unFocusKeyboard(),
-            child: getBody(context)),
-        bottomNavigationBar: getBottomNavigationBar(),
+      child: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage(getScaffoldBackgroundImage()))),
+        child: Scaffold(
+          floatingActionButton: getFloatingActionButton(),
+          resizeToAvoidBottomInset: getResizeToAvoidBottomInset(),
+          backgroundColor: getScaffoldBackgroundColor(),
+          key: getScreenKey,
+          appBar: getAppbar(),
+          drawer: getDrawer(),
+          body: GestureDetector(
+              onTap: () => HelperMethods.unFocusKeyboard(),
+              child: getBody(context)),
+          bottomNavigationBar: getBottomNavigationBar(),
+        ),
       ),
     );
   }
@@ -121,11 +127,23 @@ abstract class BaseState<T extends BaseStatefulWidget> extends State<T>
     return null;
   }
 
+  bool getResizeToAvoidBottomInset() {
+    return true;
+  }
+
+  String getScaffoldBackgroundImage() {
+    return AppAssets.loginBackground;
+  }
+
+  Color getScaffoldBackgroundColor() {
+    return AppColors.transparentColor;
+  }
+
   PreferredSizeWidget? getAppbar() {
-    return isappbar != ''
+    return isAppbar != ''
         ? AppBar(
             actions: buildBarPopup(),
-            leading: buildBackButton(),
+            // leading: buildBackButton(),
             centerTitle: true,
             brightness: Brightness.light,
             automaticallyImplyLeading: false,
@@ -133,7 +151,8 @@ abstract class BaseState<T extends BaseStatefulWidget> extends State<T>
             elevation: 0.0,
             title: Text(
               getTitle(),
-              style: AppFontStyle.latoBold(16, Colors.white),
+              style: AppFontStyle.latoRegular(
+                  SizeConfig.titleFontSize, Colors.white),
             ),
           )
         : null;

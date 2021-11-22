@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
+import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
-import 'package:rasid_jack/views/widget/custom_button.dart';
-import 'package:rasid_jack/views/widget/custom_input.dart';
-import 'package:rasid_jack/views/widget/custom_listtile.dart';
-import 'package:rasid_jack/views/widget/custom_text.dart';
+import 'package:rasid_jack/utilities/size_config.dart';
+import 'package:rasid_jack/common/widgets/custom_button.dart';
+import 'package:rasid_jack/common/widgets/custom_drawer.dart';
+import 'package:rasid_jack/common/widgets/custom_input.dart';
+import 'package:rasid_jack/common/widgets/custom_listtile.dart';
+import 'package:rasid_jack/common/widgets/custom_text.dart';
 
 class PurchaseView extends BaseStatefulWidget {
   @override
@@ -16,30 +19,104 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
   @override
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: AppColors.BLACK_COLOR,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            CustomInput(
-              hintText: 'بحث',
-              underLineBorder: true,
-            ),
-            SizedBox(height: 15.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _rowWidget('يناير 2020'),
-                Icon(Icons.remove, color: AppColors.WHITH_COLOR),
-                _rowWidget('فبراير 2020'),
-              ],
-            ),
-            _listViewWidget('38884884', '300ريال', 'مقبوله', 'فيزا', '54322',
-                '43334444444', '444453333')
-          ],
-        ),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          CustomInput(
+            hintText: 'بحث',
+            underLineBorder: true,
+          ),
+          SizedBox(height: SizeConfig.padding),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.calendar_today_outlined,
+                      color: AppColors.PINK_COLOR),
+                  SizedBox(width: SizeConfig.padding),
+                  CustomText(text: 'يناير 2020')
+                ],
+              ),
+              Icon(Icons.remove, color: AppColors.WHITH_COLOR),
+              Row(
+                children: [
+                  Icon(Icons.calendar_today_outlined,
+                      color: AppColors.PINK_COLOR),
+                  SizedBox(width: SizeConfig.padding),
+                  CustomText(text: 'فبراير 2020')
+                ],
+              ),
+            ],
+          ),
+          ListView.builder(
+              shrinkWrap: true,
+              itemCount: 2,
+              physics: BouncingScrollPhysics(),
+              padding: EdgeInsets.all(SizeConfig.padding),
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: EdgeInsets.only(bottom: SizeConfig.padding),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomText(text: 'رقم العملية'),
+                      CustomText(text: '38884884'),
+                      Container(
+                        height: 40,
+                        child: CustomListTile(
+                          title: CustomText(text: 'قيمة العملية'),
+                          padding: EdgeInsets.zero,
+                          trailing: CustomText(text: '38884884'),
+                        ),
+                      ),
+                      Container(
+                        height: 40,
+                        child: CustomListTile(
+                          title: CustomText(text: 'حاله العملية'),
+                          padding: EdgeInsets.zero,
+                          trailing: CustomText(text: 'فيزا'),
+                        ),
+                      ),
+                      Container(
+                        height: 40,
+                        child: CustomListTile(
+                          title: CustomText(text: 'طريقه الدفع'),
+                          padding: EdgeInsets.zero,
+                          trailing: CustomText(text: 'مقبوله'),
+                        ),
+                      ),
+                      Container(
+                        height: 40,
+                        child: CustomListTile(
+                          title: CustomText(text: 'اخر اربع ارقام من البطاقه'),
+                          padding: EdgeInsets.zero,
+                          trailing: CustomText(text: '45643'),
+                        ),
+                      ),
+                      Container(
+                        height: 40,
+                        child: CustomListTile(
+                          title: CustomText(text: 'رقم الموافقه'),
+                          padding: EdgeInsets.zero,
+                          trailing: CustomText(text: '38884884'),
+                        ),
+                      ),
+                      Container(
+                        height: 40,
+                        child: CustomListTile(
+                          title: CustomText(text: 'رقم العملية'),
+                          padding: EdgeInsets.zero,
+                          trailing: CustomText(text: '38884884'),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }),
+        ],
       ),
     );
   }
@@ -49,100 +126,23 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
     return AppBar(
       flexibleSpace: Image(
         image: AssetImage(
-          "assets/images/Rectangle.png",
+          AppAssets.loginBackground,
         ),
         fit: BoxFit.fill,
       ),
       backgroundColor: Colors.transparent,
       elevation: 0.0,
-      title: CustomText(text: 'العمليات', fontSize: 30.sp),
+      title: CustomText(text: 'العمليات', fontSize: SizeConfig.titleFontSize),
       centerTitle: true,
-      leading: IconButton(
-          onPressed: () => showAppDialog(
-              title: '',
-              errorMessage: '',
-              okButtonTitle: '',
-              cancelButtonTitle: 'رجوع'),
-          icon: Icon(
-            Icons.menu,
-            color: AppColors.WHITH_COLOR,
-          )),
-    );
-  }
-
-  Widget _rowWidget(String text) {
-    return Row(
-      children: [
-        Icon(Icons.calendar_today_outlined, color: AppColors.PINK_COLOR),
-        SizedBox(width: 10.w),
-        CustomText(text: text)
+      actions: [
+        IconButton(
+            onPressed: () => showAppDialog(
+                title: '',
+                errorMessage: '',
+                okButtonTitle: '',
+                cancelButtonTitle: 'رجوع'),
+            icon: CustomText(text: 'Pop'))
       ],
-    );
-  }
-
-  Widget _listViewWidget(
-      String numberOfPurchase,
-      valueOfPurchase,
-      opeationStatus,
-      paymentMethod,
-      lastFourNumber,
-      approvalnumber,
-      operationNumber) {
-    return Container(
-      child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: 2,
-          physics: BouncingScrollPhysics(),
-          padding: EdgeInsets.all(20),
-          itemBuilder: (context, index) {
-            return Container(
-              margin: EdgeInsets.only(bottom: 50),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomText(text: 'رقم العملية'),
-                  CustomText(text: numberOfPurchase),
-                  _listTileWidget(
-                    'قيمة العملية',
-                    valueOfPurchase,
-                  ),
-                  _listTileWidget(
-                    'حاله العملية',
-                    opeationStatus,
-                  ),
-                  _listTileWidget(
-                    'طريقه الدفع',
-                    paymentMethod,
-                  ),
-                  _listTileWidget(
-                    'اخر اربع ارقام من البطاقه',
-                    lastFourNumber,
-                  ),
-                  _listTileWidget(
-                    'رقم الموافقه',
-                    approvalnumber,
-                  ),
-                  _listTileWidget(
-                    'رقم العملية',
-                    operationNumber,
-                  )
-                ],
-              ),
-            );
-          }),
-    );
-  }
-
-  Widget _listTileWidget(String title, tralling) {
-    return Container(
-      height: 40.h,
-      child: CustomListTile(
-        title: CustomText(text: title),
-        padding: EdgeInsets.zero,
-        trailing: CustomText(text: tralling),
-      ),
     );
   }
 
@@ -164,19 +164,29 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
               )
             ],
             content: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.padding, vertical: SizeConfig.padding),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(SizeConfig.borderRaduis),
                   color: AppColors.DARK_GRAY_COLOR),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  CustomText(text: 'استرداد', fontSize: 30.sp),
+                  CustomText(text: 'استرداد', fontSize: 30),
                   Divider(color: AppColors.GRAY_COLOR),
-                  CustomText(text: 'ايصال', fontSize: 30.sp),
+                  CustomText(text: 'ايصال', fontSize: 30),
                   Divider(color: AppColors.GRAY_COLOR),
                 ],
               ),
             )));
+  }
+
+  @override
+  Widget getDrawer() {
+    return CustomDrawer();
+  }
+
+  Color getScaffoldBackgroundColor() {
+    return AppColors.BLACK_COLOR;
   }
 }

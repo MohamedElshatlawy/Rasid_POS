@@ -17,6 +17,8 @@ class SizeConfig {
   static double smallIconSize = 15.0;
   static double btnHeight = 50.0;
   static double padding = 8.0;
+  static double borderRaduis = 10.0;
+  static double extraPadding = 50.0;
 
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
@@ -35,7 +37,9 @@ class SizeConfig {
     smallTextFontSize = SizeConfig.safeBlockHorizontal * 2.25;
     iconSize = SizeConfig.safeBlockHorizontal * 6;
     smallIconSize = SizeConfig.safeBlockHorizontal * 4;
-    btnHeight = SizeConfig.safeBlockHorizontal * 10;
+    btnHeight = SizeConfig.safeBlockHorizontal * 13;
     padding = SizeConfig.safeBlockHorizontal * 4;
+    extraPadding = SizeConfig.safeBlockHorizontal * 40;
+    borderRaduis = SizeConfig.borderRaduis;
   }
 }

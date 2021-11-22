@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rasid_jack/views/widget/custom_text.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rasid_jack/utilities/constants/app_colors.dart';
+import 'package:rasid_jack/utilities/size_config.dart';
+import 'package:rasid_jack/common/widgets/custom_text.dart';
 
 class CustomButton extends StatelessWidget {
   final void Function()? press;
@@ -21,19 +22,21 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+
     return Container(
-      height: 70.h,
-      width: 428.w,
+      height: SizeConfig.btnHeight,
+      width: SizeConfig.screenWidth,
       child: RawMaterialButton(
         onPressed: press,
         child: CustomText(
           text: buttonText,
-          fontSize: fontSize ?? 14.sp,
+          fontSize: fontSize ?? SizeConfig.textFontSize,
           textColor: textColor,
         ),
-        fillColor: buttonColor,
+        fillColor: buttonColor ?? AppColors.BUTTON_COLOR,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(SizeConfig.borderRaduis),
             side: BorderSide(color: borderColor ?? Colors.transparent)),
       ),
     );
