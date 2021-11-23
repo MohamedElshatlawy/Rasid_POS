@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Flutter\\My work\\Rasid Jack\\Rasid_POS\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "/Users/macbookpro/Desktop/Rasid/POS/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "E:\\Flutter\\My work\\Rasid Jack\\Rasid_POS\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "/Users/macbookpro/Desktop/Rasid/POS/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

@@ -4,17 +4,12 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
-            "name": "Rasid_POS",
+            "name": "POS",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main_dev.dart"
-        },
-        {
-            "name": "Rasid_POS (profile mode)",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
+            "program":"lib/main_dev.dart"
         }
     ]
 }
