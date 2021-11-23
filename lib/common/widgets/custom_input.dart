@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
-import 'package:rasid_jack/views/widget/custom_text.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rasid_jack/utilities/size_config.dart';
+import 'package:rasid_jack/common/widgets/custom_text.dart';
 
 class CustomInput extends StatelessWidget {
   final bool? obscureText;
@@ -22,6 +22,7 @@ class CustomInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,23 +31,24 @@ class CustomInput extends StatelessWidget {
         labelText != null
             ? CustomText(
                 text: labelText!,
-                fontSize: 11.sp,
               )
             : CustomText(text: ''),
-        SizedBox(height: 10.h),
+        SizedBox(height: SizeConfig.safeBlockHorizontal),
         TextField(
           cursorColor: AppColors.WHITH_COLOR,
           obscureText: obscureText ?? false,
-          style: TextStyle(color: AppColors.WHITH_COLOR, fontSize: 15.sp),
+          style: TextStyle(
+              color: AppColors.WHITH_COLOR, fontSize: SizeConfig.textFontSize),
           keyboardType: keyboardType,
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: TextStyle(color: AppColors.WHITH_COLOR),
-            contentPadding:
-                EdgeInsets.symmetric(vertical: 15.w, horizontal: 10.h),
+            contentPadding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.safeBlockHorizontal),
             enabledBorder: underLineBorder == false
                 ? OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.r),
+                    borderRadius:
+                        BorderRadius.circular(SizeConfig.borderRaduis),
                     borderSide: BorderSide(
                       color: borderColor ?? AppColors.BUTTON_COLOR,
                     ),
