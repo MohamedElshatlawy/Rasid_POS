@@ -6,6 +6,7 @@ import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/common/widgets/custom_button.dart';
 import 'package:rasid_jack/common/widgets/custom_text.dart';
+import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 
 class PayView extends BaseStatefulWidget {
@@ -51,7 +52,7 @@ class _PayViewState extends BaseState<PayView> {
             fontSize: SizeConfig.titleFontSize,
           ),
           CustomText(
-            text: '20.00 ريال',
+            text: '20.00' + AppLocalizations.of(context).coinRial,
             fontSize: SizeConfig.titleFontSize,
           ),
           SizedBox(height: SizeConfig.padding),
@@ -63,7 +64,7 @@ class _PayViewState extends BaseState<PayView> {
                       title: '',
                       errorMessage: '',
                       okButtonTitle: '',
-                      cancelButtonTitle: 'رجوع');
+                      cancelButtonTitle: AppLocalizations.of(context).back);
                 },
                 child: Container(
                     width: double.infinity,
@@ -104,7 +105,7 @@ class _PayViewState extends BaseState<PayView> {
                       contentPopUp: Column(
                         children: [
                           CustomText(
-                            text: 'الايصال',
+                            text: AppLocalizations.of(context).receipt,
                             textColor: AppColors.WHITH_COLOR,
                           ),
                           Image.asset(
@@ -118,7 +119,7 @@ class _PayViewState extends BaseState<PayView> {
                       contentPopUp: Column(
                         children: [
                           CustomText(
-                            text: 'الايصال',
+                            text: AppLocalizations.of(context).receipt,
                             textColor: AppColors.WHITH_COLOR,
                           ),
                           Image.asset(
@@ -131,5 +132,10 @@ class _PayViewState extends BaseState<PayView> {
                 ),
               ),
             ));
+  }
+
+  @override
+  Color getScaffoldBackgroundColor() {
+    return AppColors.BLACK_COLOR;
   }
 }

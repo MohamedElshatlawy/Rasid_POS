@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
+import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/views/home/view/home_view.dart';
 import 'package:rasid_jack/common/widgets/custom_button.dart';
@@ -28,7 +29,7 @@ class _ContactUsViewState extends BaseState<ContactUsView> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CustomText(
-                text: 'تواصل معنا',
+                text: AppLocalizations.of(context).contactUs,
                 fontSize: SizeConfig.titleFontSize,
               ),
               SizedBox(width: SizeConfig.padding),
@@ -40,14 +41,16 @@ class _ContactUsViewState extends BaseState<ContactUsView> {
               text: 'supprted@rasid.com', fontSize: SizeConfig.titleFontSize),
           CustomText(text: '483828282', fontSize: SizeConfig.titleFontSize),
           Divider(color: AppColors.GRAY_COLOR),
-          CustomText(text: 'مدير الحساب', fontSize: SizeConfig.titleFontSize),
+          CustomText(
+              text: AppLocalizations.of(context).accountManager,
+              fontSize: SizeConfig.titleFontSize),
           CustomText(text: 'سليمان العتيق', fontSize: SizeConfig.titleFontSize),
           CustomText(
               text: '05XXXXXXXXXXXX', fontSize: SizeConfig.titleFontSize),
           Divider(color: AppColors.GRAY_COLOR),
           SizedBox(height: SizeConfig.extraPadding * 1.3),
           CustomButton(
-              buttonText: 'الدعم المباشر',
+              buttonText: AppLocalizations.of(context).liveSupport,
               press: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => HomeView())),
               borderColor: AppColors.WHITH_COLOR),

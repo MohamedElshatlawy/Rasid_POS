@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
+import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/views/buy_with_cash/view/buy_view.dart';
 import 'package:rasid_jack/views/commissions/view/commission_view.dart';
@@ -36,7 +37,8 @@ class CustomDrawer extends StatelessWidget {
                 ),
                 SizedBox(height: SizeConfig.padding),
                 CustomText(
-                    text: 'اسم المستخدم', fontSize: SizeConfig.titleFontSize),
+                    text: AppLocalizations.of(context).userName,
+                    fontSize: SizeConfig.titleFontSize),
               ],
             ),
           ),
@@ -46,7 +48,7 @@ class CustomDrawer extends StatelessWidget {
               Icons.shopping_basket_outlined,
               color: AppColors.WHITH_COLOR,
             ),
-            title: CustomText(text: 'عمليه الشراء'),
+            title: CustomText(text: AppLocalizations.of(context).shopping),
             press: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => HomeView()));
@@ -57,7 +59,7 @@ class CustomDrawer extends StatelessWidget {
               Icons.public_rounded,
               color: AppColors.WHITH_COLOR,
             ),
-            title: CustomText(text: 'شراء مع نقد'),
+            title: CustomText(text: AppLocalizations.of(context).buyWithCash),
             press: () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => BuyWithCashView()));
@@ -68,7 +70,7 @@ class CustomDrawer extends StatelessWidget {
               Icons.note_outlined,
               color: AppColors.WHITH_COLOR,
             ),
-            title: CustomText(text: 'العمليات'),
+            title: CustomText(text: AppLocalizations.of(context).processes),
             press: () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => PurchaseView()));
@@ -79,7 +81,7 @@ class CustomDrawer extends StatelessWidget {
               Icons.money,
               color: AppColors.WHITH_COLOR,
             ),
-            title: CustomText(text: 'العمولات'),
+            title: CustomText(text: AppLocalizations.of(context).commissions),
             press: () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => CommissionView()));
@@ -90,7 +92,7 @@ class CustomDrawer extends StatelessWidget {
               Icons.camera_alt_outlined,
               color: AppColors.WHITH_COLOR,
             ),
-            title: CustomText(text: 'الربط'),
+            title: CustomText(text: AppLocalizations.of(context).connectivity),
             press: () {},
           ),
           CustomListTile(
@@ -98,7 +100,7 @@ class CustomDrawer extends StatelessWidget {
               Icons.settings_cell_outlined,
               color: AppColors.WHITH_COLOR,
             ),
-            title: CustomText(text: 'تواصل معانا'),
+            title: CustomText(text: AppLocalizations.of(context).contactUs),
             press: () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => ContactUsView()));
