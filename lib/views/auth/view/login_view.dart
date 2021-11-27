@@ -3,6 +3,7 @@ import 'package:rasid_jack/base/base_stateful_widget.dart';
 import 'package:rasid_jack/common/widgets/custom_pressed_text.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
+import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/views/home/view/home_view.dart';
 import 'package:rasid_jack/common/widgets/custom_button.dart';
@@ -34,20 +35,20 @@ class _LoginViewState extends BaseState<LoginView> {
           ),
           SizedBox(height: SizeConfig.btnHeight),
           CustomInput(
-            labelText: 'رقم السجل / الهوايه',
+            labelText: AppLocalizations.of(context).phoneNum,
             keyboardType: TextInputType.phone,
           ),
           SizedBox(height: SizeConfig.padding),
           CustomInput(
             obscureText: true,
-            labelText: 'كلمه المرور',
+            labelText: AppLocalizations.of(context).password,
             keyboardType: TextInputType.visiblePassword,
           ),
           SizedBox(height: SizeConfig.padding),
-          CustomPressedText(text: 'نسيت كلمه المرور؟'),
+          CustomPressedText(text: AppLocalizations.of(context).forgetPassword),
           SizedBox(height: SizeConfig.padding),
           CustomButton(
-            buttonText: 'تسجيل الدخول',
+            buttonText: AppLocalizations.of(context).login,
             press: () => Navigator.push(
                 context, MaterialPageRoute(builder: (context) => HomeView())),
           ),
@@ -55,15 +56,18 @@ class _LoginViewState extends BaseState<LoginView> {
           Align(
               alignment: Alignment.center,
               child: CustomText(
-                  text: "عن التطبيق", fontSize: SizeConfig.titleFontSize)),
+                  text: AppLocalizations.of(context).aboutPhone,
+                  fontSize: SizeConfig.titleFontSize)),
           SizedBox(height: 10),
           Divider(color: AppColors.GRAY_COLOR),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CustomPressedText(text: 'ليس لديك حساب ؟'),
               CustomPressedText(
-                  text: 'سجل الان', textColor: AppColors.PINK_COLOR),
+                  text: AppLocalizations.of(context).notHaveAccount),
+              CustomPressedText(
+                  text: AppLocalizations.of(context).register,
+                  textColor: AppColors.PINK_COLOR),
             ],
           ),
         ],

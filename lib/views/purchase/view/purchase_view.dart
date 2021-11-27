@@ -3,6 +3,7 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
+import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/common/widgets/custom_button.dart';
 import 'package:rasid_jack/common/widgets/custom_drawer.dart';
@@ -23,7 +24,7 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
       child: Column(
         children: [
           CustomInput(
-            hintText: 'بحث',
+            hintText: AppLocalizations.of(context).search,
             underLineBorder: true,
           ),
           SizedBox(height: SizeConfig.padding),
@@ -62,12 +63,14 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomText(text: 'رقم العملية'),
+                      CustomText(
+                          text: AppLocalizations.of(context).operationNum),
                       CustomText(text: '38884884'),
                       Container(
                         height: 40,
                         child: CustomListTile(
-                          title: CustomText(text: 'قيمة العملية'),
+                          title: CustomText(
+                              text: AppLocalizations.of(context).operationval),
                           padding: EdgeInsets.zero,
                           trailing: CustomText(text: '38884884'),
                         ),
@@ -75,7 +78,9 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
                       Container(
                         height: 40,
                         child: CustomListTile(
-                          title: CustomText(text: 'حاله العملية'),
+                          title: CustomText(
+                              text:
+                                  AppLocalizations.of(context).operationStatus),
                           padding: EdgeInsets.zero,
                           trailing: CustomText(text: 'فيزا'),
                         ),
@@ -83,7 +88,8 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
                       Container(
                         height: 40,
                         child: CustomListTile(
-                          title: CustomText(text: 'طريقه الدفع'),
+                          title: CustomText(
+                              text: AppLocalizations.of(context).paymentMethod),
                           padding: EdgeInsets.zero,
                           trailing: CustomText(text: 'مقبوله'),
                         ),
@@ -91,7 +97,9 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
                       Container(
                         height: 40,
                         child: CustomListTile(
-                          title: CustomText(text: 'اخر اربع ارقام من البطاقه'),
+                          title: CustomText(
+                              text: AppLocalizations.of(context)
+                                  .lastfourNumOfCard),
                           padding: EdgeInsets.zero,
                           trailing: CustomText(text: '45643'),
                         ),
@@ -99,7 +107,9 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
                       Container(
                         height: 40,
                         child: CustomListTile(
-                          title: CustomText(text: 'رقم الموافقه'),
+                          title: CustomText(
+                              text:
+                                  AppLocalizations.of(context).approvalNumber),
                           padding: EdgeInsets.zero,
                           trailing: CustomText(text: '38884884'),
                         ),
@@ -107,7 +117,8 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
                       Container(
                         height: 40,
                         child: CustomListTile(
-                          title: CustomText(text: 'رقم العملية'),
+                          title: CustomText(
+                              text: AppLocalizations.of(context).operationNum),
                           padding: EdgeInsets.zero,
                           trailing: CustomText(text: '38884884'),
                         ),
@@ -132,7 +143,9 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
       ),
       backgroundColor: Colors.transparent,
       elevation: 0.0,
-      title: CustomText(text: 'العمليات', fontSize: SizeConfig.titleFontSize),
+      title: CustomText(
+          text: AppLocalizations.of(context).processes,
+          fontSize: SizeConfig.titleFontSize),
       centerTitle: true,
       actions: [
         IconButton(
@@ -140,13 +153,12 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
                 title: '',
                 errorMessage: '',
                 okButtonTitle: '',
-                cancelButtonTitle: 'رجوع'),
+                cancelButtonTitle: AppLocalizations.of(context).back),
             icon: CustomText(text: 'Pop'))
       ],
     );
   }
 
-  @override
   Future<void> showAppDialog(
       {required String title,
       required String errorMessage,
@@ -172,9 +184,12 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  CustomText(text: 'استرداد', fontSize: 30),
+                  CustomText(
+                      text: AppLocalizations.of(context).recovery,
+                      fontSize: 30),
                   Divider(color: AppColors.GRAY_COLOR),
-                  CustomText(text: 'ايصال', fontSize: 30),
+                  CustomText(
+                      text: AppLocalizations.of(context).receipt, fontSize: 30),
                   Divider(color: AppColors.GRAY_COLOR),
                 ],
               ),
