@@ -19,6 +19,7 @@ class SizeConfig {
   static double padding = 8.0;
   static double borderRaduis = 10.0;
   static double extraPadding = 50.0;
+  static double btnRadius = 12.0;
 
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
@@ -41,5 +42,6 @@ class SizeConfig {
     padding = SizeConfig.safeBlockHorizontal * 4;
     extraPadding = SizeConfig.safeBlockHorizontal * 40;
     borderRaduis = SizeConfig.borderRaduis;
+    btnRadius = SizeConfig.safeBlockHorizontal * 3;
   }
 }

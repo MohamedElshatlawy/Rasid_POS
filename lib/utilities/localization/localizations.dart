@@ -89,6 +89,23 @@ class AppLocalizations {
   String get commissionDilalog =>
       Intl.message('Commission Dilalog', name: 'commissionDilalog');
   String get sendOrder => Intl.message('Send Pull Order', name: 'sendOrder');
+  String get youHaveToAcceptTermsAndConditions =>
+      Intl.message("للإستمرار يجب الموافقة علي الشروط والأحكام.",
+          name: "youHaveToAcceptTermsAndConditions");
+  String get pleaseEnter => Intl.message('فضلا ادخل', name: 'pleaseEnter');
+  String get allOfficialCorrespondenceViaThisEmail =>
+      Intl.message("جميع المراسلات الرسميه تتم عبر هذا البريد الالكتروني*",
+          name: "allOfficialCorrespondenceViaThisEmail");
+  String get correctly => Intl.message('بشكل صحيح', name: 'correctly');
+  String get identity => Intl.message('الهوية', name: 'identity');
+  String get registrationNumber =>
+      Intl.message('رقم السجل', name: 'registrationNumber');
+  String get phoneNumber => Intl.message('رقم الجوال', name: 'phoneNumber');
+  String get requestNewCodeMessage =>
+      Intl.message("اطلب رمزًا جديدًا في", name: "requestNewCodeMessage");
+  String get requestNewCode =>
+      Intl.message("اطلب رمزًا جديدًا", name: "requestNewCode");
+  String get email => Intl.message('البريد الالكتروني', name: 'email');
 }
 
 class SpecificLocalizationDelegate

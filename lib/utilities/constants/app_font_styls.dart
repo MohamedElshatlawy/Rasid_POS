@@ -24,4 +24,35 @@ class AppFontStyle {
 
   static TextStyle latoRegular(double fontSize, Color fontColor) => TextStyle(
       fontFamily: 'LatoRegular', fontSize: fontSize, color: fontColor);
+  static TextStyle bahijSemiBold({
+    required double fontSize,
+    required Color fontColor,
+    TextDecoration? textDecoration,
+  }) =>
+      TextStyle(
+        fontFamily: 'BahijSemiBold',
+        fontSize: fontSize,
+        color: fontColor,
+        decoration: textDecoration,
+      );
+  static TextStyle bahijLight({
+    required double fontSize,
+    required Color fontColor,
+    TextDecoration? textDecoration,
+  }) =>
+      TextStyle(
+          fontFamily: 'BahijLight',
+          fontSize: fontSize,
+          color: fontColor,
+          decoration: textDecoration);
+  static TextStyle bahijBold({
+    required double fontSize,
+    required Color fontColor,
+    TextDecoration? textDecoration,
+  }) =>
+      TextStyle(
+          fontFamily: 'BahijBold',
+          fontSize: fontSize,
+          color: fontColor,
+          decoration: textDecoration);
 }

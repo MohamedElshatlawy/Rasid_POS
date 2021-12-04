@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
-import 'package:pin_code_text_field/pin_code_text_field.dart';
-import 'package:rasid_jack/common/widgets/custom_popUp.dart';
+import 'package:rasid_jack/common/widgets/app_button.dart';
+import 'package:rasid_jack/common/widgets/app_image.dart';
+import 'package:rasid_jack/common/widgets/app_otp_text_field.dart';
+import 'package:rasid_jack/common/widgets/app_text.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
-import 'package:rasid_jack/common/widgets/custom_button.dart';
-import 'package:rasid_jack/common/widgets/custom_text.dart';
+import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 
@@ -26,35 +27,51 @@ class _PayViewState extends BaseState<PayView> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          PinCodeTextField(
-            maxLength: 4,
-            highlightPinBoxColor: AppColors.PINK_COLOR,
-            pinBoxHeight: 50,
-            pinBoxBorderWidth: 0.0,
-            pinBoxWidth: 50,
-            pinBoxRadius: 10,
-            pinTextStyle: TextStyle(
-              fontSize: 20,
-            ),
-            onDone: (value) {
+          AppOtpTextField(
+            fieldHeight: 50,
+            borderWidth: 0.0,
+            fieldWidth: 50,
+            numberOfFields: 4,
+            borderRadius: BorderRadius.circular(10),
+            borderColor: AppColors.whiteColor,
+            filled: true,
+            styles: [
+              AppFontStyle.bahijBold(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor),
+              AppFontStyle.bahijBold(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor),
+              AppFontStyle.bahijBold(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor),
+              AppFontStyle.bahijBold(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor),
+            ],
+            fillColor: AppColors.PINK_COLOR,
+            fieldLength: 1,
+            onSubmit: (value) {
               setState(() {
                 visable = true;
               });
             },
           ),
-          Image.asset(
-            AppAssets.payImage,
+          AppImage(
+            path: AppAssets.payImage,
             height: SizeConfig.extraPadding,
             width: SizeConfig.screenWidth,
           ),
-          CustomText(
-            text: '20.00 SAR',
-            fontSize: SizeConfig.titleFontSize,
-          ),
-          CustomText(
-            text: '20.00' + AppLocalizations.of(context).coinRial,
-            fontSize: SizeConfig.titleFontSize,
-          ),
+          AppText(
+              label: '20.00 SAR',
+              style: AppFontStyle.bahijLight(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor)),
+          AppText(
+              label: '20.00' + AppLocalizations.of(context).coinRial,
+              style: AppFontStyle.bahijLight(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor)),
           SizedBox(height: SizeConfig.padding),
           Visibility(
               visible: visable,
@@ -72,7 +89,8 @@ class _PayViewState extends BaseState<PayView> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         color: AppColors.DARK_GRAY_COLOR),
-                    child: Image.asset(AppAssets.payButtom)),
+                    child: AppImage(
+                        path: AppAssets.payButtom, boxFit: BoxFit.scaleDown)),
               )),
         ],
       ),
@@ -90,41 +108,58 @@ class _PayViewState extends BaseState<PayView> {
         builder: (BuildContext context) => AlertDialog(
               backgroundColor: Colors.transparent,
               actions: [
-                CustomButton(
-                  buttonText: cancelButtonTitle.toString(),
-                  buttonColor: AppColors.PINK_COLOR,
-                  press: () => Navigator.pop(context),
+                AppButton(
+                  title: cancelButtonTitle.toString(),
+                  style: AppFontStyle.bahijLight(
+                      fontSize: SizeConfig.textFontSize,
+                      fontColor: AppColors.whiteColor),
+                  borderColor: AppColors.PINK_COLOR,
+                  backgroundColor: AppColors.PINK_COLOR,
+                  onTap: () => Navigator.pop(context),
+                  width: double.infinity,
                 )
               ],
               content: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    CustomPopUp(
-                      margin: EdgeInsets.only(bottom: SizeConfig.padding),
-                      contentPopUp: Column(
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: SizeConfig.padding,
+                          vertical: SizeConfig.padding),
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(SizeConfig.borderRaduis),
+                          color: AppColors.DARK_GRAY_COLOR),
+                      child: Column(
                         children: [
-                          CustomText(
-                            text: AppLocalizations.of(context).receipt,
-                            textColor: AppColors.WHITH_COLOR,
-                          ),
-                          Image.asset(
-                            AppAssets.qrCodeImage,
-                          ),
+                          AppText(
+                              label: AppLocalizations.of(context).receipt,
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
+                          AppImage(path: AppAssets.qrCodeImage)
                         ],
                       ),
                     ),
-                    CustomPopUp(
+                    SizedBox(height: SizeConfig.padding),
+                    Container(
                       margin: EdgeInsets.zero,
-                      contentPopUp: Column(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: SizeConfig.padding,
+                          vertical: SizeConfig.padding),
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(SizeConfig.borderRaduis),
+                          color: AppColors.DARK_GRAY_COLOR),
+                      child: Column(
                         children: [
-                          CustomText(
-                            text: AppLocalizations.of(context).receipt,
-                            textColor: AppColors.WHITH_COLOR,
-                          ),
-                          Image.asset(
-                            AppAssets.qrCodeImage,
-                          ),
+                          AppText(
+                              label: AppLocalizations.of(context).receipt,
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
+                          AppImage(path: AppAssets.qrCodeImage)
                         ],
                       ),
                     ),

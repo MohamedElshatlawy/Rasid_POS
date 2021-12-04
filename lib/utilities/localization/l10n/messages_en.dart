@@ -84,5 +84,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "sendOrder": MessageLookupByLibrary.simpleMessage("Send pull order"),
         "commissionDilalog": MessageLookupByLibrary.simpleMessage(
             "You can withdraw the commission if its value reaches 1000 riyals"),
+        "youHaveToAcceptTermsAndConditions":
+            MessageLookupByLibrary.simpleMessage(
+                'You have to accept Terms and Conditions to continue.'),
+        "pleaseEnter": MessageLookupByLibrary.simpleMessage('Please enter'),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "correctly": MessageLookupByLibrary.simpleMessage('correctly'),
+        "identity": MessageLookupByLibrary.simpleMessage('Identity'),
+        "registrationNumber":
+            MessageLookupByLibrary.simpleMessage('Registration number'),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
+        "requestNewCodeMessage":
+            MessageLookupByLibrary.simpleMessage("Request new code in"),
+        "requestNewCode":
+            MessageLookupByLibrary.simpleMessage("Request new code"),
       };
 }

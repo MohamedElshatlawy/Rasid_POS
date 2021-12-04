@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
-import 'package:rasid_jack/common/widgets/custom_popUp.dart';
+import 'package:rasid_jack/common/widgets/app_button.dart';
+import 'package:rasid_jack/common/widgets/app_image.dart';
+import 'package:rasid_jack/common/widgets/app_text.dart';
+import 'package:rasid_jack/common/widgets/app_text_form_field_item.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
+import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
-import 'package:rasid_jack/common/widgets/custom_button.dart';
 import 'package:rasid_jack/common/widgets/custom_drawer.dart';
-import 'package:rasid_jack/common/widgets/custom_input.dart';
 import 'package:rasid_jack/common/widgets/custom_text.dart';
+import 'package:rxdart/subjects.dart';
 
 class CommissionView extends BaseStatefulWidget {
   @override
@@ -28,11 +30,13 @@ class _CommissionViewState extends BaseState<CommissionView> {
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              CustomText(
-                  text: AppLocalizations.of(context).commissions,
-                  fontSize: SizeConfig.titleFontSize),
+              AppText(
+                  label: AppLocalizations.of(context).commissions,
+                  style: AppFontStyle.bahijLight(
+                      fontSize: SizeConfig.titleFontSize,
+                      fontColor: AppColors.whiteColor)),
               SizedBox(width: SizeConfig.padding),
-              Image.asset(AppAssets.comissionImage)
+              AppImage(path: AppAssets.comissionImage)
             ],
           ),
           SizedBox(height: SizeConfig.extraPadding),
@@ -46,20 +50,31 @@ class _CommissionViewState extends BaseState<CommissionView> {
                     color: AppColors.DARK_GRAY_COLOR, shape: BoxShape.circle),
                 child: Column(
                   children: [
-                    CustomText(text: '100', fontSize: SizeConfig.titleFontSize),
-                    CustomText(
-                        text: AppLocalizations.of(context).coinRial,
-                        fontSize: SizeConfig.titleFontSize),
+                    AppText(
+                        label: '100',
+                        style: AppFontStyle.bahijLight(
+                            fontSize: SizeConfig.titleFontSize,
+                            fontColor: AppColors.whiteColor)),
+                    AppText(
+                        label: AppLocalizations.of(context).coinRial,
+                        style: AppFontStyle.bahijLight(
+                            fontSize: SizeConfig.titleFontSize,
+                            fontColor: AppColors.whiteColor)),
                   ],
                 ),
               )),
           SizedBox(height: SizeConfig.extraPadding),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: SizeConfig.padding),
-            child: CustomButton(
-              buttonText: AppLocalizations.of(context).withdrawingCommissions,
+            child: AppButton(
+              width: double.infinity,
+              style: AppFontStyle.bahijLight(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor),
+              title: AppLocalizations.of(context).withdrawingCommissions,
               borderColor: AppColors.WHITH_COLOR,
-              press: () => showAppDialog(
+              backgroundColor: AppColors.BUTTON_COLOR,
+              onTap: () => showAppDialog(
                 title: '',
                 errorMessage: '',
                 okButtonTitle: '',
@@ -76,9 +91,21 @@ class _CommissionViewState extends BaseState<CommissionView> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      CustomInput(
-                          hintText: AppLocalizations.of(context).name,
-                          borderColor: AppColors.WHITH_COLOR),
+                      AppTextFormFieldItem(
+                          title: AppLocalizations.of(context).name,
+                          label: AppText(
+                              label: AppLocalizations.of(context).name,
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
+                          formFieldItemType: AppFormFieldItemType.USER_NAME,
+                          subject: BehaviorSubject(),
+                          textInputType: TextInputType.name,
+                          labelFontColor: AppColors.whiteColor,
+                          borderColor: AppColors.whiteColor,
+                          focusedBorderColor: AppColors.whiteColor,
+                          iconColor: AppColors.transparentColor,
+                          focusedIconColor: AppColors.whiteColor),
                       SizedBox(height: SizeConfig.padding),
                       Container(
                         decoration: BoxDecoration(
@@ -108,15 +135,33 @@ class _CommissionViewState extends BaseState<CommissionView> {
                           ),
                         ),
                       ),
-                      CustomInput(
-                          hintText:
-                              AppLocalizations.of(context).numberofstatement,
-                          borderColor: AppColors.WHITH_COLOR),
-                      SizedBox(height: 30),
-                      CustomButton(
-                        buttonText: AppLocalizations.of(context).sendOrder,
-                        buttonColor: AppColors.BUTTON_COLOR,
-                        press: () => showAppDialog(
+                      SizedBox(height: SizeConfig.padding),
+                      AppTextFormFieldItem(
+                          title: AppLocalizations.of(context).numberofstatement,
+                          formFieldItemType: AppFormFieldItemType.NUMBER,
+                          label: AppText(
+                              label: AppLocalizations.of(context)
+                                  .numberofstatement,
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
+                          subject: BehaviorSubject(),
+                          textInputType: TextInputType.name,
+                          labelFontColor: AppColors.whiteColor,
+                          borderColor: AppColors.whiteColor,
+                          focusedBorderColor: AppColors.whiteColor,
+                          iconColor: AppColors.transparentColor,
+                          focusedIconColor: AppColors.whiteColor),
+                      SizedBox(height: SizeConfig.padding * 2),
+                      AppButton(
+                        width: double.infinity,
+                        style: AppFontStyle.bahijLight(
+                            fontSize: SizeConfig.textFontSize,
+                            fontColor: AppColors.whiteColor),
+                        title: AppLocalizations.of(context).sendOrder,
+                        borderColor: AppColors.BUTTON_COLOR,
+                        backgroundColor: AppColors.BUTTON_COLOR,
+                        onTap: () => showAppDialog(
                             title: '',
                             errorMessage: '',
                             okButtonTitle: '',
@@ -132,10 +177,13 @@ class _CommissionViewState extends BaseState<CommissionView> {
                                 borderRadius: BorderRadius.circular(30),
                                 color: AppColors.DARK_GRAY_COLOR,
                               ),
-                              child: CustomText(
-                                  text: AppLocalizations.of(context)
-                                      .commissionDilalog,
-                                  fontSize: 20),
+                              child: AppText(
+                                label: AppLocalizations.of(context)
+                                    .commissionDilalog,
+                                style: AppFontStyle.bahijLight(
+                                    fontSize: SizeConfig.titleFontSize,
+                                    fontColor: AppColors.whiteColor),
+                              ),
                             )),
                       ),
                       SizedBox(height: SizeConfig.padding),
@@ -171,10 +219,15 @@ class _CommissionViewState extends BaseState<CommissionView> {
               child: AlertDialog(
                 backgroundColor: Colors.transparent,
                 actions: [
-                  CustomButton(
-                    buttonText: cancelButtonTitle.toString(),
-                    buttonColor: AppColors.PINK_COLOR,
-                    press: () => Navigator.pop(context),
+                  AppButton(
+                    width: double.infinity,
+                    style: AppFontStyle.bahijLight(
+                        fontSize: SizeConfig.textFontSize,
+                        fontColor: AppColors.whiteColor),
+                    title: cancelButtonTitle.toString(),
+                    borderColor: AppColors.PINK_COLOR,
+                    backgroundColor: AppColors.PINK_COLOR,
+                    onTap: () => Navigator.pop(context),
                   )
                 ],
                 content: content!,
@@ -194,11 +247,12 @@ class _CommissionViewState extends BaseState<CommissionView> {
 
   @override
   Widget buildBackButton() {
-    return IconButton(
-      onPressed: () => Navigator.of(context).pop(),
-      icon: Image(
-        image: AssetImage(AppAssets.BACK_BTN),
-      ),
+    return AppButton(
+      onTap: () => Navigator.of(context).pop(),
+      icon: AppImage(path: AppAssets.BACK_BTN),
+      backgroundColor: AppColors.transparentColor,
+      borderColor: AppColors.transparentColor,
+      title: '',
     );
   }
 }

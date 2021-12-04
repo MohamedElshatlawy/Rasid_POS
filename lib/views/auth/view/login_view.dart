@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
-import 'package:rasid_jack/common/widgets/custom_pressed_text.dart';
+import 'package:rasid_jack/common/widgets/app_button.dart';
+import 'package:rasid_jack/common/widgets/app_divider.dart';
+import 'package:rasid_jack/common/widgets/app_image.dart';
+import 'package:rasid_jack/common/widgets/app_text.dart';
+import 'package:rasid_jack/common/widgets/app_text_form_field_item.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
+import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/views/home/view/home_view.dart';
-import 'package:rasid_jack/common/widgets/custom_button.dart';
-import 'package:rasid_jack/common/widgets/custom_input.dart';
-import 'package:rasid_jack/common/widgets/custom_text.dart';
+import 'package:rxdart/rxdart.dart';
 
 class LoginView extends BaseStatefulWidget {
   @override
@@ -28,46 +31,84 @@ class _LoginViewState extends BaseState<LoginView> {
         children: [
           SizedBox(height: SizeConfig.padding),
           Align(
-            alignment: Alignment.center,
-            child: Image.asset(
-              AppAssets.LOGO,
-            ),
-          ),
-          SizedBox(height: SizeConfig.btnHeight),
-          CustomInput(
-            labelText: AppLocalizations.of(context).phoneNum,
-            keyboardType: TextInputType.phone,
-          ),
+              alignment: Alignment.center,
+              child: AppImage(path: AppAssets.LOGO, boxFit: BoxFit.cover)),
+          SizedBox(height: SizeConfig.padding * 5),
+          AppTextFormFieldItem(
+              title: '',
+              formFieldItemType: AppFormFieldItemType.PHONE,
+              label: AppText(
+                  label: AppLocalizations.of(context).phoneNum,
+                  style: AppFontStyle.bahijLight(
+                      fontSize: SizeConfig.textFontSize,
+                      fontColor: AppColors.whiteColor)),
+              subject: BehaviorSubject(),
+              textInputType: TextInputType.phone,
+              labelFontColor: AppColors.whiteColor,
+              borderColor: AppColors.BUTTON_COLOR,
+              focusedBorderColor: AppColors.whiteColor,
+              fontColor: AppColors.whiteColor,
+              iconColor: Colors.transparent,
+              focusedIconColor: Colors.transparent),
           SizedBox(height: SizeConfig.padding),
-          CustomInput(
-            obscureText: true,
-            labelText: AppLocalizations.of(context).password,
-            keyboardType: TextInputType.visiblePassword,
-          ),
+          AppTextFormFieldItem(
+              label: AppText(
+                  label: AppLocalizations.of(context).password,
+                  style: AppFontStyle.bahijLight(
+                      fontSize: SizeConfig.textFontSize,
+                      fontColor: AppColors.whiteColor)),
+              title: '',
+              formFieldItemType: AppFormFieldItemType.PASSWORD,
+              obscureTextSubject: BehaviorSubject<bool>.seeded(true),
+              subject: BehaviorSubject(),
+              textInputType: TextInputType.visiblePassword,
+              labelFontColor: Colors.white,
+              borderColor: AppColors.BUTTON_COLOR,
+              fontColor: AppColors.whiteColor,
+              focusedBorderColor: AppColors.whiteColor,
+              iconColor: Colors.transparent,
+              focusedIconColor: Colors.transparent),
           SizedBox(height: SizeConfig.padding),
-          CustomPressedText(text: AppLocalizations.of(context).forgetPassword),
-          SizedBox(height: SizeConfig.padding),
-          CustomButton(
-            buttonText: AppLocalizations.of(context).login,
-            press: () => Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomeView())),
-          ),
-          SizedBox(height: SizeConfig.extraPadding / 2),
+          AppText(
+              label: AppLocalizations.of(context).forgetPassword,
+              style: AppFontStyle.bahijBold(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor)),
+          SizedBox(height: SizeConfig.padding * 2),
+          AppButton(
+              width: double.infinity,
+              style: AppFontStyle.bahijBold(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor),
+              title: AppLocalizations.of(context).login,
+              borderColor: AppColors.BUTTON_COLOR,
+              backgroundColor: AppColors.BUTTON_COLOR,
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeView()))),
+          SizedBox(height: SizeConfig.extraPadding),
           Align(
               alignment: Alignment.center,
-              child: CustomText(
-                  text: AppLocalizations.of(context).aboutPhone,
-                  fontSize: SizeConfig.titleFontSize)),
+              child: AppText(
+                label: AppLocalizations.of(context).aboutPhone,
+                style: AppFontStyle.bahijLight(
+                    fontSize: SizeConfig.textFontSize,
+                    fontColor: AppColors.whiteColor),
+              )),
           SizedBox(height: 10),
-          Divider(color: AppColors.GRAY_COLOR),
+          AppDivider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CustomPressedText(
-                  text: AppLocalizations.of(context).notHaveAccount),
-              CustomPressedText(
-                  text: AppLocalizations.of(context).register,
-                  textColor: AppColors.PINK_COLOR),
+              AppText(
+                  label: AppLocalizations.of(context).notHaveAccount,
+                  style: AppFontStyle.bahijLight(
+                      fontSize: SizeConfig.textFontSize,
+                      fontColor: AppColors.whiteColor)),
+              AppText(
+                  label: AppLocalizations.of(context).register,
+                  style: AppFontStyle.bahijBold(
+                      fontSize: SizeConfig.textFontSize,
+                      fontColor: AppColors.PINK_COLOR)),
             ],
           ),
         ],
