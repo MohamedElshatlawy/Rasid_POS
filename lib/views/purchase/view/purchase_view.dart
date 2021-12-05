@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
+import 'package:rasid_jack/common/widgets/app_button.dart';
+import 'package:rasid_jack/common/widgets/app_divider.dart';
+import 'package:rasid_jack/common/widgets/app_image.dart';
+import 'package:rasid_jack/common/widgets/app_label_with_icon.dart';
+import 'package:rasid_jack/common/widgets/app_text.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
+import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
-import 'package:rasid_jack/common/widgets/custom_button.dart';
 import 'package:rasid_jack/common/widgets/custom_drawer.dart';
 import 'package:rasid_jack/common/widgets/custom_input.dart';
 import 'package:rasid_jack/common/widgets/custom_listtile.dart';
-import 'package:rasid_jack/common/widgets/custom_text.dart';
 
 class PurchaseView extends BaseStatefulWidget {
   @override
@@ -31,23 +34,17 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Row(
-                children: [
-                  Icon(Icons.calendar_today_outlined,
-                      color: AppColors.PINK_COLOR),
-                  SizedBox(width: SizeConfig.padding),
-                  CustomText(text: 'يناير 2020')
-                ],
-              ),
+              AppLabelWithIcon(
+                  label: 'يناير 2020',
+                  labelColor: AppColors.whiteColor,
+                  icon: Icon(Icons.calendar_today_outlined,
+                      color: AppColors.PINK_COLOR)),
               Icon(Icons.remove, color: AppColors.WHITH_COLOR),
-              Row(
-                children: [
-                  Icon(Icons.calendar_today_outlined,
-                      color: AppColors.PINK_COLOR),
-                  SizedBox(width: SizeConfig.padding),
-                  CustomText(text: 'فبراير 2020')
-                ],
-              ),
+              AppLabelWithIcon(
+                  label: 'فبراير 2020',
+                  labelColor: AppColors.whiteColor,
+                  icon: Icon(Icons.calendar_today_outlined,
+                      color: AppColors.PINK_COLOR)),
             ],
           ),
           ListView.builder(
@@ -63,64 +60,113 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomText(
-                          text: AppLocalizations.of(context).operationNum),
-                      CustomText(text: '38884884'),
+                      AppText(
+                          label: AppLocalizations.of(context).operationNum,
+                          style: AppFontStyle.bahijLight(
+                              fontSize: SizeConfig.textFontSize,
+                              fontColor: AppColors.whiteColor)),
+                      AppText(
+                          label: '38884884',
+                          style: AppFontStyle.bahijLight(
+                              fontSize: SizeConfig.textFontSize,
+                              fontColor: AppColors.whiteColor)),
                       Container(
                         height: 40,
                         child: CustomListTile(
-                          title: CustomText(
-                              text: AppLocalizations.of(context).operationval),
+                          title: AppText(
+                              label: AppLocalizations.of(context).operationval,
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
                           padding: EdgeInsets.zero,
-                          trailing: CustomText(text: '38884884'),
+                          trailing: AppText(
+                              label: '38884884',
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
                         ),
                       ),
                       Container(
                         height: 40,
                         child: CustomListTile(
-                          title: CustomText(
-                              text:
-                                  AppLocalizations.of(context).operationStatus),
+                          title: AppText(
+                              label:
+                                  AppLocalizations.of(context).operationStatus,
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
                           padding: EdgeInsets.zero,
-                          trailing: CustomText(text: 'فيزا'),
+                          trailing: AppText(
+                              label: 'فيزا',
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
                         ),
                       ),
                       Container(
                         height: 40,
                         child: CustomListTile(
-                          title: CustomText(
-                              text: AppLocalizations.of(context).paymentMethod),
+                          title: AppText(
+                              label: AppLocalizations.of(context).paymentMethod,
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
                           padding: EdgeInsets.zero,
-                          trailing: CustomText(text: 'مقبوله'),
+                          trailing: AppText(
+                              label: 'مقبوله',
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
                         ),
                       ),
                       Container(
                         height: 40,
                         child: CustomListTile(
-                          title: CustomText(
-                              text: AppLocalizations.of(context)
-                                  .lastfourNumOfCard),
+                          title: AppText(
+                              label: AppLocalizations.of(context)
+                                  .lastfourNumOfCard,
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
                           padding: EdgeInsets.zero,
-                          trailing: CustomText(text: '45643'),
+                          trailing: AppText(
+                              label: '45643',
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
                         ),
                       ),
                       Container(
                         height: 40,
                         child: CustomListTile(
-                          title: CustomText(
-                              text:
-                                  AppLocalizations.of(context).approvalNumber),
+                          title: AppText(
+                              label:
+                                  AppLocalizations.of(context).approvalNumber,
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
                           padding: EdgeInsets.zero,
-                          trailing: CustomText(text: '38884884'),
+                          trailing: AppText(
+                              label: '38884884',
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
                         ),
                       ),
                       Container(
                         height: 40,
                         child: CustomListTile(
-                          title: CustomText(
-                              text: AppLocalizations.of(context).operationNum),
+                          title: AppText(
+                              label: AppLocalizations.of(context).operationNum,
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
                           padding: EdgeInsets.zero,
-                          trailing: CustomText(text: '38884884'),
+                          trailing: AppText(
+                              label: '38884884',
+                              style: AppFontStyle.bahijLight(
+                                  fontSize: SizeConfig.textFontSize,
+                                  fontColor: AppColors.whiteColor)),
                         ),
                       ),
                     ],
@@ -135,26 +181,30 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
   @override
   PreferredSizeWidget getAppbar() {
     return AppBar(
-      flexibleSpace: Image(
-        image: AssetImage(
-          AppAssets.loginBackground,
-        ),
-        fit: BoxFit.fill,
-      ),
+      flexibleSpace:
+          AppImage(path: AppAssets.loginBackground, boxFit: BoxFit.fill),
       backgroundColor: Colors.transparent,
       elevation: 0.0,
-      title: CustomText(
-          text: AppLocalizations.of(context).processes,
-          fontSize: SizeConfig.titleFontSize),
+      title: AppText(
+          label: AppLocalizations.of(context).processes,
+          style: AppFontStyle.bahijLight(
+              fontSize: SizeConfig.titleFontSize,
+              fontColor: AppColors.whiteColor)),
       centerTitle: true,
       actions: [
-        IconButton(
-            onPressed: () => showAppDialog(
+        AppButton(
+            title: "Pop up",
+            style: AppFontStyle.bahijLight(
+                fontSize: SizeConfig.textFontSize,
+                fontColor: AppColors.whiteColor),
+            borderColor: Colors.transparent,
+            backgroundColor: Colors.transparent,
+            onTap: () => showAppDialog(
                 title: '',
                 errorMessage: '',
                 okButtonTitle: '',
                 cancelButtonTitle: AppLocalizations.of(context).back),
-            icon: CustomText(text: 'Pop'))
+            icon: AppText(label: ''))
       ],
     );
   }
@@ -169,11 +219,15 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
         builder: (BuildContext context) => AlertDialog(
             backgroundColor: Colors.transparent,
             actions: [
-              CustomButton(
-                buttonText: cancelButtonTitle.toString(),
-                buttonColor: AppColors.PINK_COLOR,
-                press: () => Navigator.pop(context),
-              )
+              AppButton(
+                  width: double.infinity,
+                  style: AppFontStyle.bahijLight(
+                      fontSize: SizeConfig.textFontSize,
+                      fontColor: AppColors.whiteColor),
+                  title: cancelButtonTitle.toString(),
+                  borderColor: AppColors.PINK_COLOR,
+                  backgroundColor: AppColors.PINK_COLOR,
+                  onTap: () => Navigator.pop(context)),
             ],
             content: Container(
               padding: EdgeInsets.symmetric(
@@ -184,13 +238,18 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  CustomText(
-                      text: AppLocalizations.of(context).recovery,
-                      fontSize: 30),
-                  Divider(color: AppColors.GRAY_COLOR),
-                  CustomText(
-                      text: AppLocalizations.of(context).receipt, fontSize: 30),
-                  Divider(color: AppColors.GRAY_COLOR),
+                  AppText(
+                      label: AppLocalizations.of(context).recovery,
+                      style: AppFontStyle.bahijLight(
+                          fontSize: SizeConfig.titleFontSize,
+                          fontColor: AppColors.whiteColor)),
+                  AppDivider(),
+                  AppText(
+                      label: AppLocalizations.of(context).receipt,
+                      style: AppFontStyle.bahijLight(
+                          fontSize: SizeConfig.titleFontSize,
+                          fontColor: AppColors.whiteColor)),
+                  AppDivider(),
                 ],
               ),
             )));

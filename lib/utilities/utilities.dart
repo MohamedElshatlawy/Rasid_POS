@@ -19,7 +19,8 @@ class Utilities {
           SharedPreferenceHelper.getValueForKey(SharedPrefsKeys.USER_KEY)));
 
   static setCurrentUser(UserModel user) {
-    SharedPreferenceHelper.setValueForKey(SharedPrefsKeys.USER_KEY, user.toRawJson());
+    SharedPreferenceHelper.setValueForKey(
+        SharedPrefsKeys.USER_KEY, user.toRawJson());
   }
 
   static String getTokenHeader() {
@@ -139,7 +140,22 @@ class Utilities {
     }
   }
 
+  static popWidget(BuildContext context) {
+    Navigator.pop(context);
+  }
 
+  static String formattedTime(int secTime) {
+    String getParsedTime(String time) {
+      if (time.length <= 1) return "0$time";
+      return time;
+    }
 
+    int min = secTime ~/ 60;
+    int sec = secTime % 60;
 
+    String parsedTime =
+        getParsedTime(min.toString()) + ":" + getParsedTime(sec.toString());
+
+    return parsedTime;
+  }
 }

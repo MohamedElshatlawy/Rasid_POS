@@ -46,8 +46,6 @@ class UserData {
 
   String get fullName => '$firstName $lastName';
 
-
-
   factory UserData.fromJson(Map<String, dynamic> json) => UserData(
         isVerfiy: json["isVerfiy"],
         accountType: json["accountType"],
@@ -88,9 +86,17 @@ class UserData {
         "hasCompleteData": hasCompleteData,
       };
 
-  // String getAvatar() {
-  //   return "${Utilities.getMediaBaseUrl()}$profileImage";
-  // }
+// String getAvatar() {
+//   return "${Utilities.getMediaBaseUrl()}$profileImage";
+// }
+
+  // Define that two persons are equal if their SSNs are equal
+  bool operator ==(dynamic other) =>
+      other != null && other is UserData && this.userId == other.userId;
+
+  @override
+  int get hashCode => super.hashCode;
+
 }
 
 class Token {

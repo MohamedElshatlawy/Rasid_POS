@@ -4,11 +4,11 @@ import 'package:rxdart/rxdart.dart';
 import '../request_state.dart';
 import '../request_status.dart';
 
-class StreamingResult extends StatelessWidget {
+class AppStreamingResult extends StatelessWidget {
   final BehaviorSubject<RequestState> subject;
   final Widget successWidget;
 
-  StreamingResult({required this.subject, required this.successWidget});
+  AppStreamingResult({required this.subject, required this.successWidget});
 
   @override
   Widget build(BuildContext context) {

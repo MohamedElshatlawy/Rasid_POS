@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
+import 'package:rasid_jack/common/widgets/app_button.dart';
+import 'package:rasid_jack/common/widgets/app_divider.dart';
+import 'package:rasid_jack/common/widgets/app_image.dart';
+import 'package:rasid_jack/common/widgets/app_text.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
+import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/views/home/view/home_view.dart';
-import 'package:rasid_jack/common/widgets/custom_button.dart';
-import 'package:rasid_jack/common/widgets/custom_text.dart';
 
 class ContactUsView extends BaseStatefulWidget {
   @override
@@ -23,37 +26,59 @@ class _ContactUsViewState extends BaseState<ContactUsView> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: SizeConfig.padding),
+          SizedBox(height: SizeConfig.padding * 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CustomText(
-                text: AppLocalizations.of(context).contactUs,
-                fontSize: SizeConfig.titleFontSize,
-              ),
+              AppText(
+                  label: AppLocalizations.of(context).contactUs,
+                  style: AppFontStyle.bahijLight(
+                      fontSize: SizeConfig.titleFontSize,
+                      fontColor: AppColors.whiteColor)),
               SizedBox(width: SizeConfig.padding),
-              Image.asset(AppAssets.contactUsImage)
+              AppImage(path: AppAssets.contactUsImage, boxFit: BoxFit.fill)
             ],
           ),
           SizedBox(height: SizeConfig.extraPadding),
-          CustomText(
-              text: 'supprted@rasid.com', fontSize: SizeConfig.titleFontSize),
-          CustomText(text: '483828282', fontSize: SizeConfig.titleFontSize),
-          Divider(color: AppColors.GRAY_COLOR),
-          CustomText(
-              text: AppLocalizations.of(context).accountManager,
-              fontSize: SizeConfig.titleFontSize),
-          CustomText(text: 'سليمان العتيق', fontSize: SizeConfig.titleFontSize),
-          CustomText(
-              text: '05XXXXXXXXXXXX', fontSize: SizeConfig.titleFontSize),
-          Divider(color: AppColors.GRAY_COLOR),
-          SizedBox(height: SizeConfig.extraPadding * 1.3),
-          CustomButton(
-              buttonText: AppLocalizations.of(context).liveSupport,
-              press: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => HomeView())),
-              borderColor: AppColors.WHITH_COLOR),
+          AppText(
+              label: 'supprted@rasid.com',
+              style: AppFontStyle.bahijLight(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor)),
+          AppText(
+              label: '483828282',
+              style: AppFontStyle.bahijLight(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor)),
+          AppDivider(),
+          AppText(
+              label: AppLocalizations.of(context).accountManager,
+              style: AppFontStyle.bahijLight(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor)),
+          AppText(
+              label: 'سليمان العتيق',
+              style: AppFontStyle.bahijLight(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor)),
+          AppText(
+              label: '05XXXXXXXXXXXX',
+              style: AppFontStyle.bahijLight(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor)),
+          AppDivider(),
+          SizedBox(height: SizeConfig.extraPadding),
+          AppButton(
+              width: double.infinity,
+              style: AppFontStyle.bahijLight(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor),
+              title: AppLocalizations.of(context).liveSupport,
+              borderColor: AppColors.WHITH_COLOR,
+              backgroundColor: AppColors.BUTTON_COLOR,
+              onTap: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => HomeView())))
         ],
       ),
     );

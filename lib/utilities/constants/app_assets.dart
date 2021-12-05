@@ -10,4 +10,6 @@ class AppAssets {
   static const String bill = 'assets/images/Capture.PNG';
   static const String chaserLogin = 'assets/images/Casher Login – 2@2x.png';
   static const String profileButton = 'assets/images/buttonProfile.png';
+  static const String logo = 'assets/icon/logo.png';
+  static const String eye = 'assets/icon/eye.png';
 }

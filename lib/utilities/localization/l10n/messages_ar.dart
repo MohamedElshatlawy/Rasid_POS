@@ -79,5 +79,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "sendOrder": MessageLookupByLibrary.simpleMessage("ارسال طلب السحب"),
         "commissionDilalog": MessageLookupByLibrary.simpleMessage(
             "يمكنك سحب العموله في حاله وصول قيمتها الي 1000 ريال"),
+        "youHaveToAcceptTermsAndConditions":
+            MessageLookupByLibrary.simpleMessage(
+                'للإستمرار يجب الموافقة علي الشروط والأحكام.'),
+        "pleaseEnter": MessageLookupByLibrary.simpleMessage('فضلا ادخل'),
+        "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
+        "correctly": MessageLookupByLibrary.simpleMessage('بشكل صحيح'),
+        "identity": MessageLookupByLibrary.simpleMessage('الهوية'),
+        "registrationNumber": MessageLookupByLibrary.simpleMessage('رقم السجل'),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الجوال"),
+        "requestNewCodeMessage":
+            MessageLookupByLibrary.simpleMessage("اطلب رمزًا جديدًا في"),
+        "requestNewCode":
+            MessageLookupByLibrary.simpleMessage("اطلب رمزًا جديدًا"),
       };
 }
