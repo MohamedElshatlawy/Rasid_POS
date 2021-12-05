@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:rasid_jack/common/widgets/app_image.dart';
+import 'package:rasid_jack/common/widgets/app_text.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
+import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/views/buy_with_cash/view/buy_view.dart';
@@ -9,7 +12,6 @@ import 'package:rasid_jack/views/contactUs/view/contact_us_view.dart';
 import 'package:rasid_jack/views/home/view/home_view.dart';
 import 'package:rasid_jack/views/purchase/view/purchase_view.dart';
 import 'package:rasid_jack/common/widgets/custom_listtile.dart';
-import 'package:rasid_jack/common/widgets/custom_text.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -31,14 +33,16 @@ class CustomDrawer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 IconButton(
-                  icon: Image.asset(AppAssets.profileButton),
+                  icon: AppImage(path: AppAssets.profileButton),
                   iconSize: SizeConfig.btnHeight,
                   onPressed: null,
                 ),
                 SizedBox(height: SizeConfig.padding),
-                CustomText(
-                    text: AppLocalizations.of(context).userName,
-                    fontSize: SizeConfig.titleFontSize),
+                AppText(
+                    label: AppLocalizations.of(context).userName,
+                    style: AppFontStyle.bahijBold(
+                        fontSize: SizeConfig.titleFontSize,
+                        fontColor: AppColors.whiteColor)),
               ],
             ),
           ),
@@ -48,7 +52,11 @@ class CustomDrawer extends StatelessWidget {
               Icons.shopping_basket_outlined,
               color: AppColors.WHITH_COLOR,
             ),
-            title: CustomText(text: AppLocalizations.of(context).shopping),
+            title: AppText(
+                label: AppLocalizations.of(context).shopping,
+                style: AppFontStyle.bahijLight(
+                    fontSize: SizeConfig.titleFontSize,
+                    fontColor: AppColors.whiteColor)),
             press: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => HomeView()));
@@ -59,7 +67,11 @@ class CustomDrawer extends StatelessWidget {
               Icons.public_rounded,
               color: AppColors.WHITH_COLOR,
             ),
-            title: CustomText(text: AppLocalizations.of(context).buyWithCash),
+            title: AppText(
+                label: AppLocalizations.of(context).buyWithCash,
+                style: AppFontStyle.bahijLight(
+                    fontSize: SizeConfig.titleFontSize,
+                    fontColor: AppColors.whiteColor)),
             press: () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => BuyWithCashView()));
@@ -70,7 +82,11 @@ class CustomDrawer extends StatelessWidget {
               Icons.note_outlined,
               color: AppColors.WHITH_COLOR,
             ),
-            title: CustomText(text: AppLocalizations.of(context).processes),
+            title: AppText(
+                label: AppLocalizations.of(context).processes,
+                style: AppFontStyle.bahijLight(
+                    fontSize: SizeConfig.titleFontSize,
+                    fontColor: AppColors.whiteColor)),
             press: () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => PurchaseView()));
@@ -81,7 +97,11 @@ class CustomDrawer extends StatelessWidget {
               Icons.money,
               color: AppColors.WHITH_COLOR,
             ),
-            title: CustomText(text: AppLocalizations.of(context).commissions),
+            title: AppText(
+                label: AppLocalizations.of(context).commissions,
+                style: AppFontStyle.bahijLight(
+                    fontSize: SizeConfig.titleFontSize,
+                    fontColor: AppColors.whiteColor)),
             press: () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => CommissionView()));
@@ -92,7 +112,11 @@ class CustomDrawer extends StatelessWidget {
               Icons.camera_alt_outlined,
               color: AppColors.WHITH_COLOR,
             ),
-            title: CustomText(text: AppLocalizations.of(context).connectivity),
+            title: AppText(
+                label: AppLocalizations.of(context).connectivity,
+                style: AppFontStyle.bahijLight(
+                    fontSize: SizeConfig.titleFontSize,
+                    fontColor: AppColors.whiteColor)),
             press: () {},
           ),
           CustomListTile(
@@ -100,7 +124,11 @@ class CustomDrawer extends StatelessWidget {
               Icons.settings_cell_outlined,
               color: AppColors.WHITH_COLOR,
             ),
-            title: CustomText(text: AppLocalizations.of(context).contactUs),
+            title: AppText(
+                label: AppLocalizations.of(context).contactUs,
+                style: AppFontStyle.bahijLight(
+                    fontSize: SizeConfig.titleFontSize,
+                    fontColor: AppColors.whiteColor)),
             press: () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => ContactUsView()));

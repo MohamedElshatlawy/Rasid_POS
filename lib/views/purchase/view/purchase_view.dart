@@ -5,6 +5,7 @@ import 'package:rasid_jack/common/widgets/app_divider.dart';
 import 'package:rasid_jack/common/widgets/app_image.dart';
 import 'package:rasid_jack/common/widgets/app_label_with_icon.dart';
 import 'package:rasid_jack/common/widgets/app_text.dart';
+import 'package:rasid_jack/common/widgets/app_text_form_field_item.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
@@ -13,6 +14,7 @@ import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/common/widgets/custom_drawer.dart';
 import 'package:rasid_jack/common/widgets/custom_input.dart';
 import 'package:rasid_jack/common/widgets/custom_listtile.dart';
+import 'package:rxdart/rxdart.dart';
 
 class PurchaseView extends BaseStatefulWidget {
   @override
@@ -24,12 +26,25 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
     return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(
+          vertical: SizeConfig.padding, horizontal: SizeConfig.padding),
       child: Column(
         children: [
-          CustomInput(
-            hintText: AppLocalizations.of(context).search,
-            underLineBorder: true,
-          ),
+          AppTextFormFieldItem(
+              label: AppText(
+                  label: AppLocalizations.of(context).search,
+                  style: AppFontStyle.bahijLight(
+                      fontSize: SizeConfig.textFontSize,
+                      fontColor: AppColors.whiteColor)),
+              title: AppLocalizations.of(context).search,
+              formFieldItemType: AppFormFieldItemType.SEARCH,
+              subject: BehaviorSubject(),
+              textInputType: TextInputType.text,
+              labelFontColor: AppColors.whiteColor,
+              borderColor: AppColors.whiteColor,
+              focusedBorderColor: AppColors.whiteColor,
+              iconColor: AppColors.transparentColor,
+              focusedIconColor: AppColors.transparentColor),
           SizedBox(height: SizeConfig.padding),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
