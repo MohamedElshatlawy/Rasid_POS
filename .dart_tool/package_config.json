@@ -128,12 +128,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "flutter_screenutil",
-      "rootUri": "file:///Users/macbookpro/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_screenutil-5.0.0+2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "flutter_test",
       "rootUri": "file:///Users/macbookpro/Downloads/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -374,7 +368,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-11-21T10:54:52.739055Z",
+  "generated": "2021-11-27T18:50:53.800697Z",
   "generator": "pub",
   "generatorVersion": "2.14.4"
 }
