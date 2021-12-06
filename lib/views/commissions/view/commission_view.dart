@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
 import 'package:rasid_jack/common/widgets/app_button.dart';
+import 'package:rasid_jack/common/widgets/app_dropdown.dart';
 import 'package:rasid_jack/common/widgets/app_image.dart';
 import 'package:rasid_jack/common/widgets/app_text.dart';
 import 'package:rasid_jack/common/widgets/app_text_form_field_item.dart';
@@ -111,29 +114,22 @@ class _CommissionViewState extends BaseState<CommissionView> {
                         decoration: BoxDecoration(
                             border: Border.all(color: AppColors.WHITH_COLOR),
                             borderRadius: BorderRadius.circular(10)),
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            iconEnabledColor: AppColors.WHITH_COLOR,
-                            isExpanded: true,
-                            items: <String>['اسم البنك', 'B', 'C', 'D']
-                                .map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Padding(
-                                  padding: EdgeInsets.all(SizeConfig.padding),
-                                  child: CustomText(text: value),
-                                ),
-                              );
-                            }).toList(),
-                            onChanged: (val) {
+                        child: AppDropdown(
+                            titleKey: value,
+                            style: AppFontStyle.bahijSemiBold(
+                                fontSize: SizeConfig.textFontSize,
+                                fontColor: AppColors.whiteColor),
+                            hint: "اسم البنك",
+                            items: [
+                              {"item": "اسم البنك"},
+                              {"item": "A"}
+                            ],
+                            onChange: (val) {
                               setState(() {
-                                value = val!;
+                                value = val['item']!;
                               });
                             },
-                            value: value,
-                            dropdownColor: AppColors.DARK_GRAY_COLOR,
-                          ),
-                        ),
+                            validator: (dynamic valid) {}),
                       ),
                       SizedBox(height: SizeConfig.padding),
                       AppTextFormFieldItem(

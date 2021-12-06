@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rasid.rasid_jack">
+    package="com.rasid.rasid_jack.pos">
    <application
         android:label="rasid_jack"
         android:icon="@mipmap/launcher_icon">
