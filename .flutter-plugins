@@ -9,3 +9,6 @@ shared_preferences_linux=/Users/macbookpro/Downloads/flutter/.pub-cache/hosted/p
 shared_preferences_macos=/Users/macbookpro/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-2.0.2/
 shared_preferences_web=/Users/macbookpro/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-2.0.2/
 shared_preferences_windows=/Users/macbookpro/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_windows-2.0.2/
+webview_flutter=/Users/macbookpro/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-2.3.1/
+webview_flutter_android=/Users/macbookpro/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_android-2.4.0/
+webview_flutter_wkwebview=/Users/macbookpro/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_wkwebview-2.5.0/
