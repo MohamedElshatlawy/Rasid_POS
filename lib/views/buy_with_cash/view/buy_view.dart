@@ -170,6 +170,7 @@ class _BuyWithCashViewState extends BaseState<BuyWithCashView> {
       flexibleSpace:
           AppImage(path: AppAssets.loginBackground, boxFit: BoxFit.fill),
       backgroundColor: Colors.transparent,
+      leading: AppText(label: ''),
       elevation: 0.0,
       bottom: PreferredSize(
           child: Column(
@@ -219,11 +220,23 @@ class _BuyWithCashViewState extends BaseState<BuyWithCashView> {
   }
 
   @override
-  Widget getDrawer() {
-    return CustomDrawer();
-  }
-
   Color getScaffoldBackgroundColor() {
     return AppColors.BLACK_COLOR;
+  }
+
+  @override
+  Widget? getBottomNavigationBar() {
+    return Padding(
+      padding: EdgeInsets.all(SizeConfig.padding),
+      child: AppButton(
+          width: double.infinity,
+          title: AppLocalizations.of(context).back,
+          style: AppFontStyle.bahijLight(
+              fontSize: SizeConfig.titleFontSize,
+              fontColor: AppColors.whiteColor),
+          borderColor: AppColors.PINK_COLOR,
+          backgroundColor: AppColors.PINK_COLOR,
+          onTap: () => Navigator.pop(context)),
+    );
   }
 }

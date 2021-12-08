@@ -2,7 +2,7 @@
     package="com.rasid.rasid_jack.pos">
    <application
         android:label="rasid_jack"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

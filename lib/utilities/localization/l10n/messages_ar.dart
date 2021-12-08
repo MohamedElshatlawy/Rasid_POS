@@ -40,7 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("رقم التسجيل / الهواية"),
         "password": MessageLookupByLibrary.simpleMessage("كلمه المرور"),
         "forgetPassword":
-            MessageLookupByLibrary.simpleMessage("نسيت كلمه المرور؟"),
+            MessageLookupByLibrary.simpleMessage("نسيت كلمه المرور"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "aboutApp": MessageLookupByLibrary.simpleMessage("عن التطبيق"),
         "notHaveAccount":
@@ -92,5 +92,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("اطلب رمزًا جديدًا في"),
         "requestNewCode":
             MessageLookupByLibrary.simpleMessage("اطلب رمزًا جديدًا"),
+        "forgetSubtitle":
+            MessageLookupByLibrary.simpleMessage("أدخل بريدك الإلكتروني أدناه"),
+        "emailAddress":
+            MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+        "restorePassword":
+            MessageLookupByLibrary.simpleMessage("استعادة كلمة المرور"),
+        "pinCodeTitle": MessageLookupByLibrary.simpleMessage("أدخل الرمز"),
+        "pinCodeSubitle":
+            MessageLookupByLibrary.simpleMessage("أدخل الرمز من الرسالة أدناه"),
+        "changePassword":
+            MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+        "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
       };
 }

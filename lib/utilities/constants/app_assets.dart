@@ -12,4 +12,5 @@ class AppAssets {
   static const String profileButton = 'assets/images/buttonProfile.png';
   static const String logo = 'assets/icon/logo.png';
   static const String eye = 'assets/icon/eye.png';
+  static const String mainPic = 'assets/images/mainPic.jpg';
 }

@@ -11,17 +11,15 @@ import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
-import 'package:rasid_jack/common/widgets/custom_drawer.dart';
-import 'package:rasid_jack/common/widgets/custom_input.dart';
 import 'package:rasid_jack/common/widgets/custom_listtile.dart';
 import 'package:rxdart/rxdart.dart';
 
-class PurchaseView extends BaseStatefulWidget {
+class TransactionView extends BaseStatefulWidget {
   @override
-  _PurchaseViewState createState() => _PurchaseViewState();
+  _TransactionViewState createState() => _TransactionViewState();
 }
 
-class _PurchaseViewState extends BaseState<PurchaseView> {
+class _TransactionViewState extends BaseState<TransactionView> {
   @override
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
@@ -200,6 +198,7 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
           AppImage(path: AppAssets.loginBackground, boxFit: BoxFit.fill),
       backgroundColor: Colors.transparent,
       elevation: 0.0,
+      leading: AppText(label: ''),
       title: AppText(
           label: AppLocalizations.of(context).processes,
           style: AppFontStyle.bahijLight(
@@ -271,8 +270,19 @@ class _PurchaseViewState extends BaseState<PurchaseView> {
   }
 
   @override
-  Widget getDrawer() {
-    return CustomDrawer();
+  Widget? getBottomNavigationBar() {
+    return Padding(
+      padding: EdgeInsets.all(SizeConfig.padding),
+      child: AppButton(
+          width: double.infinity,
+          title: AppLocalizations.of(context).back,
+          style: AppFontStyle.bahijLight(
+              fontSize: SizeConfig.titleFontSize,
+              fontColor: AppColors.whiteColor),
+          borderColor: AppColors.PINK_COLOR,
+          backgroundColor: AppColors.PINK_COLOR,
+          onTap: () => Navigator.pop(context)),
+    );
   }
 
   Color getScaffoldBackgroundColor() {

@@ -10,8 +10,8 @@ import 'package:rasid_jack/views/buy_with_cash/view/buy_view.dart';
 import 'package:rasid_jack/views/commissions/view/commission_view.dart';
 import 'package:rasid_jack/views/contactUs/view/contact_us_view.dart';
 import 'package:rasid_jack/views/home/view/home_view.dart';
-import 'package:rasid_jack/views/purchase/view/purchase_view.dart';
 import 'package:rasid_jack/common/widgets/custom_listtile.dart';
+import 'package:rasid_jack/views/transactions/view/transactions_view.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -87,10 +87,10 @@ class CustomDrawer extends StatelessWidget {
                 style: AppFontStyle.bahijLight(
                     fontSize: SizeConfig.titleFontSize,
                     fontColor: AppColors.whiteColor)),
-            press: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => PurchaseView()));
-            },
+            // press: () {
+            //   Navigator.of(context).push(
+            //       MaterialPageRoute(builder: (context) => PurchaseView()));
+            // },
           ),
           CustomListTile(
             trailing: Icon(
