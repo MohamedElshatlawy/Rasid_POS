@@ -172,6 +172,7 @@ class _HomeViewState extends BaseState<HomeView> {
           AppImage(path: AppAssets.loginBackground, boxFit: BoxFit.fill),
       backgroundColor: Colors.transparent,
       elevation: 0.0,
+      leading: AppText(label: ''),
       title: AppText(
           label: AppLocalizations.of(context).enterNum,
           style: AppFontStyle.bahijLight(
@@ -194,12 +195,23 @@ class _HomeViewState extends BaseState<HomeView> {
   }
 
   @override
-  Widget getDrawer() {
-    return CustomDrawer();
+  Color getScaffoldBackgroundColor() {
+    return AppColors.BLACK_COLOR;
   }
 
   @override
-  Color getScaffoldBackgroundColor() {
-    return AppColors.BLACK_COLOR;
+  Widget? getBottomNavigationBar() {
+    return Padding(
+      padding: EdgeInsets.all(SizeConfig.padding),
+      child: AppButton(
+          width: double.infinity,
+          title: AppLocalizations.of(context).back,
+          style: AppFontStyle.bahijLight(
+              fontSize: SizeConfig.titleFontSize,
+              fontColor: AppColors.whiteColor),
+          borderColor: AppColors.PINK_COLOR,
+          backgroundColor: AppColors.PINK_COLOR,
+          onTap: () => Navigator.pop(context)),
+    );
   }
 }

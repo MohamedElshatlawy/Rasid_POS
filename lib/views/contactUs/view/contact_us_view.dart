@@ -20,7 +20,12 @@ class _ContactUsViewState extends BaseState<ContactUsView> {
   @override
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
-    return Padding(
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(AppAssets.chaserLogin), fit: BoxFit.cover)),
       padding: EdgeInsets.all(SizeConfig.padding),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -67,8 +72,18 @@ class _ContactUsViewState extends BaseState<ContactUsView> {
               style: AppFontStyle.bahijLight(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor)),
-          AppDivider(),
-          SizedBox(height: SizeConfig.extraPadding),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget? getBottomNavigationBar() {
+    return Padding(
+      padding: EdgeInsets.all(SizeConfig.padding),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
           AppButton(
               width: double.infinity,
               style: AppFontStyle.bahijLight(
@@ -78,7 +93,17 @@ class _ContactUsViewState extends BaseState<ContactUsView> {
               borderColor: AppColors.WHITH_COLOR,
               backgroundColor: AppColors.BUTTON_COLOR,
               onTap: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => HomeView())))
+                  .push(MaterialPageRoute(builder: (context) => HomeView()))),
+          SizedBox(height: SizeConfig.padding),
+          AppButton(
+              width: double.infinity,
+              title: AppLocalizations.of(context).back,
+              style: AppFontStyle.bahijLight(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor),
+              borderColor: AppColors.PINK_COLOR,
+              backgroundColor: AppColors.PINK_COLOR,
+              onTap: () => Navigator.pop(context)),
         ],
       ),
     );

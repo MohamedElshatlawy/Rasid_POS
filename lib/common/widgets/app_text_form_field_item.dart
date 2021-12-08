@@ -38,6 +38,8 @@ class AppTextFormFieldItem extends StatelessWidget with Validations {
   final int? maxLines;
   final GestureTapCallback? onTap;
   final FormFieldValidator<String>? validator;
+  final bool? showHint;
+  final bool? showUnderLine;
 
   const AppTextFormFieldItem({
     this.controller,
@@ -57,6 +59,8 @@ class AppTextFormFieldItem extends StatelessWidget with Validations {
     this.maxLines,
     this.onTap,
     this.validator,
+    this.showHint = false,
+    this.showUnderLine = false,
     Key? key,
   }) : super(key: key);
 
@@ -90,7 +94,7 @@ class AppTextFormFieldItem extends StatelessWidget with Validations {
         maxLines: 1,
         style: AppFontStyle.bahijBold(
             fontSize: SizeConfig.titleFontSize,
-            fontColor: fontColor ?? AppColors.blackColor),
+            fontColor: fontColor ?? AppColors.BLACK_COLOR),
         autovalidateMode: AutovalidateMode.onUserInteraction,
         obscureText: formFieldItemType == AppFormFieldItemType.PASSWORD &&
                 obscureTextSubject!.value
@@ -111,7 +115,7 @@ class AppTextFormFieldItem extends StatelessWidget with Validations {
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: VerticalDivider(
                           width: 1,
-                          color: AppColors.whiteColor,
+                          color: AppColors.WHITH_COLOR,
                         ),
                       ),
                       IconButton(
@@ -132,26 +136,38 @@ class AppTextFormFieldItem extends StatelessWidget with Validations {
                   ),
                 )
               : SizedBox(),
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 2, color: focusedBorderColor),
-              borderRadius: BorderRadius.all(Radius.circular(10))),
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 2, color: borderColor),
-              borderRadius:
-                  BorderRadius.all(Radius.circular(SizeConfig.btnRadius))),
-          border: OutlineInputBorder(
-              borderSide: BorderSide(width: 2, color: borderColor),
-              borderRadius:
-                  BorderRadius.all(Radius.circular(SizeConfig.btnRadius))),
+          focusedBorder: showUnderLine == true
+              ? UnderlineInputBorder(
+                  borderSide: BorderSide(color: labelFontColor))
+              : OutlineInputBorder(
+                  borderSide: BorderSide(width: 2, color: focusedBorderColor),
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+          enabledBorder: showUnderLine == true
+              ? UnderlineInputBorder(
+                  borderSide: BorderSide(color: labelFontColor))
+              : OutlineInputBorder(
+                  borderSide: BorderSide(width: 2, color: borderColor),
+                  borderRadius:
+                      BorderRadius.all(Radius.circular(SizeConfig.btnRadius))),
+          border: showUnderLine == true
+              ? UnderlineInputBorder(
+                  borderSide: BorderSide(color: labelFontColor))
+              : OutlineInputBorder(
+                  borderSide: BorderSide(width: 2, color: borderColor),
+                  borderRadius:
+                      BorderRadius.all(Radius.circular(SizeConfig.btnRadius))),
           contentPadding: EdgeInsets.symmetric(horizontal: 24),
           labelStyle: AppFontStyle.bahijSemiBold(
               fontSize: SizeConfig.titleFontSize, fontColor: labelFontColor),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           label: label,
+          hintText: showHint == true ? title : '',
+          hintStyle: AppFontStyle.bahijSemiBold(
+              fontSize: SizeConfig.titleFontSize, fontColor: labelFontColor),
           errorText: subject.hasError ? subject.stream.error.toString() : null,
           errorStyle: AppFontStyle.bahijLight(
               fontSize: SizeConfig.smallTextFontSize,
-              fontColor: AppColors.redColor),
+              fontColor: AppColors.RED_COLOR),
         ),
         validator: validator);
   }
@@ -167,7 +183,7 @@ class AppTextFormFieldItem extends StatelessWidget with Validations {
             formFieldItemType == AppFormFieldItemType.MULTI_TEXT ? maxLines : 1,
         style: AppFontStyle.bahijBold(
             fontSize: SizeConfig.titleFontSize,
-            fontColor: fontColor ?? AppColors.blackColor),
+            fontColor: fontColor ?? AppColors.BLACK_COLOR),
         autovalidateMode: AutovalidateMode.onUserInteraction,
         obscureText: formFieldItemType == AppFormFieldItemType.PASSWORD &&
                 obscureTextSubject!.value
@@ -178,26 +194,38 @@ class AppTextFormFieldItem extends StatelessWidget with Validations {
           subject.sink.add(input);
         },
         decoration: InputDecoration(
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 2, color: focusedBorderColor),
-              borderRadius: BorderRadius.all(Radius.circular(10))),
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 2, color: borderColor),
-              borderRadius:
-                  BorderRadius.all(Radius.circular(SizeConfig.btnRadius))),
-          border: OutlineInputBorder(
-              borderSide: BorderSide(width: 2, color: borderColor),
-              borderRadius:
-                  BorderRadius.all(Radius.circular(SizeConfig.btnRadius))),
+          focusedBorder: showUnderLine == true
+              ? UnderlineInputBorder(
+                  borderSide: BorderSide(color: labelFontColor))
+              : OutlineInputBorder(
+                  borderSide: BorderSide(width: 2, color: focusedBorderColor),
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+          enabledBorder: showUnderLine == true
+              ? UnderlineInputBorder(
+                  borderSide: BorderSide(color: labelFontColor))
+              : OutlineInputBorder(
+                  borderSide: BorderSide(width: 2, color: borderColor),
+                  borderRadius:
+                      BorderRadius.all(Radius.circular(SizeConfig.btnRadius))),
+          border: showUnderLine == true
+              ? UnderlineInputBorder(
+                  borderSide: BorderSide(color: labelFontColor))
+              : OutlineInputBorder(
+                  borderSide: BorderSide(width: 2, color: borderColor),
+                  borderRadius:
+                      BorderRadius.all(Radius.circular(SizeConfig.btnRadius))),
           contentPadding: EdgeInsets.symmetric(horizontal: 24),
           labelStyle: AppFontStyle.bahijSemiBold(
               fontSize: SizeConfig.titleFontSize, fontColor: labelFontColor),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           label: label,
+          hintText: showHint == true ? title : '',
+          hintStyle: AppFontStyle.bahijSemiBold(
+              fontSize: SizeConfig.titleFontSize, fontColor: labelFontColor),
           errorText: subject.hasError ? subject.stream.error.toString() : null,
           errorStyle: AppFontStyle.bahijLight(
               fontSize: SizeConfig.smallTextFontSize,
-              fontColor: AppColors.redColor),
+              fontColor: AppColors.RED_COLOR),
         ),
         validator: validator);
   }

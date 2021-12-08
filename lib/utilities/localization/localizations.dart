@@ -106,6 +106,19 @@ class AppLocalizations {
   String get requestNewCode =>
       Intl.message("اطلب رمزًا جديدًا", name: "requestNewCode");
   String get email => Intl.message('البريد الالكتروني', name: 'email');
+  String get forgetSubtitle =>
+      Intl.message('forgetSubtitle', name: 'forgetSubtitle');
+  String get emailAddress => Intl.message('emailAddress', name: 'emailAddress');
+  String get restorePassword =>
+      Intl.message('restorePassword', name: 'restorePassword');
+  String get pinCodeTitle => Intl.message('pinCodeTitle', name: 'pinCodeTitle');
+  String get pinCodeSubitle =>
+      Intl.message('pinCodeSubitle', name: 'pinCodeSubitle');
+  String get changePassword =>
+      Intl.message('changePassword', name: 'changePassword');
+  String get confirmPassword =>
+      Intl.message('confirmPassword', name: 'confirmPassword');
+  String get confirm => Intl.message('confirm', name: 'confirm');
 }
 
 class SpecificLocalizationDelegate

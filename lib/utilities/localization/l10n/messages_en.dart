@@ -98,5 +98,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Request new code in"),
         "requestNewCode":
             MessageLookupByLibrary.simpleMessage("Request new code"),
+        "forgetSubtitle":
+            MessageLookupByLibrary.simpleMessage("Enter your email below"),
+        "emailAddress": MessageLookupByLibrary.simpleMessage("Email Address"),
+        "restorePassword":
+            MessageLookupByLibrary.simpleMessage("Restore password"),
+        "pinCodeTitle": MessageLookupByLibrary.simpleMessage("Enter the code"),
+        "pinCodeSubitle": MessageLookupByLibrary.simpleMessage(
+            "Enter the code from the message below"),
+        "changePassword":
+            MessageLookupByLibrary.simpleMessage("change Password"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("confirm password"),
+        "confirm": MessageLookupByLibrary.simpleMessage("confirm"),
       };
 }
