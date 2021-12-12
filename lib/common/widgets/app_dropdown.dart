@@ -50,7 +50,7 @@ class AppDropdown<T> extends StatelessWidget {
         hint: AppText(
           label: hint ?? '',
           style: style ??
-              AppFontStyle.bahijSemiBold(
+              AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.textFontSize,
                   fontColor: AppColors.fontColor),
         ),
@@ -74,7 +74,7 @@ class AppDropdown<T> extends StatelessWidget {
               child: AppText(
                 label: '${map[titleKey] ?? ''}',
                 style: style ??
-                    AppFontStyle.bahijSemiBold(
+                    AppFontStyle.bahijSansArabic(
                         fontSize: SizeConfig.textFontSize,
                         fontColor: AppColors.fontColor),
               ),

@@ -21,17 +21,18 @@ class TitleAndDescription extends StatelessWidget {
         Center(
           child: AppText(
             label: label,
-            style: AppFontStyle.bahijBold(
+            style: AppFontStyle.bahijSansArabic(
                 fontSize: SizeConfig.titleFontSize * 1.40,
                 fontColor: AppColors.whiteColor),
           ),
         ),
-        if (descriptionLabel.isNotEmpty) SizedBox(height: SizeConfig.blockSizeVertical),
+        if (descriptionLabel.isNotEmpty)
+          SizedBox(height: SizeConfig.blockSizeVertical),
         if (descriptionLabel.isNotEmpty)
           Center(
             child: AppText(
               label: descriptionLabel,
-              style: AppFontStyle.bahijLight(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.textFontSize,
                   fontColor: AppColors.medGreyLightColor),
             ),

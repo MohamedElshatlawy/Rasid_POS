@@ -24,11 +24,10 @@ class AppWebView extends BaseStatefulWidget {
 class _AppWebViewState extends BaseState<AppWebView> {
   @override
   Widget getBody(BuildContext context) {
-    return  WebView(
+    return WebView(
       initialUrl: widget.url,
       javascriptMode: JavascriptMode.unrestricted,
-      onPageFinished: (url) {
-      },
+      onPageFinished: (url) {},
     );
   }
 
@@ -40,7 +39,7 @@ class _AppWebViewState extends BaseState<AppWebView> {
         padding: EdgeInsets.symmetric(horizontal: SizeConfig.padding / 2),
         child: AppText(
           label: widget.title,
-          style: AppFontStyle.bahijSemiBold(
+          style: AppFontStyle.bahijSansArabic(
               fontSize: SizeConfig.titleFontSize,
               fontColor: AppColors.whiteColor),
         ),
@@ -63,6 +62,7 @@ class _AppWebViewState extends BaseState<AppWebView> {
     // TODO: implement getScaffoldBackgroundColor
     return AppColors.blackBGColor;
   }
+
   @override
   Widget? getBottomNavigationBar() {
     // TODO: implement getBottomNavigationBar
@@ -74,7 +74,7 @@ class _AppWebViewState extends BaseState<AppWebView> {
           bottom: SizeConfig.padding),
       child: AppButton(
           title: AppLocalizations.of(context).back,
-          style: AppFontStyle.bahijLight(
+          style: AppFontStyle.bahijSansArabic(
               fontSize: SizeConfig.textFontSize,
               fontColor: AppColors.whiteColor),
           borderColor: AppColors.accentColor,
@@ -83,5 +83,4 @@ class _AppWebViewState extends BaseState<AppWebView> {
           onTap: onWillPop),
     );
   }
-
 }

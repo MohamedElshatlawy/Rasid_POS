@@ -31,19 +31,19 @@ class _ChangePasswordViewState extends BaseState<ChangePasswordView> {
           SizedBox(height: SizeConfig.padding * 2),
           AppText(
               label: AppLocalizations.of(context).changePassword,
-              style: AppFontStyle.bahijBold(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize * 1.5,
                   fontColor: AppColors.whiteColor)),
           AppText(
               label: AppLocalizations.of(context).forgetSubtitle,
-              style: AppFontStyle.bahijBold(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.textFontSize * 1.5,
                   fontColor: AppColors.greyColor)),
           SizedBox(height: SizeConfig.padding * 3),
           AppTextFormFieldItem(
               label: AppText(
                   label: AppLocalizations.of(context).password,
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.textFontSize,
                       fontColor: AppColors.whiteColor)),
               title: '',
@@ -61,7 +61,7 @@ class _ChangePasswordViewState extends BaseState<ChangePasswordView> {
           AppTextFormFieldItem(
               label: AppText(
                   label: AppLocalizations.of(context).confirmPassword,
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.textFontSize,
                       fontColor: AppColors.whiteColor)),
               title: '',
@@ -78,7 +78,7 @@ class _ChangePasswordViewState extends BaseState<ChangePasswordView> {
           SizedBox(height: SizeConfig.padding * 2),
           AppButton(
               width: double.infinity,
-              style: AppFontStyle.bahijBold(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
               title: AppLocalizations.of(context).changePassword,
@@ -88,7 +88,7 @@ class _ChangePasswordViewState extends BaseState<ChangePasswordView> {
           SizedBox(height: SizeConfig.padding),
           AppButton(
               width: double.infinity,
-              style: AppFontStyle.bahijBold(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.PINK_COLOR),
               title: AppLocalizations.of(context).cancel,

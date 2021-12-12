@@ -106,7 +106,7 @@ class AppButton extends StatelessWidget {
             ],
           );
       }
-    }else{
+    } else {
       return Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -123,7 +123,7 @@ class AppButton extends StatelessWidget {
     return AppText(
       label: title,
       style: style ??
-          AppFontStyle.bahijSemiBold(
+          AppFontStyle.bahijSansArabic(
               fontSize: SizeConfig.textFontSize,
               fontColor: AppColors.fontColor,
               textDecoration: TextDecoration.none),

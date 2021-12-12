@@ -27,8 +27,9 @@ class AppLabelWithIcon extends StatelessWidget {
         SizedBox(width: SizeConfig.padding / 2),
         AppText(
           label: label,
-          style: AppFontStyle.bahijBold(fontSize:
-              fontSize ?? SizeConfig.textFontSize,fontColor: labelColor),
+          style: AppFontStyle.bahijSansArabic(
+              fontSize: fontSize ?? SizeConfig.textFontSize,
+              fontColor: labelColor),
         )
       ],
     );

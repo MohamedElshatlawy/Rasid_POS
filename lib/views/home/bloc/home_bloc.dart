@@ -14,31 +14,25 @@ class HomeBloc extends BlocBase {
   void buttonPressed(var buttonText, context) {
     if (buttonText == 'الغاء') {
       payNumber = "0";
-      _subjectCounter.sink.add(payNumber);
     } else if (buttonText == 'مسح') {
       payNumber = payNumber.substring(0, payNumber.length - 1);
-      _subjectCounter.sink.add(payNumber);
 
       if (payNumber == "") {
         payNumber = "0";
-        _subjectCounter.sink.add(payNumber);
       }
     } else if (buttonText == 'دفع') {
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => PayView()));
     } else {
-      if (payNumber == "0" && buttonText == "0" ||
-          payNumber == "0" && buttonText == "00" ||
-          payNumber == "0" && buttonText == "000") {
-        payNumber = '0';
-        _subjectCounter.sink.add(payNumber);
-      } else if (payNumber == "0") {
-        payNumber = buttonText;
-        _subjectCounter.sink.add(payNumber);
+      if ((buttonText == "0" || buttonText == "00" || buttonText == "000") &&
+          payNumber == '0') {
+        payNumber = "0";
       } else {
-        payNumber = payNumber + buttonText;
-        _subjectCounter.sink.add(payNumber);
+        payNumber = (payNumber != '0' ? payNumber : '') + buttonText;
       }
+    }
+    if (buttonText != 'دفع') {
+      _subjectCounter.sink.add(payNumber);
     }
   }
 

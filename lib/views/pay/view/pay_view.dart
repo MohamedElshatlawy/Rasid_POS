@@ -16,7 +16,6 @@ class PayView extends BaseStatefulWidget {
 }
 
 class _PayViewState extends BaseState<PayView> {
-  bool visable = false;
   @override
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
@@ -36,26 +35,22 @@ class _PayViewState extends BaseState<PayView> {
             borderColor: AppColors.whiteColor,
             filled: true,
             styles: [
-              AppFontStyle.bahijBold(
+              AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
-              AppFontStyle.bahijBold(
+              AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
-              AppFontStyle.bahijBold(
+              AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
-              AppFontStyle.bahijBold(
+              AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
             ],
             fillColor: AppColors.PINK_COLOR,
             fieldLength: 1,
-            onSubmit: (value) {
-              setState(() {
-                visable = true;
-              });
-            },
+            onSubmit: (value) {},
           ),
           AppImage(
             path: AppAssets.payImage,
@@ -64,34 +59,32 @@ class _PayViewState extends BaseState<PayView> {
           ),
           AppText(
               label: '20.00 SAR',
-              style: AppFontStyle.bahijLight(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor)),
           AppText(
               label: '20.00' + AppLocalizations.of(context).coinRial,
-              style: AppFontStyle.bahijLight(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor)),
           SizedBox(height: SizeConfig.padding),
-          Visibility(
-              visible: visable,
-              child: GestureDetector(
-                onTap: () {
-                  showAppDialog(
-                      title: '',
-                      errorMessage: '',
-                      okButtonTitle: '',
-                      cancelButtonTitle: AppLocalizations.of(context).back);
-                },
-                child: Container(
-                    width: double.infinity,
-                    height: 114,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: AppColors.DARK_GRAY_COLOR),
-                    child: AppImage(
-                        path: AppAssets.payButtom, boxFit: BoxFit.scaleDown)),
-              )),
+          GestureDetector(
+            onTap: () {
+              showAppDialog(
+                  title: '',
+                  errorMessage: '',
+                  okButtonTitle: '',
+                  cancelButtonTitle: AppLocalizations.of(context).back);
+            },
+            child: Container(
+                width: double.infinity,
+                height: 114,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: AppColors.DARK_GRAY_COLOR),
+                child: AppImage(
+                    path: AppAssets.payButtom, boxFit: BoxFit.scaleDown)),
+          ),
         ],
       ),
     );
@@ -110,7 +103,7 @@ class _PayViewState extends BaseState<PayView> {
               actions: [
                 AppButton(
                   title: cancelButtonTitle.toString(),
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.textFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.PINK_COLOR,
@@ -135,7 +128,7 @@ class _PayViewState extends BaseState<PayView> {
                         children: [
                           AppText(
                               label: AppLocalizations.of(context).receipt,
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.textFontSize,
                                   fontColor: AppColors.whiteColor)),
                           AppImage(path: AppAssets.qrCodeImage)
@@ -156,7 +149,7 @@ class _PayViewState extends BaseState<PayView> {
                         children: [
                           AppText(
                               label: AppLocalizations.of(context).receipt,
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.textFontSize,
                                   fontColor: AppColors.whiteColor)),
                           AppImage(path: AppAssets.qrCodeImage)

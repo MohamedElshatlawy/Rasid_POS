@@ -106,5 +106,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
+        "userData": MessageLookupByLibrary.simpleMessage("بيانات المستخدم"),
+        "sendInquiry":
+            MessageLookupByLibrary.simpleMessage(" أرسل إلينا إستفسارك"),
+        "Hobby": MessageLookupByLibrary.simpleMessage("الهواية"),
       };
 }

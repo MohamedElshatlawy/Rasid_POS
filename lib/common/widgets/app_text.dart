@@ -15,7 +15,7 @@ class AppText extends StatelessWidget {
     return Text(
       label,
       style: style ??
-          AppFontStyle.bahijBold(
+          AppFontStyle.bahijSansArabic(
               fontSize: SizeConfig.textFontSize,
               fontColor: AppColors.fontColor),
       textAlign: textAlign ?? TextAlign.start,

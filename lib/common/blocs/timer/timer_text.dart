@@ -20,7 +20,7 @@ class TimerText extends StatelessWidget {
       children: [
         AppText(
           label: AppLocalizations.of(context).requestNewCodeMessage,
-          style: AppFontStyle.bahijLight(
+          style: AppFontStyle.bahijSansArabic(
               fontSize: SizeConfig.textFontSize,
               fontColor: AppColors.greyColor),
         ),
@@ -32,14 +32,14 @@ class TimerText extends StatelessWidget {
                   if (snapshot.hasData) {
                     return AppText(
                       label: Utilities.formattedTime(snapshot.data ?? 120),
-                      style: AppFontStyle.bahijLight(
+                      style: AppFontStyle.bahijSansArabic(
                           fontSize: SizeConfig.textFontSize,
                           fontColor: AppColors.accentColor),
                     );
                   } else {
                     return AppText(
                       label: '01:59',
-                      style: AppFontStyle.bahijLight(
+                      style: AppFontStyle.bahijSansArabic(
                           fontSize: SizeConfig.textFontSize,
                           fontColor: AppColors.accentColor),
                     );
@@ -49,13 +49,13 @@ class TimerText extends StatelessWidget {
             stream: timerBloc.timerStoppedSubject.stream,
             builder: (context, AsyncSnapshot<bool> snapshot) {
               print(snapshot.data);
-              if (snapshot.data ==null || snapshot.data == false) {
+              if (snapshot.data == null || snapshot.data == false) {
                 return SizedBox();
               } else {
                 return AppButton(
                     title: AppLocalizations.of(context).requestNewCode,
-                    style: AppFontStyle.bahijSemiBold(
-                        fontSize:  SizeConfig.textFontSize,
+                    style: AppFontStyle.bahijSansArabic(
+                        fontSize: SizeConfig.textFontSize,
                         fontColor: AppColors.accentColor),
                     borderColor: AppColors.transparentColor,
                     backgroundColor: AppColors.transparentColor,
