@@ -92,7 +92,7 @@ class AppTextFormFieldItem extends StatelessWidget with Validations {
         focusNode: focusNode,
         autofocus: true,
         maxLines: 1,
-        style: AppFontStyle.bahijBold(
+        style: AppFontStyle.bahijSansArabic(
             fontSize: SizeConfig.titleFontSize,
             fontColor: fontColor ?? AppColors.BLACK_COLOR),
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -157,15 +157,15 @@ class AppTextFormFieldItem extends StatelessWidget with Validations {
                   borderRadius:
                       BorderRadius.all(Radius.circular(SizeConfig.btnRadius))),
           contentPadding: EdgeInsets.symmetric(horizontal: 24),
-          labelStyle: AppFontStyle.bahijSemiBold(
+          labelStyle: AppFontStyle.bahijSansArabic(
               fontSize: SizeConfig.titleFontSize, fontColor: labelFontColor),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           label: label,
           hintText: showHint == true ? title : '',
-          hintStyle: AppFontStyle.bahijSemiBold(
+          hintStyle: AppFontStyle.bahijSansArabic(
               fontSize: SizeConfig.titleFontSize, fontColor: labelFontColor),
           errorText: subject.hasError ? subject.stream.error.toString() : null,
-          errorStyle: AppFontStyle.bahijLight(
+          errorStyle: AppFontStyle.bahijSansArabic(
               fontSize: SizeConfig.smallTextFontSize,
               fontColor: AppColors.RED_COLOR),
         ),
@@ -181,7 +181,7 @@ class AppTextFormFieldItem extends StatelessWidget with Validations {
         autofocus: true,
         maxLines:
             formFieldItemType == AppFormFieldItemType.MULTI_TEXT ? maxLines : 1,
-        style: AppFontStyle.bahijBold(
+        style: AppFontStyle.bahijSansArabic(
             fontSize: SizeConfig.titleFontSize,
             fontColor: fontColor ?? AppColors.BLACK_COLOR),
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -215,15 +215,15 @@ class AppTextFormFieldItem extends StatelessWidget with Validations {
                   borderRadius:
                       BorderRadius.all(Radius.circular(SizeConfig.btnRadius))),
           contentPadding: EdgeInsets.symmetric(horizontal: 24),
-          labelStyle: AppFontStyle.bahijSemiBold(
+          labelStyle: AppFontStyle.bahijSansArabic(
               fontSize: SizeConfig.titleFontSize, fontColor: labelFontColor),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           label: label,
           hintText: showHint == true ? title : '',
-          hintStyle: AppFontStyle.bahijSemiBold(
+          hintStyle: AppFontStyle.bahijSansArabic(
               fontSize: SizeConfig.titleFontSize, fontColor: labelFontColor),
           errorText: subject.hasError ? subject.stream.error.toString() : null,
-          errorStyle: AppFontStyle.bahijLight(
+          errorStyle: AppFontStyle.bahijSansArabic(
               fontSize: SizeConfig.smallTextFontSize,
               fontColor: AppColors.RED_COLOR),
         ),

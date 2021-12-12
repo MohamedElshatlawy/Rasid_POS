@@ -111,5 +111,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("confirm password"),
         "confirm": MessageLookupByLibrary.simpleMessage("confirm"),
+        "userData": MessageLookupByLibrary.simpleMessage("User data"),
+        "sendInquiry":
+            MessageLookupByLibrary.simpleMessage("Send us your inquiry"),
+        "Hobby": MessageLookupByLibrary.simpleMessage("Hobby"),
       };
 }

@@ -10,6 +10,7 @@ import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/views/auth/view/change_password_view.dart';
+import 'package:rasid_jack/views/verification/view/verified_view.dart';
 
 class PinCodeView extends BaseStatefulWidget {
   @override
@@ -30,12 +31,12 @@ class _PinCodeViewState extends BaseState<PinCodeView> {
           SizedBox(height: SizeConfig.padding * 2),
           AppText(
               label: AppLocalizations.of(context).pinCodeTitle,
-              style: AppFontStyle.bahijBold(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize * 1.5,
                   fontColor: AppColors.whiteColor)),
           AppText(
               label: AppLocalizations.of(context).pinCodeSubitle,
-              style: AppFontStyle.bahijBold(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.textFontSize * 1.5,
                   fontColor: AppColors.greyColor)),
           SizedBox(height: SizeConfig.padding * 3),
@@ -49,16 +50,16 @@ class _PinCodeViewState extends BaseState<PinCodeView> {
             showFieldAsBox: true,
             filled: true,
             styles: [
-              AppFontStyle.bahijBold(
+              AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
-              AppFontStyle.bahijBold(
+              AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
-              AppFontStyle.bahijBold(
+              AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
-              AppFontStyle.bahijBold(
+              AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
             ],
@@ -68,20 +69,18 @@ class _PinCodeViewState extends BaseState<PinCodeView> {
           SizedBox(height: SizeConfig.padding * 2),
           AppButton(
               width: double.infinity,
-              style: AppFontStyle.bahijBold(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
               title: AppLocalizations.of(context).confirm,
               borderColor: AppColors.PINK_COLOR,
               backgroundColor: AppColors.PINK_COLOR,
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ChangePasswordView()))),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => VerifiedView()))),
           SizedBox(height: SizeConfig.padding),
           AppButton(
               width: double.infinity,
-              style: AppFontStyle.bahijBold(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.PINK_COLOR),
               title: AppLocalizations.of(context).cancel,

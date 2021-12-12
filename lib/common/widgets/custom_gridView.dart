@@ -14,7 +14,7 @@ class CustomGridView extends StatelessWidget {
         crossAxisSpacing: SizeConfig.blockSizeVertical,
         mainAxisSpacing: SizeConfig.blockSizeVertical,
         physics: NeverScrollableScrollPhysics(),
-        childAspectRatio: 1.5,
+        childAspectRatio: 1.8,
         children: childrenList!);
   }
 }

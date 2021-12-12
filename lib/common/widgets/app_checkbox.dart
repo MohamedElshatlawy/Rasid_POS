@@ -80,7 +80,7 @@ class AppCheckbox extends StatelessWidget {
                 label:
                     '${AppLocalizations.of(context).youHaveToAcceptTermsAndConditions}',
                 style: style ??
-                    AppFontStyle.bahijLight(
+                    AppFontStyle.bahijSansArabic(
                         fontSize: SizeConfig.smallTextFontSize,
                         fontColor: AppColors.redColor),
               ),

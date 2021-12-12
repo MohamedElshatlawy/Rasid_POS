@@ -12,6 +12,7 @@ import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/common/widgets/custom_listtile.dart';
+import 'package:rasid_jack/views/transactions/bloc/transactions_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 
 class TransactionView extends BaseStatefulWidget {
@@ -20,6 +21,8 @@ class TransactionView extends BaseStatefulWidget {
 }
 
 class _TransactionViewState extends BaseState<TransactionView> {
+  TransiactionBloc bloc = TransiactionBloc(
+      firstSelectedDate: DateTime.now(), endSelectedDate: DateTime.now());
   @override
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
@@ -29,35 +32,50 @@ class _TransactionViewState extends BaseState<TransactionView> {
       child: Column(
         children: [
           AppTextFormFieldItem(
-              label: AppText(
-                  label: AppLocalizations.of(context).search,
-                  style: AppFontStyle.bahijLight(
-                      fontSize: SizeConfig.textFontSize,
-                      fontColor: AppColors.whiteColor)),
               title: AppLocalizations.of(context).search,
               formFieldItemType: AppFormFieldItemType.SEARCH,
               subject: BehaviorSubject(),
+              showHint: true,
               textInputType: TextInputType.text,
               labelFontColor: AppColors.whiteColor,
               borderColor: AppColors.whiteColor,
               focusedBorderColor: AppColors.whiteColor,
+              showUnderLine: true,
               iconColor: AppColors.transparentColor,
               focusedIconColor: AppColors.transparentColor),
           SizedBox(height: SizeConfig.padding),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              AppLabelWithIcon(
-                  label: 'يناير 2020',
-                  labelColor: AppColors.whiteColor,
-                  icon: Icon(Icons.calendar_today_outlined,
-                      color: AppColors.PINK_COLOR)),
+              StreamBuilder(
+                  stream: bloc.firstSelectedDateStream,
+                  builder: (context, AsyncSnapshot snapshot) {
+                    return InkWell(
+                      onTap: () => bloc.firstSelectDate(context),
+                      child: AppLabelWithIcon(
+                          label: snapshot.data != null
+                              ? snapshot.data.toLocal().toString().split(' ')[0]
+                              : '',
+                          labelColor: AppColors.whiteColor,
+                          icon: Icon(Icons.calendar_today_outlined,
+                              color: AppColors.PINK_COLOR)),
+                    );
+                  }),
               Icon(Icons.remove, color: AppColors.WHITH_COLOR),
-              AppLabelWithIcon(
-                  label: 'فبراير 2020',
-                  labelColor: AppColors.whiteColor,
-                  icon: Icon(Icons.calendar_today_outlined,
-                      color: AppColors.PINK_COLOR)),
+              StreamBuilder(
+                  stream: bloc.endSelectedDateStream,
+                  builder: (context, AsyncSnapshot snapshot) {
+                    return InkWell(
+                      onTap: () => bloc.endSelectDate(context),
+                      child: AppLabelWithIcon(
+                          label: snapshot.data != null
+                              ? snapshot.data.toLocal().toString().split(' ')[0]
+                              : '',
+                          labelColor: AppColors.whiteColor,
+                          icon: Icon(Icons.calendar_today_outlined,
+                              color: AppColors.PINK_COLOR)),
+                    );
+                  }),
             ],
           ),
           ListView.builder(
@@ -75,12 +93,12 @@ class _TransactionViewState extends BaseState<TransactionView> {
                     children: [
                       AppText(
                           label: AppLocalizations.of(context).operationNum,
-                          style: AppFontStyle.bahijLight(
+                          style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.textFontSize,
                               fontColor: AppColors.whiteColor)),
                       AppText(
                           label: '38884884',
-                          style: AppFontStyle.bahijLight(
+                          style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.textFontSize,
                               fontColor: AppColors.whiteColor)),
                       Container(
@@ -88,13 +106,13 @@ class _TransactionViewState extends BaseState<TransactionView> {
                         child: CustomListTile(
                           title: AppText(
                               label: AppLocalizations.of(context).operationval,
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.textFontSize,
                                   fontColor: AppColors.whiteColor)),
                           padding: EdgeInsets.zero,
                           trailing: AppText(
                               label: '38884884',
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.textFontSize,
                                   fontColor: AppColors.whiteColor)),
                         ),
@@ -105,13 +123,13 @@ class _TransactionViewState extends BaseState<TransactionView> {
                           title: AppText(
                               label:
                                   AppLocalizations.of(context).operationStatus,
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.textFontSize,
                                   fontColor: AppColors.whiteColor)),
                           padding: EdgeInsets.zero,
                           trailing: AppText(
                               label: 'فيزا',
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.textFontSize,
                                   fontColor: AppColors.whiteColor)),
                         ),
@@ -121,13 +139,13 @@ class _TransactionViewState extends BaseState<TransactionView> {
                         child: CustomListTile(
                           title: AppText(
                               label: AppLocalizations.of(context).paymentMethod,
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.textFontSize,
                                   fontColor: AppColors.whiteColor)),
                           padding: EdgeInsets.zero,
                           trailing: AppText(
                               label: 'مقبوله',
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.textFontSize,
                                   fontColor: AppColors.whiteColor)),
                         ),
@@ -138,13 +156,13 @@ class _TransactionViewState extends BaseState<TransactionView> {
                           title: AppText(
                               label: AppLocalizations.of(context)
                                   .lastfourNumOfCard,
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.textFontSize,
                                   fontColor: AppColors.whiteColor)),
                           padding: EdgeInsets.zero,
                           trailing: AppText(
                               label: '45643',
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.textFontSize,
                                   fontColor: AppColors.whiteColor)),
                         ),
@@ -155,13 +173,13 @@ class _TransactionViewState extends BaseState<TransactionView> {
                           title: AppText(
                               label:
                                   AppLocalizations.of(context).approvalNumber,
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.textFontSize,
                                   fontColor: AppColors.whiteColor)),
                           padding: EdgeInsets.zero,
                           trailing: AppText(
                               label: '38884884',
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.textFontSize,
                                   fontColor: AppColors.whiteColor)),
                         ),
@@ -171,13 +189,13 @@ class _TransactionViewState extends BaseState<TransactionView> {
                         child: CustomListTile(
                           title: AppText(
                               label: AppLocalizations.of(context).operationNum,
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.textFontSize,
                                   fontColor: AppColors.whiteColor)),
                           padding: EdgeInsets.zero,
                           trailing: AppText(
                               label: '38884884',
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.textFontSize,
                                   fontColor: AppColors.whiteColor)),
                         ),
@@ -201,14 +219,14 @@ class _TransactionViewState extends BaseState<TransactionView> {
       leading: AppText(label: ''),
       title: AppText(
           label: AppLocalizations.of(context).processes,
-          style: AppFontStyle.bahijLight(
+          style: AppFontStyle.bahijSansArabic(
               fontSize: SizeConfig.titleFontSize,
               fontColor: AppColors.whiteColor)),
       centerTitle: true,
       actions: [
         AppButton(
             title: "Pop up",
-            style: AppFontStyle.bahijLight(
+            style: AppFontStyle.bahijSansArabic(
                 fontSize: SizeConfig.textFontSize,
                 fontColor: AppColors.whiteColor),
             borderColor: Colors.transparent,
@@ -235,7 +253,7 @@ class _TransactionViewState extends BaseState<TransactionView> {
             actions: [
               AppButton(
                   width: double.infinity,
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.textFontSize,
                       fontColor: AppColors.whiteColor),
                   title: cancelButtonTitle.toString(),
@@ -254,13 +272,13 @@ class _TransactionViewState extends BaseState<TransactionView> {
                 children: [
                   AppText(
                       label: AppLocalizations.of(context).recovery,
-                      style: AppFontStyle.bahijLight(
+                      style: AppFontStyle.bahijSansArabic(
                           fontSize: SizeConfig.titleFontSize,
                           fontColor: AppColors.whiteColor)),
                   AppDivider(),
                   AppText(
                       label: AppLocalizations.of(context).receipt,
-                      style: AppFontStyle.bahijLight(
+                      style: AppFontStyle.bahijSansArabic(
                           fontSize: SizeConfig.titleFontSize,
                           fontColor: AppColors.whiteColor)),
                   AppDivider(),
@@ -276,7 +294,7 @@ class _TransactionViewState extends BaseState<TransactionView> {
       child: AppButton(
           width: double.infinity,
           title: AppLocalizations.of(context).back,
-          style: AppFontStyle.bahijLight(
+          style: AppFontStyle.bahijSansArabic(
               fontSize: SizeConfig.titleFontSize,
               fontColor: AppColors.whiteColor),
           borderColor: AppColors.PINK_COLOR,

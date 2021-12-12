@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
 import 'package:rasid_jack/common/widgets/app_button.dart';
-import 'package:rasid_jack/common/widgets/app_image.dart';
 import 'package:rasid_jack/common/widgets/app_text.dart';
 import 'package:rasid_jack/common/widgets/custom_gridView.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
@@ -10,7 +9,6 @@ import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/views/home/bloc/home_bloc.dart';
-import 'package:rasid_jack/common/widgets/custom_drawer.dart';
 
 class HomeView extends BaseStatefulWidget {
   @override
@@ -22,25 +20,55 @@ class _HomeViewState extends BaseState<HomeView> {
   @override
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            width: double.infinity,
-            color: AppColors.BUTTON_COLOR,
-            padding: EdgeInsets.all(15),
-            child: AppText(
-                textAlign: TextAlign.center,
-                label: AppLocalizations.of(context).deviceId + '6778888654',
-                style: AppFontStyle.bahijLight(
-                    fontSize: SizeConfig.textFontSize,
-                    fontColor: AppColors.whiteColor)),
+    return Column(
+      children: [
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.only(
+              top: SizeConfig.padding * 4, bottom: SizeConfig.padding),
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(
+                    AppAssets.loginBackground,
+                  ),
+                  fit: BoxFit.fill)),
+          child: Column(
+            children: [
+              AppText(
+                  label: AppLocalizations.of(context).enterNum,
+                  style: AppFontStyle.bahijSansArabic(
+                      fontSize: SizeConfig.titleFontSize,
+                      fontColor: AppColors.whiteColor)),
+              StreamBuilder(
+                  stream: bloc.counterObservable,
+                  builder: (context, AsyncSnapshot<String> snapshot) {
+                    return AppText(
+                        label:
+                            "${snapshot.data}.0${AppLocalizations.of(context).coinRial}",
+                        style: AppFontStyle.bahijSansArabic(
+                            fontSize: SizeConfig.titleFontSize,
+                            fontColor: AppColors.whiteColor));
+                  }),
+            ],
           ),
-          CustomGridView(
+        ),
+        Container(
+          width: double.infinity,
+          color: AppColors.BUTTON_COLOR,
+          padding: EdgeInsets.all(15),
+          child: AppText(
+              textAlign: TextAlign.center,
+              label: AppLocalizations.of(context).deviceId + '6778888654',
+              style: AppFontStyle.bahijSansArabic(
+                  fontSize: SizeConfig.textFontSize,
+                  fontColor: AppColors.whiteColor)),
+        ),
+        Expanded(
+          child: CustomGridView(
             childrenList: [
               AppButton(
                   title: '1',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.DARK_GRAY_COLOR,
@@ -48,7 +76,7 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('1', context)),
               AppButton(
                   title: '2',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.DARK_GRAY_COLOR,
@@ -56,7 +84,7 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('2', context)),
               AppButton(
                   title: '3',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.DARK_GRAY_COLOR,
@@ -64,7 +92,7 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('3', context)),
               AppButton(
                   title: '4',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.DARK_GRAY_COLOR,
@@ -72,7 +100,7 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('4', context)),
               AppButton(
                   title: '5',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.DARK_GRAY_COLOR,
@@ -80,7 +108,7 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('5', context)),
               AppButton(
                   title: '6',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.DARK_GRAY_COLOR,
@@ -88,7 +116,7 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('6', context)),
               AppButton(
                   title: '7',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.DARK_GRAY_COLOR,
@@ -96,7 +124,7 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('7', context)),
               AppButton(
                   title: '8',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.DARK_GRAY_COLOR,
@@ -104,7 +132,7 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('8', context)),
               AppButton(
                   title: '9',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.DARK_GRAY_COLOR,
@@ -112,7 +140,7 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('9', context)),
               AppButton(
                   title: '0',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.DARK_GRAY_COLOR,
@@ -120,7 +148,7 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('0', context)),
               AppButton(
                   title: '00',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.DARK_GRAY_COLOR,
@@ -128,7 +156,7 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('00', context)),
               AppButton(
                   title: '000',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.DARK_GRAY_COLOR,
@@ -136,7 +164,7 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('000', context)),
               AppButton(
                   title: 'دفع',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.GREEN_COLOR,
@@ -144,7 +172,7 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('دفع', context)),
               AppButton(
                   title: 'مسح',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.YELLOW_COLOR,
@@ -152,7 +180,7 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('مسح', context)),
               AppButton(
                   title: 'الغاء',
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor),
                   borderColor: AppColors.RED_COLOR,
@@ -160,37 +188,8 @@ class _HomeViewState extends BaseState<HomeView> {
                   onTap: () => bloc.buttonPressed('الغاء', context)),
             ],
           ),
-        ],
-      ),
-    );
-  }
-
-  @override
-  PreferredSizeWidget getAppbar() {
-    return AppBar(
-      flexibleSpace:
-          AppImage(path: AppAssets.loginBackground, boxFit: BoxFit.fill),
-      backgroundColor: Colors.transparent,
-      elevation: 0.0,
-      leading: AppText(label: ''),
-      title: AppText(
-          label: AppLocalizations.of(context).enterNum,
-          style: AppFontStyle.bahijLight(
-              fontSize: SizeConfig.titleFontSize,
-              fontColor: AppColors.whiteColor)),
-      bottom: PreferredSize(
-          child: StreamBuilder(
-              stream: bloc.counterObservable,
-              builder: (context, AsyncSnapshot<String> snapshot) {
-                return AppText(
-                    label:
-                        "${snapshot.data}.0${AppLocalizations.of(context).coinRial}",
-                    style: AppFontStyle.bahijLight(
-                        fontSize: SizeConfig.titleFontSize,
-                        fontColor: AppColors.whiteColor));
-              }),
-          preferredSize: Size.fromHeight(SizeConfig.btnHeight * 0.7)),
-      centerTitle: true,
+        ),
+      ],
     );
   }
 
@@ -206,7 +205,7 @@ class _HomeViewState extends BaseState<HomeView> {
       child: AppButton(
           width: double.infinity,
           title: AppLocalizations.of(context).back,
-          style: AppFontStyle.bahijLight(
+          style: AppFontStyle.bahijSansArabic(
               fontSize: SizeConfig.titleFontSize,
               fontColor: AppColors.whiteColor),
           borderColor: AppColors.PINK_COLOR,

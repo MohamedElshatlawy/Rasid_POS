@@ -119,6 +119,9 @@ class AppLocalizations {
   String get confirmPassword =>
       Intl.message('confirmPassword', name: 'confirmPassword');
   String get confirm => Intl.message('confirm', name: 'confirm');
+  String get userData => Intl.message('userData', name: 'userData');
+  String get sendInquiry => Intl.message('sendInquiry', name: 'sendInquiry');
+  String get hobby => Intl.message('userDaHobbyta', name: 'Hobby');
 }
 
 class SpecificLocalizationDelegate

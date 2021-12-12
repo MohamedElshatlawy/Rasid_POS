@@ -50,7 +50,7 @@ class AppRadioButton extends StatelessWidget {
             Expanded(
               child: AppText(
                 label: label,
-                style: AppFontStyle.bahijLight(
+                style: AppFontStyle.bahijSansArabic(
                     fontSize: labelFontSize, fontColor: labelFontColor),
               ),
             ),

@@ -10,6 +10,7 @@ import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
+import 'package:rasid_jack/views/commissions/bloc.dart/commission_bloc.dart';
 // import 'package:rasid_jack/common/widgets/custom_drawer.dart';
 import 'package:rxdart/subjects.dart';
 
@@ -19,7 +20,11 @@ class CommissionView extends BaseStatefulWidget {
 }
 
 class _CommissionViewState extends BaseState<CommissionView> {
-  String value = 'اسم البنك';
+  CommissionBloc bloc = CommissionBloc(names: [
+    {"item": "Thomas"},
+    {"item": "John"},
+    {"item": "Mary"}
+  ]);
 
   @override
   Widget getBody(BuildContext context) {
@@ -34,7 +39,7 @@ class _CommissionViewState extends BaseState<CommissionView> {
             children: [
               AppText(
                   label: AppLocalizations.of(context).commissions,
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor)),
               SizedBox(width: SizeConfig.padding),
@@ -53,12 +58,12 @@ class _CommissionViewState extends BaseState<CommissionView> {
                   children: [
                     AppText(
                         label: '100',
-                        style: AppFontStyle.bahijLight(
+                        style: AppFontStyle.bahijSansArabic(
                             fontSize: SizeConfig.titleFontSize,
                             fontColor: AppColors.whiteColor)),
                     AppText(
                         label: AppLocalizations.of(context).coinRial,
-                        style: AppFontStyle.bahijLight(
+                        style: AppFontStyle.bahijSansArabic(
                             fontSize: SizeConfig.titleFontSize,
                             fontColor: AppColors.whiteColor)),
                   ],
@@ -83,7 +88,7 @@ class _CommissionViewState extends BaseState<CommissionView> {
                 actions: [
                   AppButton(
                     width: double.infinity,
-                    style: AppFontStyle.bahijLight(
+                    style: AppFontStyle.bahijSansArabic(
                         fontSize: SizeConfig.textFontSize,
                         fontColor: AppColors.whiteColor),
                     title: cancelButtonTitle.toString(),
@@ -111,7 +116,7 @@ class _CommissionViewState extends BaseState<CommissionView> {
         children: [
           AppButton(
             width: double.infinity,
-            style: AppFontStyle.bahijLight(
+            style: AppFontStyle.bahijSansArabic(
                 fontSize: SizeConfig.titleFontSize,
                 fontColor: AppColors.whiteColor),
             title: AppLocalizations.of(context).withdrawingCommissions,
@@ -137,7 +142,7 @@ class _CommissionViewState extends BaseState<CommissionView> {
                         title: AppLocalizations.of(context).name,
                         label: AppText(
                             label: AppLocalizations.of(context).name,
-                            style: AppFontStyle.bahijLight(
+                            style: AppFontStyle.bahijSansArabic(
                                 fontSize: SizeConfig.textFontSize,
                                 fontColor: AppColors.whiteColor)),
                         formFieldItemType: AppFormFieldItemType.USER_NAME,
@@ -153,22 +158,22 @@ class _CommissionViewState extends BaseState<CommissionView> {
                       decoration: BoxDecoration(
                           border: Border.all(color: AppColors.WHITH_COLOR),
                           borderRadius: BorderRadius.circular(10)),
-                      child: AppDropdown(
-                          titleKey: value,
-                          style: AppFontStyle.bahijSemiBold(
-                              fontSize: SizeConfig.textFontSize,
-                              fontColor: AppColors.whiteColor),
-                          hint: "اسم البنك",
-                          items: [
-                            {"item": "اسم البنك"},
-                            {"item": "A"}
-                          ],
-                          onChange: (val) {
-                            setState(() {
-                              value = val['item']!;
-                            });
-                          },
-                          validator: (dynamic valid) {}),
+                      child: StreamBuilder(
+                          stream: bloc.dropdownValuesStream,
+                          builder: (context, AsyncSnapshot snapshot) {
+                            print("object${snapshot.data}");
+                            return AppDropdown(
+                                titleKey: bloc.initalVal.toString(),
+                                style: AppFontStyle.bahijSansArabic(
+                                    fontSize: SizeConfig.textFontSize,
+                                    fontColor: AppColors.whiteColor),
+                                hint: "اسم البنك",
+                                items: snapshot.data ?? [],
+                                onChange: (val) {
+                                  bloc.selectedITem(val['item']);
+                                },
+                                validator: (dynamic valid) {});
+                          }),
                     ),
                     SizedBox(height: SizeConfig.padding),
                     AppTextFormFieldItem(
@@ -177,7 +182,7 @@ class _CommissionViewState extends BaseState<CommissionView> {
                         label: AppText(
                             label:
                                 AppLocalizations.of(context).numberofstatement,
-                            style: AppFontStyle.bahijLight(
+                            style: AppFontStyle.bahijSansArabic(
                                 fontSize: SizeConfig.textFontSize,
                                 fontColor: AppColors.whiteColor)),
                         subject: BehaviorSubject(),
@@ -190,7 +195,7 @@ class _CommissionViewState extends BaseState<CommissionView> {
                     SizedBox(height: SizeConfig.padding * 2),
                     AppButton(
                       width: double.infinity,
-                      style: AppFontStyle.bahijLight(
+                      style: AppFontStyle.bahijSansArabic(
                           fontSize: SizeConfig.textFontSize,
                           fontColor: AppColors.whiteColor),
                       title: AppLocalizations.of(context).sendOrder,
@@ -214,7 +219,7 @@ class _CommissionViewState extends BaseState<CommissionView> {
                             child: AppText(
                               label: AppLocalizations.of(context)
                                   .commissionDilalog,
-                              style: AppFontStyle.bahijLight(
+                              style: AppFontStyle.bahijSansArabic(
                                   fontSize: SizeConfig.titleFontSize,
                                   fontColor: AppColors.whiteColor),
                             ),
@@ -230,7 +235,7 @@ class _CommissionViewState extends BaseState<CommissionView> {
           AppButton(
               width: double.infinity,
               title: AppLocalizations.of(context).back,
-              style: AppFontStyle.bahijLight(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
               borderColor: AppColors.PINK_COLOR,

@@ -55,4 +55,15 @@ class AppFontStyle {
           fontSize: fontSize,
           color: fontColor,
           decoration: textDecoration);
+
+  static TextStyle bahijSansArabic({
+    required double fontSize,
+    required Color fontColor,
+    TextDecoration? textDecoration,
+  }) =>
+      TextStyle(
+          fontFamily: 'Bahij_TheSansArabic',
+          fontSize: fontSize,
+          color: fontColor,
+          decoration: textDecoration);
 }

@@ -38,7 +38,7 @@ class _ContactUsViewState extends BaseState<ContactUsView> {
             children: [
               AppText(
                   label: AppLocalizations.of(context).contactUs,
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.titleFontSize,
                       fontColor: AppColors.whiteColor)),
               SizedBox(width: SizeConfig.padding),
@@ -48,28 +48,28 @@ class _ContactUsViewState extends BaseState<ContactUsView> {
           SizedBox(height: SizeConfig.extraPadding),
           AppText(
               label: 'supprted@rasid.com',
-              style: AppFontStyle.bahijLight(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor)),
           AppText(
               label: '483828282',
-              style: AppFontStyle.bahijLight(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor)),
           AppDivider(),
           AppText(
               label: AppLocalizations.of(context).accountManager,
-              style: AppFontStyle.bahijLight(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor)),
           AppText(
               label: 'سليمان العتيق',
-              style: AppFontStyle.bahijLight(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor)),
           AppText(
               label: '05XXXXXXXXXXXX',
-              style: AppFontStyle.bahijLight(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor)),
         ],
@@ -86,7 +86,7 @@ class _ContactUsViewState extends BaseState<ContactUsView> {
         children: [
           AppButton(
               width: double.infinity,
-              style: AppFontStyle.bahijLight(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
               title: AppLocalizations.of(context).liveSupport,
@@ -98,7 +98,7 @@ class _ContactUsViewState extends BaseState<ContactUsView> {
           AppButton(
               width: double.infinity,
               title: AppLocalizations.of(context).back,
-              style: AppFontStyle.bahijLight(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
               borderColor: AppColors.PINK_COLOR,

@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
+import 'package:rasid_jack/common/blocs/timer/timer_bloc.dart';
+import 'package:rasid_jack/common/blocs/timer/timer_text.dart';
 import 'package:rasid_jack/common/widgets/app_button.dart';
 import 'package:rasid_jack/common/widgets/app_image.dart';
 import 'package:rasid_jack/common/widgets/app_text.dart';
@@ -9,6 +13,7 @@ import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
+import 'package:rasid_jack/views/auth/view/bloc/forget_password_bloc.dart';
 import 'package:rasid_jack/views/auth/view/pin_code_view.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -18,6 +23,9 @@ class ForgetPasswordView extends BaseStatefulWidget {
 }
 
 class _ForgetPasswordViewState extends BaseState<ForgetPasswordView> {
+  // ForgetPasswordBloc bloc = ForgetPasswordBloc(timerText: '');
+  TimerBloc timerBloc = TimerBloc();
+
   @override
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
@@ -31,12 +39,12 @@ class _ForgetPasswordViewState extends BaseState<ForgetPasswordView> {
           SizedBox(height: SizeConfig.padding * 2),
           AppText(
               label: AppLocalizations.of(context).forgetPassword,
-              style: AppFontStyle.bahijBold(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize * 1.5,
                   fontColor: AppColors.whiteColor)),
           AppText(
               label: AppLocalizations.of(context).forgetSubtitle,
-              style: AppFontStyle.bahijBold(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.textFontSize * 1.5,
                   fontColor: AppColors.greyColor)),
           SizedBox(height: SizeConfig.padding * 3),
@@ -45,7 +53,7 @@ class _ForgetPasswordViewState extends BaseState<ForgetPasswordView> {
               formFieldItemType: AppFormFieldItemType.EMAIL,
               label: AppText(
                   label: AppLocalizations.of(context).emailAddress,
-                  style: AppFontStyle.bahijLight(
+                  style: AppFontStyle.bahijSansArabic(
                       fontSize: SizeConfig.textFontSize,
                       fontColor: AppColors.whiteColor)),
               subject: BehaviorSubject(),
@@ -56,10 +64,31 @@ class _ForgetPasswordViewState extends BaseState<ForgetPasswordView> {
               fontColor: AppColors.whiteColor,
               iconColor: Colors.transparent,
               focusedIconColor: Colors.transparent),
+          // StreamBuilder(
+          //     stream: bloc.timerValuesStream,
+          //     builder: (context, AsyncSnapshot snapshot) {
+          //       return bloc.visibility
+          //           ? AppButton(
+          //               width: double.infinity,
+          //               style: AppFontStyle.bahijSansArabic(
+          //                   fontSize: SizeConfig.titleFontSize,
+          //                   fontColor: AppColors.PINK_COLOR),
+          //               title: 'إعادة الارسال؟',
+          //               borderColor: AppColors.transparentColor,
+          //               backgroundColor: AppColors.transparentColor,
+          //               onTap: () => bloc.startTimeout(context))
+          //           : AppText(
+          //               label: snapshot.data ?? '',
+          //               style: AppFontStyle.bahijSansArabic(
+          //                   fontSize: SizeConfig.textFontSize * 1.5,
+          //                   fontColor: AppColors.greyColor));
+          //     }),
+          SizedBox(height: SizeConfig.padding),
+          TimerText(timerBloc: timerBloc),
           SizedBox(height: SizeConfig.padding * 2),
           AppButton(
               width: double.infinity,
-              style: AppFontStyle.bahijBold(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
               title: AppLocalizations.of(context).restorePassword,
@@ -70,7 +99,7 @@ class _ForgetPasswordViewState extends BaseState<ForgetPasswordView> {
           SizedBox(height: SizeConfig.padding),
           AppButton(
               width: double.infinity,
-              style: AppFontStyle.bahijBold(
+              style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.PINK_COLOR),
               title: AppLocalizations.of(context).cancel,
