@@ -46,13 +46,16 @@ class BuyWithCashBloc extends BlocBase {
           .push(MaterialPageRoute(builder: (context) => PayView()));
     } else {
       if ((buttonText == "0" || buttonText == "00" || buttonText == "000") &&
-          (payNumber == '0' || cashNumber == '0')) {
+          (payNumber == "0" || cashNumber == "0")) {
+        print('lsssssssssssss');
         if (isSelect) {
-          payNumber = "0";
+          payNumber = payNumber == '0' ? "0" : payNumber + buttonText;
         } else {
-          cashNumber = "0";
+          cashNumber = cashNumber == '0' ? "0" : cashNumber + buttonText;
         }
       } else {
+        print('sssfdfdew');
+
         if (isSelect) {
           payNumber = (payNumber != '0' ? payNumber : '') + buttonText;
         } else {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
 import 'package:rasid_jack/common/widgets/app_button.dart';
 import 'package:rasid_jack/common/widgets/app_image.dart';
@@ -10,7 +11,7 @@ import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/views/auth/view/forget_password_view.dart';
-import 'package:rasid_jack/views/mainScreen/view/main_screen_view.dart';
+import 'package:rasid_jack/views/home/view/home_view.dart';
 import 'package:rxdart/rxdart.dart';
 
 class LoginView extends BaseStatefulWidget {
@@ -94,10 +95,8 @@ class _LoginViewState extends BaseState<LoginView> {
                       title: AppLocalizations.of(context).login,
                       borderColor: AppColors.BUTTON_COLOR,
                       backgroundColor: AppColors.BUTTON_COLOR,
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MainScreenView()))),
+                      onTap: () => Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomeView()))),
                 ],
               ),
             ),
@@ -107,8 +106,9 @@ class _LoginViewState extends BaseState<LoginView> {
     );
   }
 
-  // @override
-  // bool getResizeToAvoidBottomInset() {
-  //   return false;
-  // }
+  @override
+  Future<bool> onWillPop() {
+    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+    return Future.value(false);
+  }
 }

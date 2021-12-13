@@ -11,7 +11,6 @@ import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/views/contactUs/view/contact_us_view.dart';
-import 'package:rasid_jack/views/home/view/home_view.dart';
 import 'package:rxdart/rxdart.dart';
 
 class FirstContactUsView extends BaseStatefulWidget {
@@ -131,7 +130,7 @@ class _FirstContactUsViewState extends BaseState<FirstContactUsView> {
               style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.textFontSize,
                   fontColor: AppColors.whiteColor),
-              title: AppLocalizations.of(context).liveSupport,
+              title: AppLocalizations.of(context).send,
               borderColor: AppColors.WHITH_COLOR,
               backgroundColor: AppColors.DARK_GRAY_COLOR,
               onTap: () => Navigator.of(context).push(
@@ -139,7 +138,7 @@ class _FirstContactUsViewState extends BaseState<FirstContactUsView> {
           SizedBox(height: SizeConfig.padding),
           AppButton(
               width: double.infinity,
-              title: AppLocalizations.of(context).back,
+              title: AppLocalizations.of(context).cancel,
               style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.textFontSize,
                   fontColor: AppColors.whiteColor),

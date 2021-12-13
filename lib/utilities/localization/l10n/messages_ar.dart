@@ -60,7 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "lastfourNumOfCard":
             MessageLookupByLibrary.simpleMessage("اخر اربع ارقام من البطاقه"),
         "approvalNumber": MessageLookupByLibrary.simpleMessage("رقم الموافقه"),
-        "processes": MessageLookupByLibrary.simpleMessage("العمليات"),
+        "processes": MessageLookupByLibrary.simpleMessage("المعاملات"),
         "recovery": MessageLookupByLibrary.simpleMessage("استرداد"),
         "receipt": MessageLookupByLibrary.simpleMessage("ايصال"),
         "userName": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
@@ -110,5 +110,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "sendInquiry":
             MessageLookupByLibrary.simpleMessage(" أرسل إلينا إستفسارك"),
         "Hobby": MessageLookupByLibrary.simpleMessage("الهواية"),
+        "send": MessageLookupByLibrary.simpleMessage("أرسال"),
       };
 }
