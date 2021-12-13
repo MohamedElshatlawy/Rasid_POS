@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
-import 'package:rasid_jack/common/widgets/app_button.dart';
+import 'package:rasid_jack/common/widgets/app_image.dart';
 import 'package:rasid_jack/common/widgets/app_text.dart';
-import 'package:rasid_jack/common/widgets/custom_gridView.dart';
+import 'package:rasid_jack/common/widgets/custom_listtile.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
-import 'package:rasid_jack/views/home/bloc/home_bloc.dart';
+import 'package:rasid_jack/views/buy_with_cash/view/buy_view.dart';
+import 'package:rasid_jack/views/commissions/view/commission_view.dart';
+import 'package:rasid_jack/views/contactUs/view/first_contact_us_view.dart';
+import 'package:rasid_jack/views/main/view/main_view.dart';
+import 'package:rasid_jack/views/transactions/view/transactions_view.dart';
 
 class HomeView extends BaseStatefulWidget {
   @override
@@ -16,201 +20,116 @@ class HomeView extends BaseStatefulWidget {
 }
 
 class _HomeViewState extends BaseState<HomeView> {
-  HomeBloc bloc = HomeBloc(payNumber: '0');
   @override
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
-    return Column(
+    return Row(
       children: [
-        Container(
-          width: double.infinity,
-          padding: EdgeInsets.only(
-              top: SizeConfig.padding * 4, bottom: SizeConfig.padding),
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(
-                    AppAssets.loginBackground,
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: SizeConfig.padding),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  IconButton(
+                    icon: AppImage(path: AppAssets.profileButton),
+                    iconSize: SizeConfig.btnHeight,
+                    onPressed: null,
                   ),
-                  fit: BoxFit.fill)),
-          child: Column(
-            children: [
-              AppText(
-                  label: AppLocalizations.of(context).enterNum,
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor)),
-              StreamBuilder(
-                  stream: bloc.counterObservable,
-                  builder: (context, AsyncSnapshot<String> snapshot) {
-                    return AppText(
-                        label:
-                            "${snapshot.data}.0${AppLocalizations.of(context).coinRial}",
+                  SizedBox(height: SizeConfig.padding),
+                  AppText(
+                      label: AppLocalizations.of(context).userName,
+                      style: AppFontStyle.bahijSansArabic(
+                          fontSize: SizeConfig.titleFontSize,
+                          fontColor: AppColors.whiteColor)),
+                  SizedBox(height: SizeConfig.extraPadding),
+                  CustomListTile(
+                    title: AppText(
+                        label: AppLocalizations.of(context).shopping,
                         style: AppFontStyle.bahijSansArabic(
                             fontSize: SizeConfig.titleFontSize,
-                            fontColor: AppColors.whiteColor));
-                  }),
-            ],
+                            fontColor: AppColors.whiteColor)),
+                    leading: Icon(
+                      Icons.shopping_basket_outlined,
+                      color: AppColors.WHITH_COLOR,
+                    ),
+                    press: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => MainView()));
+                    },
+                  ),
+                  CustomListTile(
+                    leading: Icon(
+                      Icons.public_rounded,
+                      color: AppColors.WHITH_COLOR,
+                    ),
+                    title: AppText(
+                        label: AppLocalizations.of(context).buyWithCash,
+                        style: AppFontStyle.bahijSansArabic(
+                            fontSize: SizeConfig.titleFontSize,
+                            fontColor: AppColors.whiteColor)),
+                    press: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => BuyWithCashView()));
+                    },
+                  ),
+                  CustomListTile(
+                    leading: Icon(
+                      Icons.note_outlined,
+                      color: AppColors.WHITH_COLOR,
+                    ),
+                    title: AppText(
+                        label: AppLocalizations.of(context).processes,
+                        style: AppFontStyle.bahijSansArabic(
+                            fontSize: SizeConfig.titleFontSize,
+                            fontColor: AppColors.whiteColor)),
+                    press: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => TransactionView()));
+                    },
+                  ),
+                  CustomListTile(
+                    leading: Icon(
+                      Icons.money,
+                      color: AppColors.WHITH_COLOR,
+                    ),
+                    title: AppText(
+                        label: AppLocalizations.of(context).commissions,
+                        style: AppFontStyle.bahijSansArabic(
+                            fontSize: SizeConfig.titleFontSize,
+                            fontColor: AppColors.whiteColor)),
+                    press: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => CommissionView()));
+                    },
+                  ),
+                  CustomListTile(
+                    leading: Icon(
+                      Icons.settings_cell_outlined,
+                      color: AppColors.WHITH_COLOR,
+                    ),
+                    title: AppText(
+                        label: AppLocalizations.of(context).contactUs,
+                        style: AppFontStyle.bahijSansArabic(
+                            fontSize: SizeConfig.titleFontSize,
+                            fontColor: AppColors.whiteColor)),
+                    press: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => FirstContactUsView()));
+                    },
+                  ),
+                ]),
           ),
         ),
-        Container(
-          width: double.infinity,
-          color: AppColors.BUTTON_COLOR,
-          padding: EdgeInsets.all(15),
-          child: AppText(
-              textAlign: TextAlign.center,
-              label: AppLocalizations.of(context).deviceId + '6778888654',
-              style: AppFontStyle.bahijSansArabic(
-                  fontSize: SizeConfig.textFontSize,
-                  fontColor: AppColors.whiteColor)),
-        ),
-        Expanded(
-          child: CustomGridView(
-            childrenList: [
-              AppButton(
-                  title: '1',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('1', context)),
-              AppButton(
-                  title: '2',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('2', context)),
-              AppButton(
-                  title: '3',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('3', context)),
-              AppButton(
-                  title: '4',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('4', context)),
-              AppButton(
-                  title: '5',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('5', context)),
-              AppButton(
-                  title: '6',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('6', context)),
-              AppButton(
-                  title: '7',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('7', context)),
-              AppButton(
-                  title: '8',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('8', context)),
-              AppButton(
-                  title: '9',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('9', context)),
-              AppButton(
-                  title: '0',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('0', context)),
-              AppButton(
-                  title: '00',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('00', context)),
-              AppButton(
-                  title: '000',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('000', context)),
-              AppButton(
-                  title: 'دفع',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.GREEN_COLOR,
-                  backgroundColor: AppColors.GREEN_COLOR,
-                  onTap: () => bloc.buttonPressed('دفع', context)),
-              AppButton(
-                  title: 'مسح',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.YELLOW_COLOR,
-                  backgroundColor: AppColors.YELLOW_COLOR,
-                  onTap: () => bloc.buttonPressed('مسح', context)),
-              AppButton(
-                  title: 'الغاء',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.RED_COLOR,
-                  backgroundColor: AppColors.RED_COLOR,
-                  onTap: () => bloc.buttonPressed('الغاء', context)),
-            ],
-          ),
-        ),
+        Expanded(child: AppText(label: '')),
       ],
     );
   }
 
   @override
-  Color getScaffoldBackgroundColor() {
-    return AppColors.BLACK_COLOR;
-  }
-
-  @override
-  Widget? getBottomNavigationBar() {
-    return Padding(
-      padding: EdgeInsets.all(SizeConfig.padding),
-      child: AppButton(
-          width: double.infinity,
-          title: AppLocalizations.of(context).back,
-          style: AppFontStyle.bahijSansArabic(
-              fontSize: SizeConfig.titleFontSize,
-              fontColor: AppColors.whiteColor),
-          borderColor: AppColors.PINK_COLOR,
-          backgroundColor: AppColors.PINK_COLOR,
-          onTap: () => Navigator.pop(context)),
-    );
+  String getScaffoldBackgroundImage() {
+    // TODO: implement getScaffoldBackgroundImage
+    return AppAssets.mainPic;
   }
 }

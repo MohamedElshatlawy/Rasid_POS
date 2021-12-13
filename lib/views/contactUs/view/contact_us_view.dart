@@ -9,7 +9,7 @@ import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
-import 'package:rasid_jack/views/home/view/home_view.dart';
+import 'package:rasid_jack/views/main/view/main_view.dart';
 
 class ContactUsView extends BaseStatefulWidget {
   @override
@@ -89,15 +89,15 @@ class _ContactUsViewState extends BaseState<ContactUsView> {
               style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),
-              title: AppLocalizations.of(context).liveSupport,
+              title: AppLocalizations.of(context).send,
               borderColor: AppColors.WHITH_COLOR,
               backgroundColor: AppColors.BUTTON_COLOR,
               onTap: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => HomeView()))),
+                  .push(MaterialPageRoute(builder: (context) => MainView()))),
           SizedBox(height: SizeConfig.padding),
           AppButton(
               width: double.infinity,
-              title: AppLocalizations.of(context).back,
+              title: AppLocalizations.of(context).cancel,
               style: AppFontStyle.bahijSansArabic(
                   fontSize: SizeConfig.titleFontSize,
                   fontColor: AppColors.whiteColor),

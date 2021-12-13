@@ -3,11 +3,11 @@ import 'package:rasid_jack/base/bloc_provider.dart';
 import 'package:rasid_jack/views/pay/view/pay_view.dart';
 import 'package:rxdart/rxdart.dart';
 
-class HomeBloc extends BlocBase {
+class MainBloc extends BlocBase {
   String payNumber = '0';
   BehaviorSubject<String> _subjectCounter = BehaviorSubject<String>();
   Stream<String> get counterObservable => _subjectCounter.stream;
-  HomeBloc({required this.payNumber}) {
+  MainBloc({required this.payNumber}) {
     _subjectCounter = BehaviorSubject<String>.seeded(this.payNumber);
   }
 

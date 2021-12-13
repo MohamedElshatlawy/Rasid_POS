@@ -115,5 +115,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "sendInquiry":
             MessageLookupByLibrary.simpleMessage("Send us your inquiry"),
         "Hobby": MessageLookupByLibrary.simpleMessage("Hobby"),
+        "send": MessageLookupByLibrary.simpleMessage("send"),
       };
 }

@@ -10,7 +10,6 @@ import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/views/auth/view/change_password_view.dart';
-import 'package:rasid_jack/views/verification/view/verified_view.dart';
 
 class PinCodeView extends BaseStatefulWidget {
   @override
@@ -75,8 +74,7 @@ class _PinCodeViewState extends BaseState<PinCodeView> {
               title: AppLocalizations.of(context).confirm,
               borderColor: AppColors.PINK_COLOR,
               backgroundColor: AppColors.PINK_COLOR,
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => VerifiedView()))),
+              onTap: () {}),
           SizedBox(height: SizeConfig.padding),
           AppButton(
               width: double.infinity,

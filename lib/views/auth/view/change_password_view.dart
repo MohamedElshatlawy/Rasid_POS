@@ -9,7 +9,6 @@ import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
-import 'package:rasid_jack/views/home/view/home_view.dart';
 import 'package:rxdart/rxdart.dart';
 
 class ChangePasswordView extends BaseStatefulWidget {
