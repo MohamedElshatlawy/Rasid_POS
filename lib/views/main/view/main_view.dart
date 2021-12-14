@@ -64,129 +64,202 @@ class _MainViewState extends BaseState<MainView> {
                   fontColor: AppColors.whiteColor)),
         ),
         Expanded(
-          child: CustomGridView(
-            childrenList: [
-              AppButton(
-                  title: '1',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('1', context)),
-              AppButton(
-                  title: '2',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('2', context)),
-              AppButton(
-                  title: '3',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('3', context)),
-              AppButton(
-                  title: '4',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('4', context)),
-              AppButton(
-                  title: '5',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('5', context)),
-              AppButton(
-                  title: '6',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('6', context)),
-              AppButton(
-                  title: '7',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('7', context)),
-              AppButton(
-                  title: '8',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('8', context)),
-              AppButton(
-                  title: '9',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('9', context)),
-              AppButton(
-                  title: '0',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('0', context)),
-              AppButton(
-                  title: '00',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('00', context)),
-              AppButton(
-                  title: '000',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.DARK_GRAY_COLOR,
-                  backgroundColor: AppColors.DARK_GRAY_COLOR,
-                  onTap: () => bloc.buttonPressed('000', context)),
-              AppButton(
-                  title: 'دفع',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.GREEN_COLOR,
-                  backgroundColor: AppColors.GREEN_COLOR,
-                  onTap: () => bloc.buttonPressed('دفع', context)),
-              AppButton(
-                  title: 'مسح',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.YELLOW_COLOR,
-                  backgroundColor: AppColors.YELLOW_COLOR,
-                  onTap: () => bloc.buttonPressed('مسح', context)),
-              AppButton(
-                  title: 'الغاء',
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor),
-                  borderColor: AppColors.RED_COLOR,
-                  backgroundColor: AppColors.RED_COLOR,
-                  onTap: () => bloc.buttonPressed('الغاء', context)),
-            ],
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.padding, vertical: SizeConfig.padding),
+            child: Column(
+              children: [
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      AppButton(
+                          width: SizeConfig.padding * 7,
+                          height: double.infinity,
+                          title: '1',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.DARK_GRAY_COLOR,
+                          backgroundColor: AppColors.DARK_GRAY_COLOR,
+                          onTap: () => bloc.buttonPressed('1', context)),
+                      AppButton(
+                          width: SizeConfig.padding * 7,
+                          height: double.infinity,
+                          title: '2',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.DARK_GRAY_COLOR,
+                          backgroundColor: AppColors.DARK_GRAY_COLOR,
+                          onTap: () => bloc.buttonPressed('2', context)),
+                      AppButton(
+                          height: double.infinity,
+                          width: SizeConfig.padding * 7,
+                          title: '3',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.DARK_GRAY_COLOR,
+                          backgroundColor: AppColors.DARK_GRAY_COLOR,
+                          onTap: () => bloc.buttonPressed('3', context)),
+                    ],
+                  ),
+                ),
+                SizedBox(height: SizeConfig.padding),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      AppButton(
+                          height: double.infinity,
+                          width: SizeConfig.padding * 7,
+                          title: '4',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.DARK_GRAY_COLOR,
+                          backgroundColor: AppColors.DARK_GRAY_COLOR,
+                          onTap: () => bloc.buttonPressed('4', context)),
+                      AppButton(
+                          height: double.infinity,
+                          width: SizeConfig.padding * 7,
+                          title: '5',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.DARK_GRAY_COLOR,
+                          backgroundColor: AppColors.DARK_GRAY_COLOR,
+                          onTap: () => bloc.buttonPressed('5', context)),
+                      AppButton(
+                          height: double.infinity,
+                          width: SizeConfig.padding * 7,
+                          title: '6',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.DARK_GRAY_COLOR,
+                          backgroundColor: AppColors.DARK_GRAY_COLOR,
+                          onTap: () => bloc.buttonPressed('6', context)),
+                    ],
+                  ),
+                ),
+                SizedBox(height: SizeConfig.padding),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      AppButton(
+                          height: double.infinity,
+                          width: SizeConfig.padding * 7,
+                          title: '7',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.DARK_GRAY_COLOR,
+                          backgroundColor: AppColors.DARK_GRAY_COLOR,
+                          onTap: () => bloc.buttonPressed('7', context)),
+                      AppButton(
+                          height: double.infinity,
+                          width: SizeConfig.padding * 7,
+                          title: '8',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.DARK_GRAY_COLOR,
+                          backgroundColor: AppColors.DARK_GRAY_COLOR,
+                          onTap: () => bloc.buttonPressed('8', context)),
+                      AppButton(
+                          height: double.infinity,
+                          width: SizeConfig.padding * 7,
+                          title: '9',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.DARK_GRAY_COLOR,
+                          backgroundColor: AppColors.DARK_GRAY_COLOR,
+                          onTap: () => bloc.buttonPressed('9', context)),
+                    ],
+                  ),
+                ),
+                SizedBox(height: SizeConfig.padding),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      AppButton(
+                          height: double.infinity,
+                          width: SizeConfig.padding * 7,
+                          title: '0',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.DARK_GRAY_COLOR,
+                          backgroundColor: AppColors.DARK_GRAY_COLOR,
+                          onTap: () => bloc.buttonPressed('0', context)),
+                      AppButton(
+                          height: double.infinity,
+                          width: SizeConfig.padding * 7,
+                          title: '00',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.DARK_GRAY_COLOR,
+                          backgroundColor: AppColors.DARK_GRAY_COLOR,
+                          onTap: () => bloc.buttonPressed('00', context)),
+                      AppButton(
+                          height: double.infinity,
+                          width: SizeConfig.padding * 7,
+                          title: '000',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.DARK_GRAY_COLOR,
+                          backgroundColor: AppColors.DARK_GRAY_COLOR,
+                          onTap: () => bloc.buttonPressed('000', context)),
+                    ],
+                  ),
+                ),
+                SizedBox(height: SizeConfig.padding),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      AppButton(
+                          height: double.infinity,
+                          width: SizeConfig.padding * 7,
+                          title: 'دفع',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.GREEN_COLOR,
+                          backgroundColor: AppColors.GREEN_COLOR,
+                          onTap: () => bloc.buttonPressed('دفع', context)),
+                      AppButton(
+                          height: double.infinity,
+                          width: SizeConfig.padding * 7,
+                          title: 'مسح',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.YELLOW_COLOR,
+                          backgroundColor: AppColors.YELLOW_COLOR,
+                          onTap: () => bloc.buttonPressed('مسح', context)),
+                      AppButton(
+                          height: double.infinity,
+                          width: SizeConfig.padding * 7,
+                          title: 'الغاء',
+                          style: AppFontStyle.bahijSansArabic(
+                              fontSize: SizeConfig.titleFontSize,
+                              fontColor: AppColors.whiteColor),
+                          borderColor: AppColors.RED_COLOR,
+                          backgroundColor: AppColors.RED_COLOR,
+                          onTap: () => bloc.buttonPressed('الغاء', context)),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],

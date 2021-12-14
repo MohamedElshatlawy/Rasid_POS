@@ -78,9 +78,11 @@ class _PayViewState extends BaseState<PayView> {
             },
             child: Container(
                 width: double.infinity,
+                margin: EdgeInsets.all(SizeConfig.padding),
                 height: 114,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius:
+                        BorderRadius.circular(SizeConfig.borderRaduis * 2),
                     color: AppColors.DARK_GRAY_COLOR),
                 child: AppImage(
                     path: AppAssets.payButtom, boxFit: BoxFit.scaleDown)),
