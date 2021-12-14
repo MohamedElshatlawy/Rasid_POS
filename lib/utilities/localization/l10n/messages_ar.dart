@@ -53,9 +53,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("مسح"),
         "back": MessageLookupByLibrary.simpleMessage("رجوع"),
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
-        "operationNum": MessageLookupByLibrary.simpleMessage("رقم العملية"),
-        "operationval": MessageLookupByLibrary.simpleMessage("قيمة العملية"),
-        "operationStatus": MessageLookupByLibrary.simpleMessage("حاله العملية"),
+        "operationNum": MessageLookupByLibrary.simpleMessage("رقم المعاملات"),
+        "operationval": MessageLookupByLibrary.simpleMessage("قيمة المعاملات"),
+        "operationStatus":
+            MessageLookupByLibrary.simpleMessage("حاله المعاملات"),
         "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقه الدفع"),
         "lastfourNumOfCard":
             MessageLookupByLibrary.simpleMessage("اخر اربع ارقام من البطاقه"),
