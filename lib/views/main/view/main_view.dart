@@ -71,11 +71,12 @@ class _MainViewState extends BaseState<MainView> {
               children: [
                 Expanded(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AppButton(
                           width: SizeConfig.padding * 7,
                           height: double.infinity,
+                          radius: 2,
                           title: '1',
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
@@ -83,20 +84,24 @@ class _MainViewState extends BaseState<MainView> {
                           borderColor: AppColors.DARK_GRAY_COLOR,
                           backgroundColor: AppColors.DARK_GRAY_COLOR,
                           onTap: () => bloc.buttonPressed('1', context)),
+                      SizedBox(width: SizeConfig.padding * 0.3),
                       AppButton(
                           width: SizeConfig.padding * 7,
                           height: double.infinity,
                           title: '2',
+                          radius: 2,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
                               fontColor: AppColors.whiteColor),
                           borderColor: AppColors.DARK_GRAY_COLOR,
                           backgroundColor: AppColors.DARK_GRAY_COLOR,
                           onTap: () => bloc.buttonPressed('2', context)),
+                      SizedBox(width: SizeConfig.padding * 0.3),
                       AppButton(
                           height: double.infinity,
                           width: SizeConfig.padding * 7,
                           title: '3',
+                          radius: 2,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
                               fontColor: AppColors.whiteColor),
@@ -106,35 +111,40 @@ class _MainViewState extends BaseState<MainView> {
                     ],
                   ),
                 ),
-                SizedBox(height: SizeConfig.padding),
+                SizedBox(height: SizeConfig.padding * 0.3),
                 Expanded(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AppButton(
                           height: double.infinity,
                           width: SizeConfig.padding * 7,
                           title: '4',
+                          radius: 2,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
                               fontColor: AppColors.whiteColor),
                           borderColor: AppColors.DARK_GRAY_COLOR,
                           backgroundColor: AppColors.DARK_GRAY_COLOR,
                           onTap: () => bloc.buttonPressed('4', context)),
+                      SizedBox(width: SizeConfig.padding * 0.3),
                       AppButton(
                           height: double.infinity,
                           width: SizeConfig.padding * 7,
                           title: '5',
+                          radius: 2,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
                               fontColor: AppColors.whiteColor),
                           borderColor: AppColors.DARK_GRAY_COLOR,
                           backgroundColor: AppColors.DARK_GRAY_COLOR,
                           onTap: () => bloc.buttonPressed('5', context)),
+                      SizedBox(width: SizeConfig.padding * 0.3),
                       AppButton(
                           height: double.infinity,
                           width: SizeConfig.padding * 7,
                           title: '6',
+                          radius: 2,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
                               fontColor: AppColors.whiteColor),
@@ -144,35 +154,40 @@ class _MainViewState extends BaseState<MainView> {
                     ],
                   ),
                 ),
-                SizedBox(height: SizeConfig.padding),
+                SizedBox(height: SizeConfig.padding * 0.3),
                 Expanded(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AppButton(
                           height: double.infinity,
                           width: SizeConfig.padding * 7,
                           title: '7',
+                          radius: 2,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
                               fontColor: AppColors.whiteColor),
                           borderColor: AppColors.DARK_GRAY_COLOR,
                           backgroundColor: AppColors.DARK_GRAY_COLOR,
                           onTap: () => bloc.buttonPressed('7', context)),
+                      SizedBox(width: SizeConfig.padding * 0.3),
                       AppButton(
                           height: double.infinity,
                           width: SizeConfig.padding * 7,
                           title: '8',
+                          radius: 2,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
                               fontColor: AppColors.whiteColor),
                           borderColor: AppColors.DARK_GRAY_COLOR,
                           backgroundColor: AppColors.DARK_GRAY_COLOR,
                           onTap: () => bloc.buttonPressed('8', context)),
+                      SizedBox(width: SizeConfig.padding * 0.3),
                       AppButton(
                           height: double.infinity,
                           width: SizeConfig.padding * 7,
                           title: '9',
+                          radius: 2,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
                               fontColor: AppColors.whiteColor),
@@ -182,35 +197,40 @@ class _MainViewState extends BaseState<MainView> {
                     ],
                   ),
                 ),
-                SizedBox(height: SizeConfig.padding),
+                SizedBox(height: SizeConfig.padding * 0.3),
                 Expanded(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AppButton(
-                          height: double.infinity,
                           width: SizeConfig.padding * 7,
+                          height: double.infinity,
                           title: '0',
+                          radius: 2,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
                               fontColor: AppColors.whiteColor),
                           borderColor: AppColors.DARK_GRAY_COLOR,
                           backgroundColor: AppColors.DARK_GRAY_COLOR,
                           onTap: () => bloc.buttonPressed('0', context)),
+                      SizedBox(width: SizeConfig.padding * 0.3),
                       AppButton(
-                          height: double.infinity,
                           width: SizeConfig.padding * 7,
+                          height: double.infinity,
                           title: '00',
+                          radius: 2,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
                               fontColor: AppColors.whiteColor),
                           borderColor: AppColors.DARK_GRAY_COLOR,
                           backgroundColor: AppColors.DARK_GRAY_COLOR,
                           onTap: () => bloc.buttonPressed('00', context)),
+                      SizedBox(width: SizeConfig.padding * 0.3),
                       AppButton(
                           height: double.infinity,
                           width: SizeConfig.padding * 7,
                           title: '000',
+                          radius: 2,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
                               fontColor: AppColors.whiteColor),
@@ -220,35 +240,40 @@ class _MainViewState extends BaseState<MainView> {
                     ],
                   ),
                 ),
-                SizedBox(height: SizeConfig.padding),
+                SizedBox(height: SizeConfig.padding * 0.3),
                 Expanded(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AppButton(
-                          height: double.infinity,
                           width: SizeConfig.padding * 7,
+                          height: double.infinity,
                           title: 'دفع',
+                          radius: 2,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
                               fontColor: AppColors.whiteColor),
                           borderColor: AppColors.GREEN_COLOR,
                           backgroundColor: AppColors.GREEN_COLOR,
                           onTap: () => bloc.buttonPressed('دفع', context)),
+                      SizedBox(width: SizeConfig.padding * 0.3),
                       AppButton(
-                          height: double.infinity,
                           width: SizeConfig.padding * 7,
+                          height: double.infinity,
                           title: 'مسح',
+                          radius: 2,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
                               fontColor: AppColors.whiteColor),
                           borderColor: AppColors.YELLOW_COLOR,
                           backgroundColor: AppColors.YELLOW_COLOR,
                           onTap: () => bloc.buttonPressed('مسح', context)),
+                      SizedBox(width: SizeConfig.padding * 0.3),
                       AppButton(
                           height: double.infinity,
                           width: SizeConfig.padding * 7,
                           title: 'الغاء',
+                          radius: 2,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.titleFontSize,
                               fontColor: AppColors.whiteColor),
@@ -258,6 +283,16 @@ class _MainViewState extends BaseState<MainView> {
                     ],
                   ),
                 ),
+                SizedBox(height: SizeConfig.padding * 0.5),
+                AppButton(
+                    width: double.infinity,
+                    title: AppLocalizations.of(context).back,
+                    style: AppFontStyle.bahijSansArabic(
+                        fontSize: SizeConfig.titleFontSize,
+                        fontColor: AppColors.whiteColor),
+                    borderColor: AppColors.PINK_COLOR,
+                    backgroundColor: AppColors.PINK_COLOR,
+                    onTap: () => Navigator.pop(context)),
               ],
             ),
           ),
@@ -271,19 +306,19 @@ class _MainViewState extends BaseState<MainView> {
     return AppColors.BLACK_COLOR;
   }
 
-  @override
-  Widget? getBottomNavigationBar() {
-    return Padding(
-      padding: EdgeInsets.all(SizeConfig.padding),
-      child: AppButton(
-          width: double.infinity,
-          title: AppLocalizations.of(context).back,
-          style: AppFontStyle.bahijSansArabic(
-              fontSize: SizeConfig.titleFontSize,
-              fontColor: AppColors.whiteColor),
-          borderColor: AppColors.PINK_COLOR,
-          backgroundColor: AppColors.PINK_COLOR,
-          onTap: () => Navigator.pop(context)),
-    );
-  }
+  // @override
+  // Widget? getBottomNavigationBar() {
+  //   return Padding(
+  //     padding: EdgeInsets.all(SizeConfig.padding),
+  //     child: AppButton(
+  //         width: double.infinity,
+  //         title: AppLocalizations.of(context).back,
+  //         style: AppFontStyle.bahijSansArabic(
+  //             fontSize: SizeConfig.titleFontSize,
+  //             fontColor: AppColors.whiteColor),
+  //         borderColor: AppColors.PINK_COLOR,
+  //         backgroundColor: AppColors.PINK_COLOR,
+  //         onTap: () => Navigator.pop(context)),
+  //   );
+  // }
 }
