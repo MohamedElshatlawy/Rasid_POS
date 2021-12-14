@@ -74,7 +74,10 @@ class _PinCodeViewState extends BaseState<PinCodeView> {
               title: AppLocalizations.of(context).confirm,
               borderColor: AppColors.PINK_COLOR,
               backgroundColor: AppColors.PINK_COLOR,
-              onTap: () {}),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ChangePasswordView()))),
           SizedBox(height: SizeConfig.padding),
           AppButton(
               width: double.infinity,

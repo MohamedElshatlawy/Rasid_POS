@@ -20,13 +20,8 @@ class _ContactUsViewState extends BaseState<ContactUsView> {
   @override
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage(AppAssets.chaserLogin), fit: BoxFit.cover)),
-      padding: EdgeInsets.all(SizeConfig.padding),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: SizeConfig.padding),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,6 +70,12 @@ class _ContactUsViewState extends BaseState<ContactUsView> {
         ],
       ),
     );
+  }
+
+  @override
+  String getScaffoldBackgroundImage() {
+    // TODO: implement getScaffoldBackgroundImage
+    return AppAssets.chaserLogin;
   }
 
   @override
