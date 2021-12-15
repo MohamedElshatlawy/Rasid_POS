@@ -19,9 +19,8 @@ class _PayViewState extends BaseState<PayView> {
   @override
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
-    return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(
-          horizontal: SizeConfig.padding, vertical: SizeConfig.extraPadding),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: SizeConfig.padding),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -162,6 +161,22 @@ class _PayViewState extends BaseState<PayView> {
                 ),
               ),
             ));
+  }
+
+  @override
+  Widget? getBottomNavigationBar() {
+    return Padding(
+      padding: EdgeInsets.all(SizeConfig.padding),
+      child: AppButton(
+          width: double.infinity,
+          title: AppLocalizations.of(context).back,
+          style: AppFontStyle.bahijSansArabic(
+              fontSize: SizeConfig.textFontSize,
+              fontColor: AppColors.whiteColor),
+          borderColor: AppColors.PINK_COLOR,
+          backgroundColor: AppColors.PINK_COLOR,
+          onTap: () => Navigator.pop(context)),
+    );
   }
 
   @override
