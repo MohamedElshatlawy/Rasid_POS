@@ -8,10 +8,10 @@ import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
+import 'package:rasid_jack/views/buy/view/buy_view.dart';
 import 'package:rasid_jack/views/buy_with_cash/view/buy_view.dart';
 import 'package:rasid_jack/views/commissions/view/commission_view.dart';
 import 'package:rasid_jack/views/contactUs/view/contact_us_view.dart';
-import 'package:rasid_jack/views/main/view/main_view.dart';
 import 'package:rasid_jack/views/transactions/view/transactions_view.dart';
 
 class HomeView extends BaseStatefulWidget {
@@ -56,7 +56,7 @@ class _HomeViewState extends BaseState<HomeView> {
                     ),
                     press: () {
                       Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => MainView()));
+                          MaterialPageRoute(builder: (context) => BuyView()));
                     },
                   ),
                   CustomListTile(

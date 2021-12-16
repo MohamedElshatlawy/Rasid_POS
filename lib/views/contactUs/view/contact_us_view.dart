@@ -30,102 +30,108 @@ class _FirstContactUsViewState extends BaseState<FirstContactUsView> {
     // TODO: implement getBody
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: SizeConfig.padding * 3),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              AppText(
-                  label: AppLocalizations.of(context).contactUs,
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor)),
-              SizedBox(width: SizeConfig.padding),
-              AppImage(path: AppAssets.contactUsImage, boxFit: BoxFit.fill)
-            ],
-          ),
-          AppText(
-              label: AppLocalizations.of(context).userData,
-              style: AppFontStyle.bahijSansArabic(
-                  fontSize: SizeConfig.titleFontSize,
-                  fontColor: AppColors.whiteColor)),
-          AppTextFormFieldItem(
-              label: AppText(
-                  label: AppLocalizations.of(context).userName,
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor)),
-              title: '',
-              formFieldItemType: AppFormFieldItemType.PHONE,
-              subject: BehaviorSubject(),
-              textInputType: TextInputType.phone,
-              labelFontColor: AppColors.whiteColor,
-              borderColor: AppColors.greyColor,
-              focusedBorderColor: AppColors.whiteColor,
-              fontColor: AppColors.whiteColor,
-              iconColor: Colors.transparent,
-              focusedIconColor: Colors.transparent),
-          AppTextFormFieldItem(
-              label: AppText(
-                  label: AppLocalizations.of(context).hobby,
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor)),
-              title: '',
-              formFieldItemType: AppFormFieldItemType.PHONE,
-              subject: BehaviorSubject(),
-              textInputType: TextInputType.phone,
-              labelFontColor: AppColors.whiteColor,
-              borderColor: AppColors.greyColor,
-              focusedBorderColor: AppColors.whiteColor,
-              fontColor: AppColors.whiteColor,
-              iconColor: Colors.transparent,
-              focusedIconColor: Colors.transparent),
-          Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: AppColors.greyColor, width: 3),
-                borderRadius: BorderRadius.circular(10)),
-            child: StreamBuilder(
-                stream: bloc.dropdownValuesStream,
-                builder: (context, AsyncSnapshot snapshot) {
-                  print("object${snapshot.data}");
-                  return AppDropdown(
-                      iconColor: AppColors.WHITH_COLOR,
-                      titleKey: bloc.initalVal.toString(),
-                      style: AppFontStyle.bahijSansArabic(
-                          fontSize: SizeConfig.textFontSize,
-                          fontColor: AppColors.whiteColor),
-                      hint: AppLocalizations.of(context).contactUs,
-                      items: snapshot.data ?? [],
-                      onChange: (val) {
-                        bloc.selectedITem(val['item']);
-                      },
-                      validator: (dynamic valid) {});
-                }),
-          ),
-          AppTextFormFieldItem(
-              maxLines: 3,
-              label: AppText(
-                  label: AppLocalizations.of(context).sendInquiry,
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.titleFontSize,
-                      fontColor: AppColors.whiteColor)),
-              title: '',
-              formFieldItemType: AppFormFieldItemType.MULTI_TEXT,
-              subject: BehaviorSubject(),
-              textInputType: TextInputType.phone,
-              labelFontColor: AppColors.whiteColor,
-              borderColor: AppColors.greyColor,
-              focusedBorderColor: AppColors.whiteColor,
-              fontColor: AppColors.whiteColor,
-              iconColor: Colors.transparent,
-              focusedIconColor: Colors.transparent),
-          SizedBox(height: SizeConfig.padding * 5),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: SizeConfig.padding * 3),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                AppText(
+                    label: AppLocalizations.of(context).contactUs,
+                    style: AppFontStyle.bahijSansArabic(
+                        fontSize: SizeConfig.titleFontSize,
+                        fontColor: AppColors.whiteColor)),
+                SizedBox(width: SizeConfig.padding),
+                AppImage(path: AppAssets.contactUsImage, boxFit: BoxFit.fill)
+              ],
+            ),
+            AppText(
+                label: AppLocalizations.of(context).userData,
+                style: AppFontStyle.bahijSansArabic(
+                    fontSize: SizeConfig.titleFontSize,
+                    fontColor: AppColors.whiteColor)),
+            SizedBox(height: SizeConfig.padding),
+            AppTextFormFieldItem(
+                label: AppText(
+                    label: AppLocalizations.of(context).userName,
+                    style: AppFontStyle.bahijSansArabic(
+                        fontSize: SizeConfig.titleFontSize,
+                        fontColor: AppColors.whiteColor)),
+                title: '',
+                formFieldItemType: AppFormFieldItemType.PHONE,
+                subject: BehaviorSubject(),
+                textInputType: TextInputType.phone,
+                labelFontColor: AppColors.whiteColor,
+                borderColor: AppColors.greyColor,
+                focusedBorderColor: AppColors.whiteColor,
+                fontColor: AppColors.whiteColor,
+                iconColor: Colors.transparent,
+                focusedIconColor: Colors.transparent),
+            SizedBox(height: SizeConfig.padding * 2),
+            AppTextFormFieldItem(
+                label: AppText(
+                    label: AppLocalizations.of(context).hobby,
+                    style: AppFontStyle.bahijSansArabic(
+                        fontSize: SizeConfig.titleFontSize,
+                        fontColor: AppColors.whiteColor)),
+                title: '',
+                formFieldItemType: AppFormFieldItemType.PHONE,
+                subject: BehaviorSubject(),
+                textInputType: TextInputType.phone,
+                labelFontColor: AppColors.whiteColor,
+                borderColor: AppColors.greyColor,
+                focusedBorderColor: AppColors.whiteColor,
+                fontColor: AppColors.whiteColor,
+                iconColor: Colors.transparent,
+                focusedIconColor: Colors.transparent),
+            SizedBox(height: SizeConfig.padding),
+            Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.greyColor, width: 3),
+                  borderRadius: BorderRadius.circular(10)),
+              child: StreamBuilder(
+                  stream: bloc.dropdownValuesStream,
+                  builder: (context, AsyncSnapshot snapshot) {
+                    print("object${snapshot.data}");
+                    return AppDropdown(
+                        iconColor: AppColors.WHITH_COLOR,
+                        titleKey: bloc.initalVal.toString(),
+                        style: AppFontStyle.bahijSansArabic(
+                            fontSize: SizeConfig.textFontSize,
+                            fontColor: AppColors.whiteColor),
+                        hint: AppLocalizations.of(context).contactUs,
+                        items: snapshot.data ?? [],
+                        onChange: (val) {
+                          bloc.selectedITem(val['item']);
+                        },
+                        validator: (dynamic valid) {});
+                  }),
+            ),
+            SizedBox(height: SizeConfig.padding * 2),
+            AppTextFormFieldItem(
+                maxLines: 3,
+                label: AppText(
+                    label: AppLocalizations.of(context).sendInquiry,
+                    style: AppFontStyle.bahijSansArabic(
+                        fontSize: SizeConfig.titleFontSize,
+                        fontColor: AppColors.whiteColor)),
+                title: '',
+                formFieldItemType: AppFormFieldItemType.MULTI_TEXT,
+                subject: BehaviorSubject(),
+                textInputType: TextInputType.phone,
+                labelFontColor: AppColors.whiteColor,
+                borderColor: AppColors.greyColor,
+                focusedBorderColor: AppColors.whiteColor,
+                fontColor: AppColors.whiteColor,
+                iconColor: Colors.transparent,
+                focusedIconColor: Colors.transparent),
+            SizedBox(height: SizeConfig.padding * 5),
+          ],
+        ),
       ),
     );
   }
