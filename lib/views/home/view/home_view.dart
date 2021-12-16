@@ -10,7 +10,7 @@ import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/views/buy_with_cash/view/buy_view.dart';
 import 'package:rasid_jack/views/commissions/view/commission_view.dart';
-import 'package:rasid_jack/views/contactUs/view/first_contact_us_view.dart';
+import 'package:rasid_jack/views/contactUs/view/contact_us_view.dart';
 import 'package:rasid_jack/views/main/view/main_view.dart';
 import 'package:rasid_jack/views/transactions/view/transactions_view.dart';
 
