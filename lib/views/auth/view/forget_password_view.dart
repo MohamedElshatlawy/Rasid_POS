@@ -84,8 +84,8 @@ class _ForgetPasswordViewState extends BaseState<ForgetPasswordView> {
           //                   fontColor: AppColors.greyColor));
           //     }),
           SizedBox(height: SizeConfig.padding),
-          TimerText(timerBloc: timerBloc),
-          SizedBox(height: SizeConfig.padding * 2),
+          // TimerText(timerBloc: timerBloc),
+          // SizedBox(height: SizeConfig.padding * 2),
           AppButton(
               width: double.infinity,
               style: AppFontStyle.bahijSansArabic(

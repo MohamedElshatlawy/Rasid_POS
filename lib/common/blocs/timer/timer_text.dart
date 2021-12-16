@@ -18,39 +18,44 @@ class TimerText extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        AppText(
-          label: AppLocalizations.of(context).requestNewCodeMessage,
-          style: AppFontStyle.bahijSansArabic(
-              fontSize: SizeConfig.textFontSize,
-              fontColor: AppColors.greyColor),
-        ),
-        Padding(
-            padding: const EdgeInsets.only(left: 5.0, right: 5),
-            child: StreamBuilder<int>(
-                stream: timerBloc.timerStream,
-                builder: (context, AsyncSnapshot<int> snapshot) {
-                  if (snapshot.hasData) {
-                    return AppText(
-                      label: Utilities.formattedTime(snapshot.data ?? 120),
-                      style: AppFontStyle.bahijSansArabic(
-                          fontSize: SizeConfig.textFontSize,
-                          fontColor: AppColors.accentColor),
-                    );
-                  } else {
-                    return AppText(
-                      label: '01:59',
-                      style: AppFontStyle.bahijSansArabic(
-                          fontSize: SizeConfig.textFontSize,
-                          fontColor: AppColors.accentColor),
-                    );
-                  }
-                })),
         StreamBuilder<bool>(
             stream: timerBloc.timerStoppedSubject.stream,
             builder: (context, AsyncSnapshot<bool> snapshot) {
               print(snapshot.data);
               if (snapshot.data == null || snapshot.data == false) {
-                return SizedBox();
+                return Row(
+                  children: [
+                    AppText(
+                      label: AppLocalizations.of(context).requestNewCodeMessage,
+                      style: AppFontStyle.bahijSansArabic(
+                          fontSize: SizeConfig.textFontSize,
+                          fontColor: AppColors.greyColor),
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(left: 5.0, right: 5),
+                        child: StreamBuilder<int>(
+                            stream: timerBloc.timerStream,
+                            builder: (context, AsyncSnapshot<int> snapshot) {
+                              if (snapshot.hasData) {
+                                print('Endddddd');
+                                return AppText(
+                                  label: Utilities.formattedTime(
+                                      snapshot.data ?? 120),
+                                  style: AppFontStyle.bahijSansArabic(
+                                      fontSize: SizeConfig.textFontSize,
+                                      fontColor: AppColors.accentColor),
+                                );
+                              } else {
+                                return AppText(
+                                  label: '01:59',
+                                  style: AppFontStyle.bahijSansArabic(
+                                      fontSize: SizeConfig.textFontSize,
+                                      fontColor: AppColors.accentColor),
+                                );
+                              }
+                            })),
+                  ],
+                );
               } else {
                 return AppButton(
                     title: AppLocalizations.of(context).requestNewCode,

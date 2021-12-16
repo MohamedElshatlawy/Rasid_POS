@@ -13,4 +13,6 @@ class AppAssets {
   static const String logo = 'assets/icon/logo.png';
   static const String eye = 'assets/icon/eye.png';
   static const String mainPic = 'assets/images/mainPic.jpg';
+  static const String CONTACT_US1 = 'assets/icon/contact_us1.png';
+  static const String DROPDOWN = 'assets/icon/dropdown.png';
 }

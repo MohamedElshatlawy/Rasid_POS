@@ -123,6 +123,9 @@ class AppLocalizations {
   String get sendInquiry => Intl.message('sendInquiry', name: 'sendInquiry');
   String get hobby => Intl.message('userDaHobbyta', name: 'Hobby');
   String get send => Intl.message('send', name: 'send');
+  String get select => Intl.message("إختر", name: "select");
+  String get yourMessage => Intl.message("رسالتك", name: "yourMessage");
+  String get messageType => Intl.message('نوع الرسالة', name: 'messageType');
 }
 
 class SpecificLocalizationDelegate

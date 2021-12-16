@@ -11,7 +11,7 @@ import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/views/buy/view/buy_view.dart';
 import 'package:rasid_jack/views/buy_with_cash/view/buy_view.dart';
 import 'package:rasid_jack/views/commissions/view/commission_view.dart';
-import 'package:rasid_jack/views/contactUs/view/contact_us_view.dart';
+import 'package:rasid_jack/views/contact_us/view/contact_us_view.dart';
 import 'package:rasid_jack/views/transactions/view/transactions_view.dart';
 
 class HomeView extends BaseStatefulWidget {
@@ -116,7 +116,7 @@ class _HomeViewState extends BaseState<HomeView> {
                             fontColor: AppColors.whiteColor)),
                     press: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => FirstContactUsView()));
+                          builder: (context) => ContactUsView()));
                     },
                   ),
                 ]),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
+import 'package:rasid_jack/common/blocs/timer/timer_bloc.dart';
+import 'package:rasid_jack/common/blocs/timer/timer_text.dart';
 import 'package:rasid_jack/common/widgets/app_button.dart';
 import 'package:rasid_jack/common/widgets/app_image.dart';
 import 'package:rasid_jack/common/widgets/app_otp_text_field.dart';
@@ -17,6 +19,14 @@ class PinCodeView extends BaseStatefulWidget {
 }
 
 class _PinCodeViewState extends BaseState<PinCodeView> {
+  TimerBloc timerBloc = TimerBloc();
+  @override
+  void initState() {
+    // TODO: implement initState
+    timerBloc.incrementTimer(30);
+    super.initState();
+  }
+
   @override
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
@@ -66,6 +76,8 @@ class _PinCodeViewState extends BaseState<PinCodeView> {
             fieldLength: 1,
           ),
           SizedBox(height: SizeConfig.padding * 2),
+          TimerText(timerBloc: timerBloc),
+          SizedBox(height: SizeConfig.padding * 2),
           AppButton(
               width: double.infinity,
               style: AppFontStyle.bahijSansArabic(
@@ -88,7 +100,7 @@ class _PinCodeViewState extends BaseState<PinCodeView> {
               borderColor: AppColors.transparentColor,
               backgroundColor: AppColors.transparentColor,
               onTap: () => Navigator.pop(context)),
-          SizedBox(height: SizeConfig.extraPadding),
+          SizedBox(height: SizeConfig.padding * 7),
         ],
       ),
     );
