@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rasid.rasid_jack"
+    package="com.rasid.rasid_jack.pos"
     android:versionCode="1"
     android:versionName="1.0.0" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="19"
         android:targetSdkVersion="30" />
     <!--
          Flutter needs it to communicate with the running application
@@ -17,10 +17,10 @@
     <application
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
-        android:icon="@mipmap/launcher_icon"
+        android:icon="@mipmap/ic_launcher"
         android:label="rasid_jack" >
         <activity
-            android:name="com.rasid.rasid_jack.MainActivity"
+            android:name="com.rasid.rasid_jack.pos.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:launchMode="singleTop"

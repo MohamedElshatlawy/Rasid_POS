@@ -4,7 +4,7 @@
     "type": "PACKAGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.rasid.rasid_jack",
+  "applicationId": "com.rasid.rasid_jack.pos",
   "variantName": "debug",
   "elements": [
     {

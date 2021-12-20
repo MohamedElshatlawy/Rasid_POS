@@ -126,7 +126,9 @@ class _CommissionViewState extends BaseState<CommissionView> {
                 errorMessage: '',
                 okButtonTitle: '',
                 cancelButtonTitle: AppLocalizations.of(context).back,
-                content: PopUpContent(bloc: bloc)),
+                content: PopUpContent(
+                  bloc: bloc,
+                )),
           ),
           SizedBox(height: SizeConfig.padding),
           AppButton(
