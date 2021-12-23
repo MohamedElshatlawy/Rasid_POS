@@ -10,8 +10,11 @@ import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
+import 'package:rasid_jack/utilities/utilities.dart';
 import 'package:rasid_jack/views/commissions/bloc.dart/commission_bloc.dart';
+import 'package:rasid_jack/views/commissions/view/commission_dialog.dart';
 import 'package:rasid_jack/views/commissions/view/popup_content.dart';
+
 // import 'package:rasid_jack/common/widgets/custom_drawer.dart';
 import 'package:rxdart/subjects.dart';
 
@@ -75,32 +78,6 @@ class _CommissionViewState extends BaseState<CommissionView> {
     );
   }
 
-  Future<void> showAppDialog(
-      {required String title,
-      required String errorMessage,
-      required String okButtonTitle,
-      String? cancelButtonTitle,
-      Widget? content}) async {
-    return showDialog(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-              backgroundColor: Colors.transparent,
-              actions: [
-                AppButton(
-                  width: double.infinity,
-                  style: AppFontStyle.bahijSansArabic(
-                      fontSize: SizeConfig.textFontSize,
-                      fontColor: AppColors.whiteColor),
-                  title: cancelButtonTitle.toString(),
-                  borderColor: AppColors.PINK_COLOR,
-                  backgroundColor: AppColors.PINK_COLOR,
-                  onTap: () => Navigator.pop(context),
-                )
-              ],
-              content: content!,
-            ));
-  }
-
   @override
   Color getScaffoldBackgroundColor() {
     return AppColors.BLACK_COLOR;
@@ -114,22 +91,23 @@ class _CommissionViewState extends BaseState<CommissionView> {
         mainAxisSize: MainAxisSize.min,
         children: [
           AppButton(
-            width: double.infinity,
-            style: AppFontStyle.bahijSansArabic(
-                fontSize: SizeConfig.titleFontSize,
-                fontColor: AppColors.whiteColor),
-            title: AppLocalizations.of(context).withdrawingCommissions,
-            borderColor: AppColors.WHITH_COLOR,
-            backgroundColor: AppColors.BUTTON_COLOR,
-            onTap: () => showAppDialog(
-                title: '',
-                errorMessage: '',
-                okButtonTitle: '',
-                cancelButtonTitle: AppLocalizations.of(context).back,
-                content: PopUpContent(
-                  bloc: bloc,
-                )),
-          ),
+              width: double.infinity,
+              style: AppFontStyle.bahijSansArabic(
+                  fontSize: SizeConfig.titleFontSize,
+                  fontColor: AppColors.whiteColor),
+              title: AppLocalizations.of(context).withdrawingCommissions,
+              borderColor: AppColors.WHITH_COLOR,
+              backgroundColor: AppColors.BUTTON_COLOR,
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => CommissionDialog(
+                        title: '',
+                        errorMessage: '',
+                        okButtonTitle: '',
+                        cancelButtonTitle: AppLocalizations.of(context).back,
+                        content: PopUpContent(
+                          bloc: bloc,
+                        ),
+                      )))),
           SizedBox(height: SizeConfig.padding),
           AppButton(
               width: double.infinity,

@@ -24,7 +24,7 @@ class PopUpContent extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           color: AppColors.DARK_GRAY_COLOR),
       child: Column(
-        // mainAxisSize: MainAxisSize.min,
+         mainAxisSize: MainAxisSize.min,
         children: [
           AppTextFormFieldItem(
               title: AppLocalizations.of(context).name,
