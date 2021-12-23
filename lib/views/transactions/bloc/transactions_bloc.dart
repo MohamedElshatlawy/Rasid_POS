@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rasid_jack/base/bloc_provider.dart';
+import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rxdart/rxdart.dart';
 
 class TransiactionBloc extends BlocBase {
@@ -17,6 +18,17 @@ class TransiactionBloc extends BlocBase {
   }
   Future<void> firstSelectDate(context) async {
     final DateTime? picked = await showDatePicker(
+        builder: (BuildContext? context, Widget? child) {
+          return Theme(
+            data: ThemeData(
+              colorScheme: ColorScheme.light(
+                primary: AppColors.PINK_COLOR,
+              ),
+              dialogBackgroundColor: Colors.white,
+            ),
+            child: child ?? Text(""),
+          );
+        },
         context: context,
         initialDate: firstSelectedDate,
         firstDate: DateTime(DateTime.now().year),
@@ -28,6 +40,17 @@ class TransiactionBloc extends BlocBase {
 
   Future<void> endSelectDate(context) async {
     final DateTime? picked = await showDatePicker(
+        builder: (BuildContext? context, Widget? child) {
+          return Theme(
+            data: ThemeData(
+              colorScheme: ColorScheme.light(
+                primary: AppColors.PINK_COLOR,
+              ),
+              dialogBackgroundColor: Colors.white,
+            ),
+            child: child ?? Text(""),
+          );
+        },
         context: context,
         initialDate: endSelectedDate,
         firstDate: DateTime(DateTime.now().year),
