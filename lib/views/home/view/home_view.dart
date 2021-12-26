@@ -8,6 +8,7 @@ import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
+import 'package:rasid_jack/views/account_management/view/account_management_view.dart';
 import 'package:rasid_jack/views/buy/view/buy_view.dart';
 import 'package:rasid_jack/views/buy_with_cash/view/buy_view.dart';
 import 'package:rasid_jack/views/commissions/view/commission_view.dart';
@@ -102,6 +103,21 @@ class _HomeViewState extends BaseState<HomeView> {
                     press: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => CommissionView()));
+                    },
+                  ),
+                  CustomListTile(
+                    leading: AppImage(
+                      path: AppAssets.ACCOUNT_MANAGEMENT,
+                      height: SizeConfig.iconSize,
+                    ),
+                    title: AppText(
+                        label: AppLocalizations.of(context).accountManagement,
+                        style: AppFontStyle.bahijSansArabic(
+                            fontSize: SizeConfig.titleFontSize,
+                            fontColor: AppColors.whiteColor)),
+                    press: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => AccountManagementView()));
                     },
                   ),
                   CustomListTile(

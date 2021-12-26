@@ -126,6 +126,11 @@ class AppLocalizations {
   String get select => Intl.message("إختر", name: "select");
   String get yourMessage => Intl.message("رسالتك", name: "yourMessage");
   String get messageType => Intl.message('نوع الرسالة', name: 'messageType');
+  String get accountManagement =>
+      Intl.message("إدارة حسابك", name: "accountManagement");
+  String get changeLanguage =>
+      Intl.message("تغيير اللغة", name: "changeLanguage");
+  String get change => Intl.message('تغيير', name: 'change');
 }
 
 class SpecificLocalizationDelegate

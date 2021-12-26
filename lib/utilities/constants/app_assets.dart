@@ -15,4 +15,7 @@ class AppAssets {
   static const String mainPic = 'assets/images/mainPic.jpg';
   static const String CONTACT_US1 = 'assets/icon/contact_us1.png';
   static const String DROPDOWN = 'assets/icon/dropdown.png';
+  static const String ACCOUNT_MANAGEMENT =
+      'assets/images/account_management.png';
+  static const String OPERATIONS = 'assets/images/operations.png';
 }

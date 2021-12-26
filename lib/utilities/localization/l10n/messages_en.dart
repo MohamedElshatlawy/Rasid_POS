@@ -119,5 +119,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "select": MessageLookupByLibrary.simpleMessage("Select"),
         "yourMessage": MessageLookupByLibrary.simpleMessage("Your Message"),
         "messageType": MessageLookupByLibrary.simpleMessage("Message Type"),
+        "accountManagement":
+            MessageLookupByLibrary.simpleMessage("Account Management"),
+        "changeLanguage":
+            MessageLookupByLibrary.simpleMessage("Change language"),
+        "change": MessageLookupByLibrary.simpleMessage("Change"),
       };
 }

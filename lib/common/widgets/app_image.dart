@@ -15,7 +15,7 @@ class AppImage extends StatelessWidget {
     this.height,
     this.width,
     this.isCircular = false,
-    this.boxFit=BoxFit.contain,
+    this.boxFit = BoxFit.contain,
     Key? key,
     this.onPressed,
   }) : super(key: key);
@@ -67,13 +67,13 @@ class AppImage extends StatelessWidget {
     return Image.asset(
       path,
       scale: 1.1,
-      fit:boxFit,
+      fit: boxFit,
       width: width,
       height: height,
       errorBuilder:
           (BuildContext? context, Object? object, StackTrace? stackTrace) {
         return Image.asset(
-          AppAssets.logo,
+          AppAssets.LOGO,
         );
       },
     );

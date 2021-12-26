@@ -29,4 +29,5 @@ class AppColors {
   static const Color primaryColor = Color(0xff882a8a);
   static const Color whiteColor = Color(0xffffffff);
   static const Color medGreyLightColor = Color(0xfffdfcfc);
+  static const Color LIST_ITEM_COLOR = Color(0xff474747);
 }

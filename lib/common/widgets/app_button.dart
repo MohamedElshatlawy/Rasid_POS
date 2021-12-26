@@ -5,7 +5,7 @@ import 'package:rasid_jack/utilities/size_config.dart';
 
 import 'app_text.dart';
 
-enum AppButtonAlign { START, CENTER, END, DEFAULT }
+enum AppButtonAlign { START, CENTER, END, DEFAULT, EXPANDED }
 
 class AppButton extends StatelessWidget {
   final String title;
@@ -42,7 +42,7 @@ class AppButton extends StatelessWidget {
         style: OutlinedButton.styleFrom(
           padding: EdgeInsets.zero,
           backgroundColor: backgroundColor,
-          primary: AppColors.whiteColor,
+          primary: AppColors.PRIMARY_COLOR,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
                   Radius.circular(radius ?? SizeConfig.btnRadius))),
@@ -94,6 +94,18 @@ class AppButton extends StatelessWidget {
               if (icon != null) icon!,
             ],
           );
+        case AppButtonAlign.EXPANDED:
+          // TODO: Handle this case.
+          return Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(width: SizeConfig.padding),
+              Expanded(child: _title()),
+              if (icon != null) icon!,
+              SizedBox(width: SizeConfig.padding)
+            ],
+          );
         case AppButtonAlign.DEFAULT:
           // TODO: Handle this case.
           return Row(
@@ -123,7 +135,7 @@ class AppButton extends StatelessWidget {
     return AppText(
       label: title,
       style: style ??
-          AppFontStyle.bahijSansArabic(
+          AppFontStyle.bahijSemiBold(
               fontSize: SizeConfig.textFontSize,
               fontColor: AppColors.fontColor,
               textDecoration: TextDecoration.none),
