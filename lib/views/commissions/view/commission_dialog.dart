@@ -9,7 +9,7 @@ import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 
 
-class CommissionDialog extends StatefulWidget {
+class CommissionDialog extends BaseStatefulWidget {
   String title;
   String errorMessage;
   String okButtonTitle;
@@ -22,7 +22,7 @@ class CommissionDialog extends StatefulWidget {
   _CommissionDialogState createState() => _CommissionDialogState();
 }
 
-class _CommissionDialogState extends State<CommissionDialog> {
+class _CommissionDialogState extends BaseState<CommissionDialog> {
 
   @override
   void initState() {
@@ -30,10 +30,8 @@ class _CommissionDialogState extends State<CommissionDialog> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-   //   backgroundColor: AppColors.transparentColor.withOpacity(.8),
-      body: AlertDialog(
+  Widget getBody(BuildContext context) {
+    return  AlertDialog(
         backgroundColor: AppColors.transparentColor,insetPadding: EdgeInsets.zero,
         actions: [
           AppButton(
@@ -48,9 +46,18 @@ class _CommissionDialogState extends State<CommissionDialog> {
           )
         ],
         content: widget.content ?? SizedBox(),
-      ),
+
     );
   }
 
-
+@override
+  Color getScaffoldBackgroundColor() {
+    // TODO: implement getScaffoldBackgroundColor
+    return AppColors.transparentColor;
+  }
+@override
+  String getScaffoldBackgroundImage() {
+    // TODO: implement getScaffoldBackgroundImage
+    return '';
+  }
 }
