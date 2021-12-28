@@ -18,4 +18,5 @@ class AppAssets {
   static const String ACCOUNT_MANAGEMENT =
       'assets/images/account_management.png';
   static const String OPERATIONS = 'assets/images/operations.png';
+  static const String PROFILE = 'assets/images/profile.jpg';
 }

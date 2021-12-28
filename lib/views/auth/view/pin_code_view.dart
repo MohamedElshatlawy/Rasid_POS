@@ -6,6 +6,7 @@ import 'package:rasid_jack/common/widgets/app_button.dart';
 import 'package:rasid_jack/common/widgets/app_image.dart';
 import 'package:rasid_jack/common/widgets/app_otp_text_field.dart';
 import 'package:rasid_jack/common/widgets/app_text.dart';
+import 'package:rasid_jack/common/widgets/title_and_description.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
@@ -38,16 +39,9 @@ class _PinCodeViewState extends BaseState<PinCodeView> {
         children: [
           AppImage(path: AppAssets.LOGO, height: SizeConfig.btnHeight * 1.5),
           SizedBox(height: SizeConfig.padding * 2),
-          AppText(
+          TitleAndDescription(
               label: AppLocalizations.of(context).pinCodeTitle,
-              style: AppFontStyle.bahijSansArabic(
-                  fontSize: SizeConfig.titleFontSize * 1.5,
-                  fontColor: AppColors.whiteColor)),
-          AppText(
-              label: AppLocalizations.of(context).pinCodeSubitle,
-              style: AppFontStyle.bahijSansArabic(
-                  fontSize: SizeConfig.textFontSize * 1.5,
-                  fontColor: AppColors.greyColor)),
+              descriptionLabel: AppLocalizations.of(context).pinCodeSubitle),
           SizedBox(height: SizeConfig.padding * 3),
           AppOtpTextField(
             fieldHeight: 50,

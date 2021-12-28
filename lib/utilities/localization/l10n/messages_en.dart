@@ -124,5 +124,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeLanguage":
             MessageLookupByLibrary.simpleMessage("Change language"),
         "change": MessageLookupByLibrary.simpleMessage("Change"),
+        "idNumber": MessageLookupByLibrary.simpleMessage("ID Number"),
       };
 }

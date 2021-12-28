@@ -131,6 +131,7 @@ class AppLocalizations {
   String get changeLanguage =>
       Intl.message("تغيير اللغة", name: "changeLanguage");
   String get change => Intl.message('تغيير', name: 'change');
+  String get idNumber => Intl.message('idNumber', name: 'idNumber');
 }
 
 class SpecificLocalizationDelegate

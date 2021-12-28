@@ -13,6 +13,7 @@ import 'package:rasid_jack/views/buy/view/buy_view.dart';
 import 'package:rasid_jack/views/buy_with_cash/view/buy_view.dart';
 import 'package:rasid_jack/views/commissions/view/commission_view.dart';
 import 'package:rasid_jack/views/contact_us/view/contact_us_view.dart';
+import 'package:rasid_jack/views/profile/view/profile_view.dart';
 import 'package:rasid_jack/views/transactions/view/transactions_view.dart';
 
 class HomeView extends BaseStatefulWidget {
@@ -36,14 +37,19 @@ class _HomeViewState extends BaseState<HomeView> {
                   IconButton(
                     icon: AppImage(path: AppAssets.profileButton),
                     iconSize: SizeConfig.btnHeight,
-                    onPressed: null,
+                    onPressed: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ProfileView())),
                   ),
                   SizedBox(height: SizeConfig.padding),
-                  AppText(
-                      label: AppLocalizations.of(context).userName,
-                      style: AppFontStyle.bahijSansArabic(
-                          fontSize: SizeConfig.titleFontSize,
-                          fontColor: AppColors.whiteColor)),
+                  InkWell(
+                    onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ProfileView())),
+                    child: AppText(
+                        label: AppLocalizations.of(context).userName,
+                        style: AppFontStyle.bahijSansArabic(
+                            fontSize: SizeConfig.titleFontSize,
+                            fontColor: AppColors.whiteColor)),
+                  ),
                   SizedBox(height: SizeConfig.extraPadding),
                   CustomListTile(
                     title: AppText(

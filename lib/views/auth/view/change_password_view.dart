@@ -4,6 +4,7 @@ import 'package:rasid_jack/common/widgets/app_button.dart';
 import 'package:rasid_jack/common/widgets/app_image.dart';
 import 'package:rasid_jack/common/widgets/app_text.dart';
 import 'package:rasid_jack/common/widgets/app_text_form_field_item.dart';
+import 'package:rasid_jack/common/widgets/title_and_description.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
@@ -28,17 +29,10 @@ class _ChangePasswordViewState extends BaseState<ChangePasswordView> {
         children: [
           AppImage(path: AppAssets.LOGO, height: SizeConfig.btnHeight * 1.5),
           SizedBox(height: SizeConfig.padding * 2),
-          AppText(
+          TitleAndDescription(
               label: AppLocalizations.of(context).changePassword,
-              style: AppFontStyle.bahijSansArabic(
-                  fontSize: SizeConfig.titleFontSize * 1.5,
-                  fontColor: AppColors.whiteColor)),
-          AppText(
-              label: AppLocalizations.of(context).forgetSubtitle,
-              style: AppFontStyle.bahijSansArabic(
-                  fontSize: SizeConfig.textFontSize * 1.5,
-                  fontColor: AppColors.greyColor)),
-          SizedBox(height: SizeConfig.padding * 3),
+              descriptionLabel: AppLocalizations.of(context).forgetSubtitle),
+          SizedBox(height: SizeConfig.padding * 2),
           AppTextFormFieldItem(
               label: AppText(
                   label: AppLocalizations.of(context).password,

@@ -119,5 +119,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("إدارة حسابك"),
         "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
         "change": MessageLookupByLibrary.simpleMessage("تغيير"),
+        "idNumber": MessageLookupByLibrary.simpleMessage("رقم الهويه"),
       };
 }
