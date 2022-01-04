@@ -40,6 +40,7 @@ class AppTextFormFieldItem extends StatelessWidget with Validations {
   final FormFieldValidator<String>? validator;
   final bool? showHint;
   final bool? showUnderLine;
+  final bool readOnly;
 
   const AppTextFormFieldItem({
     this.controller,
@@ -62,6 +63,7 @@ class AppTextFormFieldItem extends StatelessWidget with Validations {
     this.showHint = false,
     this.showUnderLine = false,
     Key? key,
+    this.readOnly = true,
   }) : super(key: key);
 
   @override
@@ -174,6 +176,7 @@ class AppTextFormFieldItem extends StatelessWidget with Validations {
 
   TextFormField textFormField({required BuildContext context}) {
     return TextFormField(
+        enabled: readOnly,
         onTap: onTap,
         controller: controller,
         cursorColor: focusedBorderColor,

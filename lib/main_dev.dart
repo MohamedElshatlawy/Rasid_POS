@@ -7,12 +7,12 @@ import 'utilities/connection_status_singleton.dart';
 import 'utilities/localization/localizations.dart';
 
 Future main() async {
-   configuredFlavor = FlavorConfig(
+  configuredFlavor = FlavorConfig(
       appTitle: AppLocalizations().dev,
-      baseUrl: 'https://baseetmobapi.smartwaveeg.com/api/',
-      baseMediaUrl: 'https://baseetmobapi.smartwaveeg.com/api/',
-      mediaUrl: 'https://baseetmobapi.smartwaveeg.com/api/',
-       flavor: Flavors.dev,
+      baseUrl: 'http://rasid-staging.tasaheel.org/',
+      baseMediaUrl: 'http://rasid-staging.tasaheel.org/',
+      mediaUrl: 'http://rasid-staging.tasaheel.org/',
+      flavor: Flavors.dev,
       child: MainApp());
   HttpOverrides.global = new MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();

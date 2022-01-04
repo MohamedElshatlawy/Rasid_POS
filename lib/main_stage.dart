@@ -7,19 +7,19 @@ import 'utilities/connection_status_singleton.dart';
 import 'utilities/localization/localizations.dart';
 
 Future main() async {
-   configuredFlavor = FlavorConfig(
+  configuredFlavor = FlavorConfig(
       appTitle: AppLocalizations().stage,
-      baseUrl: 'https://baseetmobapi.smartwaveeg.com/api/',
-      baseMediaUrl: 'https://baseetmobapi.smartwaveeg.com/api/',
-      mediaUrl: 'https://baseetmobapi.smartwaveeg.com/api/',
-       flavor: Flavors.stage,
+      baseUrl: 'http://rasid-staging.tasaheel.org/',
+      baseMediaUrl: 'http://rasid-staging.tasaheel.org/',
+      mediaUrl: 'http://rasid-staging.tasaheel.org/',
+      flavor: Flavors.stage,
       child: MainApp());
   HttpOverrides.global = new MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
 
   // await Firebase.initializeApp();
   ConnectionStatusSingleton connectionStatus =
-  ConnectionStatusSingleton.getInstance();
+      ConnectionStatusSingleton.getInstance();
   connectionStatus.initialize();
   print(configuredFlavor.flavor);
   return runApp(configuredFlavor);

@@ -7,9 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:rasid_jack/base/flavor_config.dart';
 import 'package:rasid_jack/common/models/user_model.dart';
-
 import 'shared_preferences_keys.dart';
-import 'network/api_constants.dart';
 import 'shared_preferences_helper.dart';
 
 class Utilities {
@@ -21,11 +19,13 @@ class Utilities {
   static setCurrentUser(UserModel user) {
     SharedPreferenceHelper.setValueForKey(
         SharedPrefsKeys.USER_KEY, user.toRawJson());
+    print('Token Saved : ${user.data!.token}');
   }
 
   static String getTokenHeader() {
     UserModel? user = getCurrentUser();
-    return user == null ? "" : "Bearer ${user.data?.token?.token}";
+    print('getTokenHeader : ${user!.data!.token}');
+    return user == null ? "" : "Bearer ${user.data!.token.toString()}";
   }
 
   static DateTime convertStringToDate(String currentDate) {
@@ -158,6 +158,4 @@ class Utilities {
 
     return parsedTime;
   }
-
-
 }

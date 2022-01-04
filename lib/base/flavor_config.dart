@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 
 import 'main_app.dart';
+
 enum Flavors {
   prod,
   dev,
   stage,
 }
+
 class FlavorConfig extends InheritedWidget {
   final String appTitle;
   final String baseUrl;
@@ -34,8 +36,8 @@ class FlavorConfig extends InheritedWidget {
 
 FlavorConfig configuredFlavor = FlavorConfig(
     appTitle: AppLocalizations().dev,
-    baseUrl: 'https://baseetmobapi.smartwaveeg.com/api/',
-    baseMediaUrl: 'https://baseetmobapi.smartwaveeg.com/api/',
-    mediaUrl: 'https://baseetmobapi.smartwaveeg.com/api/',
+    baseUrl: 'http://rasid-staging.tasaheel.org/',
+    baseMediaUrl: 'http://rasid-staging.tasaheel.org/',
+    mediaUrl: 'http://rasid-staging.tasaheel.org/',
     flavor: Flavors.dev,
     child: MainApp());

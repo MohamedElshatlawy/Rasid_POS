@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/adapter.dart';
@@ -16,6 +17,10 @@ class Network {
   static final Network shared = new Network._private();
   static const UNAUTHORIZED_APIS = [
     ApiConstants.TEST,
+    ApiConstants.FORGETPASSWORd,
+    ApiConstants.PINCODE,
+    ApiConstants.GETPROFILEINFO,
+    ApiConstants.PROFILE,
   ];
 
   Dio client = Dio();
@@ -56,22 +61,24 @@ class Network {
   Future performRequest(
       String endpoint, Map<String, dynamic> parms, ServerMethods method,
       {Map<String, dynamic>? putOrDeleteParams}) async {
-    if (
+    // if (
     //Utilities.getTokenHeader().isNotEmpty ||
-        UNAUTHORIZED_APIS.contains(endpoint) ||
-        endpoint.startsWith("mock")) {
-      Map<String, dynamic>? queryParams = {};
-      if (method == ServerMethods.GET) {
-        queryParams = parms;
-      } else if (method == ServerMethods.PUT ||
-          method == ServerMethods.DELETE) {
-        queryParams = putOrDeleteParams;
-      }
-      return _performRequest(endpoint,
-          queryParms: queryParams!,
-          bodyParms: parms,
-          method: method.toString().split(".").last);
+    // UNAUTHORIZED_APIS.contains(endpoint) || endpoint.startsWith("mock")) {
+    Map<String, dynamic>? queryParams = {};
+    if (method == ServerMethods.GET) {
+      log('get method');
+      queryParams = parms;
+    } else if (method == ServerMethods.PUT || method == ServerMethods.DELETE) {
+      log('PUT or DELETE method');
+
+      queryParams = putOrDeleteParams;
     }
+    log('post method');
+    return _performRequest(endpoint,
+        queryParms: queryParams!,
+        bodyParms: parms,
+        method: method.toString().split(".").last);
+    // }
   }
 
   Future uploadFileRequest(
@@ -83,14 +90,18 @@ class Network {
 
   Future _performRequest(String endpoint,
       {Map<String, dynamic>? bodyParms,
-        Map<String, dynamic>? queryParms,
-        String? method}) async {
+      Map<String, dynamic>? queryParms,
+      String? method}) async {
     endpoint = _prepareEnvironment(endpoint);
     String headerToken =
-    _environment != Environment.mock ? 'Utilities.getTokenHeader()' : "";
-    Map<String, dynamic> headers =
-    headerToken == "" ? {} : {"Authorization": headerToken};
-    print('headerToken ${headers.toString()}' );
+        _environment != Environment.mock ? "Utilities.getTokenHeader()" : "";
+    Map<String, dynamic> headers = headerToken == ""
+        ? {}
+        : {
+            "Authorization":
+                'Bearer 351|jZhZhubMxbkjgAPlbtk4Q4huvjiSB9Iwl54BmOhY'
+          };
+    print('headerToken ${headers.toString()}');
     try {
       print(bodyParms);
       print(queryParms);
@@ -100,7 +111,6 @@ class Network {
         baseUrl = configuredFlavor.baseUrl;
       }
       print('$method  =======>>    $baseUrl$endpoint');
-
       Response response = await client.request(baseUrl + endpoint,
           data: bodyParms,
           queryParameters: queryParms,
@@ -114,16 +124,17 @@ class Network {
       };
     } on DioError catch (e) {
       print("$endpoint errorrrrrr=======>>  ${e.response!.data}");
-      throw e.response!.data;
+      // throw e.response!.data;
+      return e.response;
     }
   }
 
   Future _performRequest2(String endpoint, {body, String? method}) async {
     endpoint = _prepareEnvironment(endpoint);
     String headerToken =
-    _environment != Environment.mock ? Utilities.getTokenHeader() : "";
+        _environment != Environment.mock ? Utilities.getTokenHeader() : "";
     Map<String, dynamic> headers =
-    headerToken == "" ? {} : {"Authorization": headerToken};
+        headerToken == "" ? {} : {"Authorization": headerToken};
     print("headerToken " + headers.toString());
     try {
       if (endpoint.toLowerCase().contains("upload")) {
@@ -133,8 +144,7 @@ class Network {
       }
       print('$method  =======>>    $baseUrl$endpoint');
       Response response = await client.request(baseUrl + endpoint,
-          data: body,
-          options: Options(method: method, headers: headers));
+          data: body, options: Options(method: method, headers: headers));
       return response;
     } on SocketException catch (e) {
       throw {

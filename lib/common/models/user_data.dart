@@ -1,124 +1,147 @@
-import 'dart:convert';
-
 class UserData {
-  bool isVerfiy;
-  final String? accountType;
-  final Token? token;
-  final String? userName;
-  String? firstName;
-  String? lastName;
-  final String? email;
-  final bool? isMale;
-  final int? cityId;
-  final String? phoneNumber;
-  final int? teacherStatus;
-  final String? userId;
-  final String? studentLevelId;
-  final String? imei;
-  String? profileImage;
-  String? address;
-  bool? hasCompleteData = false;
-
   UserData({
-    required this.isVerfiy,
-    this.accountType,
-    this.token,
-    this.userName,
-    this.firstName,
-    this.lastName,
+    this.id,
+    this.name,
     this.email,
-    this.isMale,
-    this.cityId,
-    this.phoneNumber,
-    this.teacherStatus,
-    this.userId,
-    this.studentLevelId,
-    this.imei,
-    this.profileImage,
-    this.address,
-    this.hasCompleteData,
+    this.phone,
+    this.serialNumber,
+    this.serialCode,
+    this.identificationNumber,
+    this.company,
+    this.branch,
+    this.createdAt,
+    this.token,
   });
 
-  factory UserData.fromRawJson(String str) =>
-      UserData.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
-  String get fullName => '$firstName $lastName';
+  int? id;
+  String? name;
+  String? email;
+  String? phone;
+  String? serialNumber;
+  String? serialCode;
+  String? identificationNumber;
+  Company? company;
+  Branch? branch;
+  DateTime? createdAt;
+  String? token;
 
   factory UserData.fromJson(Map<String, dynamic> json) => UserData(
-        isVerfiy: json["isVerfiy"],
-        accountType: json["accountType"],
-        token: Token.fromJson(json["token"]),
-        userName: json["userName"],
-        firstName: json["firstName"] ?? '',
-        lastName: json["lastName"] ?? '',
-        email: json["email"] == null ? "" : json["email"],
-        isMale: json["isMale"],
-        cityId: json["cityId"],
-        phoneNumber: json["phoneNumber"],
-        teacherStatus: json['teacherStatus'],
-        userId: json['userId'],
-        studentLevelId: json["studentLevelId"],
-        imei: json["imei"],
-        profileImage: json["profileImage"],
-        address: json["address"],
-        hasCompleteData: json["hasCompleteData"],
+        id: json["id"] ?? 0,
+        name: json["name"] ?? '',
+        email: json["email"] ?? '',
+        phone: json["phone"] ?? '',
+        serialNumber: json["serial_number"],
+        serialCode: json["serial_code"],
+        identificationNumber: json["identification_number"],
+        company: Company.fromJson(json["company"]),
+        branch: Branch.fromJson(json["branch"]),
+        createdAt: DateTime.parse(json["created_at"]),
+        token: json["token"],
       );
 
   Map<String, dynamic> toJson() => {
-        "isVerfiy": isVerfiy,
-        "accountType": accountType,
-        "token": token?.toJson(),
-        "userName": userName,
-        "firstName": firstName,
-        'lastName': lastName,
+        "id": id,
+        "name": name,
         "email": email,
-        "isMale": isMale,
-        "cityId": cityId,
-        "phoneNumber": phoneNumber,
-        "teacherStatus": teacherStatus,
-        "userId": userId,
-        "studentLevelId": studentLevelId,
-        "imei": imei,
-        "profileImage": profileImage,
-        "address": address,
-        "hasCompleteData": hasCompleteData,
+        "phone": phone,
+        "serial_number": serialNumber,
+        "serial_code": serialCode,
+        "identification_number": identificationNumber,
+        "company": company!.toJson(),
+        "branch": branch!.toJson(),
+        "created_at": createdAt!.toIso8601String(),
+        "token": token,
       };
-
-// String getAvatar() {
-//   return "${Utilities.getMediaBaseUrl()}$profileImage";
-// }
-
-  // Define that two persons are equal if their SSNs are equal
-  bool operator ==(dynamic other) =>
-      other != null && other is UserData && this.userId == other.userId;
-
-  @override
-  int get hashCode => super.hashCode;
-
 }
 
-class Token {
-  final String? token;
-  final String? refreshToken;
-
-  Token({
-    this.token,
-    this.refreshToken,
+class Branch {
+  Branch({
+    this.id,
+    this.name,
+    this.companyId,
+    this.managerId,
+    this.cityId,
+    this.deactivatedAt,
+    this.createdAt,
+    this.updatedAt,
   });
 
-  factory Token.fromRawJson(String str) => Token.fromJson(json.decode(str));
+  int? id;
+  String? name;
+  int? companyId;
+  int? managerId;
+  int? cityId;
+  dynamic? deactivatedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
 
-  String toRawJson() => json.encode(toJson());
-
-  factory Token.fromJson(Map<String, dynamic> json) => Token(
-        token: json["token"],
-        refreshToken: json["refreshToken"],
+  factory Branch.fromJson(Map<String, dynamic> json) => Branch(
+        id: json["id"],
+        name: json["name"],
+        companyId: json["company_id"],
+        managerId: json["manager_id"],
+        cityId: json["city_id"],
+        deactivatedAt: json["deactivated_at"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "token": token,
-        "refreshToken": refreshToken,
+        "id": id,
+        "name": name,
+        "company_id": companyId,
+        "manager_id": managerId,
+        "city_id": cityId,
+        "deactivated_at": deactivatedAt,
+        "created_at": createdAt!.toIso8601String(),
+        "updated_at": updatedAt!.toIso8601String(),
+      };
+}
+
+class Company {
+  Company({
+    this.id,
+    this.ownerId,
+    this.financeManagerId,
+    this.name,
+    this.taxNumber,
+    this.commercialRegister,
+    this.deactivatedAt,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  int? id;
+  int? ownerId;
+  int? financeManagerId;
+  String? name;
+  String? taxNumber;
+  String? commercialRegister;
+  dynamic? deactivatedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+
+  factory Company.fromJson(Map<String, dynamic> json) => Company(
+        id: json["id"],
+        ownerId: json["owner_id"],
+        financeManagerId: json["finance_manager_id"],
+        name: json["name"],
+        taxNumber: json["tax_number"],
+        commercialRegister: json["commercial_register"],
+        deactivatedAt: json["deactivated_at"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "owner_id": ownerId,
+        "finance_manager_id": financeManagerId,
+        "name": name,
+        "tax_number": taxNumber,
+        "commercial_register": commercialRegister,
+        "deactivated_at": deactivatedAt,
+        "created_at": createdAt!.toIso8601String(),
+        "updated_at": updatedAt!.toIso8601String(),
       };
 }

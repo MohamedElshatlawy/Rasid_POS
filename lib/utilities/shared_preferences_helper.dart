@@ -3,30 +3,34 @@ import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceHelper {
-  static PublishSubject<bool> _isPreferencesInitializedSubject = PublishSubject();
-  static Stream<bool> get isPreferencesInitializedStream => _isPreferencesInitializedSubject.stream;
+  static PublishSubject<bool> _isPreferencesInitializedSubject =
+      PublishSubject();
+  static Stream<bool> get isPreferencesInitializedStream =>
+      _isPreferencesInitializedSubject.stream;
   static SharedPreferences? _prefs;
 
-  static final SharedPreferenceHelper _instance =  SharedPreferenceHelper._internal();
+  static final SharedPreferenceHelper _instance =
+      SharedPreferenceHelper._internal();
 
   factory SharedPreferenceHelper() {
-    if(_prefs == null){
-       _initPrefs();
+    if (_prefs == null) {
+      _initPrefs();
     }
     return _instance;
   }
 
   SharedPreferenceHelper._internal();
 
-  static _initPrefs() async{
+  static _initPrefs() async {
     _prefs = await SharedPreferences.getInstance();
     _isPreferencesInitializedSubject.sink.add(true);
   }
-  static dynamic getValueForKey(String key){
+
+  static dynamic getValueForKey(String key) {
     return _prefs?.get(key);
   }
 
- static setValueForKey(String key, dynamic value) {
+  static setValueForKey(String key, dynamic value) {
     if (value == null) {
       removeValueForKey(key);
     } else if (value is int) {
@@ -40,11 +44,11 @@ class SharedPreferenceHelper {
     }
   }
 
- static removeAllKeys(){
+  static removeAllKeys() {
     _prefs?.clear();
   }
 
- static Future<bool>? removeValueForKey(String key){
+  static Future<bool>? removeValueForKey(String key) {
     return _prefs?.remove(key);
   }
 }

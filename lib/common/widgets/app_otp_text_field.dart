@@ -119,7 +119,7 @@ class _AppOtpTextFieldState extends State<AppOtpTextField> {
           print(event.character);
           print(event.logicalKey);
           print(event.physicalKey);
-          if (event.logicalKey.keyId==0x100000008)
+          if (event.logicalKey.keyId == 0x100000008)
             setState(() {
               isDeleteKey = true;
             });
