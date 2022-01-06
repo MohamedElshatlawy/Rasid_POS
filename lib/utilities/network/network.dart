@@ -124,8 +124,8 @@ class Network {
       };
     } on DioError catch (e) {
       print("$endpoint errorrrrrr=======>>  ${e.response!.data}");
-      // throw e.response!.data;
-      return e.response;
+      throw e.response!.data;
+      // return e.response;
     }
   }
 

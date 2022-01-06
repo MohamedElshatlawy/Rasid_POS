@@ -13,9 +13,9 @@ import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
-import 'package:rasid_jack/views/auth/view/bloc/pin_code_bloc.dart';
-import 'package:rasid_jack/views/auth/view/change_password_view.dart';
-import 'package:rasid_jack/views/auth/view/model/pin_code_model.dart';
+import 'package:rasid_jack/views/auth/pin_code/bloc/pin_code_bloc.dart';
+import 'package:rasid_jack/views/auth/change_password/view/change_password_view.dart';
+import 'package:rasid_jack/views/auth/pin_code/model/pin_code_model.dart';
 
 class PinCodeView extends BaseStatefulWidget {
   String email;

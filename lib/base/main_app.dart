@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:rasid_jack/views/auth/view/login_view.dart';
+import 'package:rasid_jack/views/auth/login/view/login_view.dart';
 import 'dialog/managers/dialog_manager.dart';
 import '../utilities/constants/app_colors.dart';
 import '../utilities/localization/locale_helper.dart';

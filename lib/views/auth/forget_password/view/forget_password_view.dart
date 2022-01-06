@@ -1,5 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
+import 'package:rasid_jack/common/blocs/timer/timer_bloc.dart';
+import 'package:rasid_jack/common/blocs/timer/timer_text.dart';
+import 'package:rasid_jack/common/models/user_model.dart';
 import 'package:rasid_jack/common/widgets/app_button.dart';
 import 'package:rasid_jack/common/widgets/app_image.dart';
 import 'package:rasid_jack/common/widgets/app_text.dart';
@@ -10,22 +15,25 @@ import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
-import 'package:rasid_jack/views/auth/view/bloc/change_password_bloc.dart';
-import 'package:rasid_jack/views/auth/view/model/forget_model.dart';
+import 'package:rasid_jack/views/auth/forget_password/bloc/forget_password_bloc.dart';
+import 'package:rasid_jack/views/auth/pin_code/view/pin_code_view.dart';
+import 'package:rasid_jack/views/auth/forget_password/model/forget_model.dart';
 import 'package:rxdart/rxdart.dart';
 
-class ChangePasswordView extends BaseStatefulWidget {
+class ForgetPasswordView extends BaseStatefulWidget {
   @override
-  _ChangePasswordViewState createState() => _ChangePasswordViewState();
+  _ForgetPasswordViewState createState() => _ForgetPasswordViewState();
 }
 
-class _ChangePasswordViewState extends BaseState<ChangePasswordView> {
-  ChangePasswordBloc _changePasswordBloc = ChangePasswordBloc();
+class _ForgetPasswordViewState extends BaseState<ForgetPasswordView> {
+  // ForgetPasswordBloc bloc = ForgetPasswordBloc(timerText: '');
+  TimerBloc timerBloc = TimerBloc();
+  ForgetPasswordBloc _forgtePasswordBloc = ForgetPasswordBloc();
   @override
   void initState() {
     // TODO: implement initState
 
-    listenForResponse(_changePasswordBloc).listen((event) {});
+    listenForResponse(_forgtePasswordBloc).listen((event) {});
 
     super.initState();
   }
@@ -34,12 +42,12 @@ class _ChangePasswordViewState extends BaseState<ChangePasswordView> {
   Widget getBody(BuildContext context) {
     // TODO: implement getBody
     return StreamBuilder(
-        stream: _changePasswordBloc.successStream,
+        stream: _forgtePasswordBloc.successStream,
         builder: (context, AsyncSnapshot<ForgetPasswordModel> snapshot) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: SizeConfig.padding),
             child: Form(
-              key: _changePasswordBloc.formKey,
+              key: _forgtePasswordBloc.formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,69 +56,63 @@ class _ChangePasswordViewState extends BaseState<ChangePasswordView> {
                       path: AppAssets.LOGO, height: SizeConfig.btnHeight * 1.5),
                   SizedBox(height: SizeConfig.padding * 2),
                   TitleAndDescription(
-                      label: AppLocalizations.of(context).changePassword,
+                      label: AppLocalizations.of(context).forgetPassword,
                       descriptionLabel:
                           AppLocalizations.of(context).forgetSubtitle),
-                  SizedBox(height: SizeConfig.padding * 2),
+                  SizedBox(height: SizeConfig.padding * 3),
                   AppTextFormFieldItem(
-                      validator: (value) {
-                        _changePasswordBloc.validateEmail(value!);
-                      },
                       controller:
-                          _changePasswordBloc.passwordTextEditingController,
+                          _forgtePasswordBloc.emailTextEditingController,
+                      validator: (value) =>
+                          _forgtePasswordBloc.validateEmail(value!),
+                      title: '',
+                      formFieldItemType: AppFormFieldItemType.EMAIL,
                       label: AppText(
-                          label: AppLocalizations.of(context).password,
+                          label: AppLocalizations.of(context).emailAddress,
                           style: AppFontStyle.bahijSansArabic(
                               fontSize: SizeConfig.textFontSize,
                               fontColor: AppColors.whiteColor)),
-                      title: '',
-                      formFieldItemType: AppFormFieldItemType.PASSWORD,
-                      obscureTextSubject:
-                          _changePasswordBloc.obscureTextSubject,
-                      subject: _changePasswordBloc.passwordSubject,
-                      textInputType: TextInputType.visiblePassword,
-                      labelFontColor: Colors.white,
+                      subject: _forgtePasswordBloc.emailSubject,
+                      textInputType: TextInputType.emailAddress,
+                      labelFontColor: AppColors.greyColor,
                       borderColor: AppColors.greyColor,
-                      fontColor: AppColors.whiteColor,
                       focusedBorderColor: AppColors.PINK_COLOR,
+                      fontColor: AppColors.whiteColor,
                       iconColor: Colors.transparent,
                       focusedIconColor: Colors.transparent),
+                  // StreamBuilder(
+                  //     stream: bloc.timerValuesStream,
+                  //     builder: (context, AsyncSnapshot snapshot) {
+                  //       return bloc.visibility
+                  //           ? AppButton(
+                  //               width: double.infinity,
+                  //               style: AppFontStyle.bahijSansArabic(
+                  //                   fontSize: SizeConfig.titleFontSize,
+                  //                   fontColor: AppColors.PINK_COLOR),
+                  //               title: 'إعادة الارسال؟',
+                  //               borderColor: AppColors.transparentColor,
+                  //               backgroundColor: AppColors.transparentColor,
+                  //               onTap: () => bloc.startTimeout(context))
+                  //           : AppText(
+                  //               label: snapshot.data ?? '',
+                  //               style: AppFontStyle.bahijSansArabic(
+                  //                   fontSize: SizeConfig.textFontSize * 1.5,
+                  //                   fontColor: AppColors.greyColor));
+                  //     }),
                   SizedBox(height: SizeConfig.padding),
-                  AppTextFormFieldItem(
-                      validator: (value) {
-                        _changePasswordBloc.validateIdentity(value!);
-                      },
-                      controller: _changePasswordBloc
-                          .confirmPasswordTextEditingController,
-                      label: AppText(
-                          label: AppLocalizations.of(context).confirmPassword,
-                          style: AppFontStyle.bahijSansArabic(
-                              fontSize: SizeConfig.textFontSize,
-                              fontColor: AppColors.whiteColor)),
-                      title: '',
-                      formFieldItemType: AppFormFieldItemType.PASSWORD,
-                      obscureTextSubject:
-                          _changePasswordBloc.obscureTextSubject,
-                      subject: _changePasswordBloc.confirmPasswordSubject,
-                      textInputType: TextInputType.visiblePassword,
-                      labelFontColor: Colors.white,
-                      borderColor: AppColors.greyColor,
-                      fontColor: AppColors.whiteColor,
-                      focusedBorderColor: AppColors.PINK_COLOR,
-                      iconColor: Colors.transparent,
-                      focusedIconColor: Colors.transparent),
-                  SizedBox(height: SizeConfig.padding * 2),
+                  // TimerText(timerBloc: timerBloc),
+                  // SizedBox(height: SizeConfig.padding * 2),
                   AppButton(
                       width: double.infinity,
                       style: AppFontStyle.bahijSansArabic(
                           fontSize: SizeConfig.titleFontSize,
                           fontColor: AppColors.whiteColor),
-                      title: AppLocalizations.of(context).changePassword,
+                      title: AppLocalizations.of(context).restorePassword,
                       borderColor: AppColors.PINK_COLOR,
                       backgroundColor: AppColors.PINK_COLOR,
                       onTap: () =>
-                          _changePasswordBloc.formKey.currentState!.validate()
-                              ? _changePasswordBloc.changePassword(context)
+                          _forgtePasswordBloc.formKey.currentState!.validate()
+                              ? _forgtePasswordBloc.forgetPassword(context)
                               : null),
                   SizedBox(height: SizeConfig.padding),
                   AppButton(
@@ -122,7 +124,7 @@ class _ChangePasswordViewState extends BaseState<ChangePasswordView> {
                       borderColor: AppColors.transparentColor,
                       backgroundColor: AppColors.transparentColor,
                       onTap: () => Navigator.pop(context)),
-                  SizedBox(height: SizeConfig.extraPadding / 1.5),
+                  SizedBox(height: SizeConfig.extraPadding),
                 ],
               ),
             ),

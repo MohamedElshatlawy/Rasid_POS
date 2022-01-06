@@ -11,7 +11,7 @@ import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/utilities/utilities.dart';
-import 'package:rasid_jack/views/auth/view/change_password_view.dart';
+import 'package:rasid_jack/views/auth/change_password/view/change_password_view.dart';
 import 'package:rasid_jack/views/change_language/view/change_language_view.dart';
 
 class AccountManagementView extends BaseStatefulWidget {

@@ -10,7 +10,7 @@ import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/helper_methods.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/validations.dart';
-import 'package:rasid_jack/views/auth/view/repo/login_repo.dart';
+import 'package:rasid_jack/views/auth/login/repo/login_repo.dart';
 import 'package:rxdart/rxdart.dart';
 
 class ContactUsBloc extends BlocBase

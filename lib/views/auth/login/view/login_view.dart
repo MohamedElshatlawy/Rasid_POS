@@ -3,18 +3,20 @@ import 'package:flutter/services.dart';
 import 'package:rasid_jack/base/base_stateful_widget.dart';
 import 'package:rasid_jack/base/bloc_provider.dart';
 import 'package:rasid_jack/common/models/user_model.dart';
+import 'package:rasid_jack/common/request_status.dart';
 import 'package:rasid_jack/common/widgets/app_button.dart';
 import 'package:rasid_jack/common/widgets/app_image.dart';
 import 'package:rasid_jack/common/widgets/app_text.dart';
 import 'package:rasid_jack/common/widgets/app_text_form_field_item.dart';
+import 'package:rasid_jack/common/widgets/loading_dialog.dart';
 import 'package:rasid_jack/utilities/constants/app_assets.dart';
 import 'package:rasid_jack/utilities/constants/app_colors.dart';
 import 'package:rasid_jack/utilities/constants/app_font_styls.dart';
 import 'package:rasid_jack/utilities/localization/localizations.dart';
 import 'package:rasid_jack/utilities/size_config.dart';
 import 'package:rasid_jack/utilities/utilities.dart';
-import 'package:rasid_jack/views/auth/view/bloc/login_bloc.dart';
-import 'package:rasid_jack/views/auth/view/forget_password_view.dart';
+import 'package:rasid_jack/views/auth/login/bloc/login_bloc.dart';
+import 'package:rasid_jack/views/auth/forget_password/view/forget_password_view.dart';
 import 'package:rasid_jack/views/home/view/home_view.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -28,7 +30,6 @@ class _LoginViewState extends BaseState<LoginView> {
   @override
   void initState() {
     // TODO: implement initState
-    // _loginBloc = BlocProvider.of<LoginBloc>(context);
     // _loginBloc.login();
     listenForResponse(_loginBloc).listen((event) {});
 

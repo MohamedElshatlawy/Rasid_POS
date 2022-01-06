@@ -8,34 +8,40 @@ import 'package:rasid_jack/common/request_state.dart';
 import 'package:rasid_jack/common/request_status.dart';
 import 'package:rasid_jack/utilities/utilities.dart';
 import 'package:rasid_jack/utilities/validations.dart';
-import 'package:rasid_jack/views/auth/view/repo/login_repo.dart';
+import 'package:rasid_jack/views/auth/change_password/repo/change_password_repo.dart';
+import 'package:rasid_jack/views/auth/forget_password/model/forget_model.dart';
 import 'package:rasid_jack/views/home/view/home_view.dart';
 import 'package:rxdart/rxdart.dart';
 
-class LoginBloc extends BlocBase
-    with APIBlocMixin<UserModel, ErrorModel>, LoginRepo, Validations {
+class ChangePasswordBloc extends BlocBase
+    with
+        APIBlocMixin<ForgetPasswordModel, ErrorModel>,
+        ChangePasswordRepo,
+        Validations {
   BehaviorSubject<RequestState> requestStateSubject = BehaviorSubject.seeded(
       RequestState(status: RequestStatus.LOADING, message: ''));
   BehaviorSubject<bool> obscureTextSubject = BehaviorSubject.seeded(true);
 
-  BehaviorSubject<String> emailSubject = BehaviorSubject.seeded("");
   BehaviorSubject<String> passwordSubject = BehaviorSubject.seeded("");
+  BehaviorSubject<String> confirmPasswordSubject = BehaviorSubject.seeded("");
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController passwordTextEditingController = TextEditingController();
+  TextEditingController confirmPasswordTextEditingController =
+      TextEditingController();
 
-  FocusNode emailFocusNode = FocusNode();
   FocusNode passwordFocusNode = FocusNode();
-  login(context) async {
+  FocusNode confirmPasswordFocusNode = FocusNode();
+  changePassword(context) async {
     Map<String, dynamic> params = new Map();
-    params['email'] = emailTextEditingController.value.text;
     params['password'] = passwordTextEditingController.value.text;
+    params['password_confirmation'] =
+        confirmPasswordTextEditingController.value.text;
 
     requestStateSubject.sink
         .add(RequestState(status: RequestStatus.LOADING, message: 'LOADING'));
-    var model = await loginRequest(params);
+    var model = await changePasswordRequest(params);
 
-    if (model is UserModel) {
+    if (model is ForgetPasswordModel) {
       super.successSubject.sink.add(model);
       requestStateSubject.sink
           .add(RequestState(status: RequestStatus.SUCCESS, message: 'SUCCESS'));
@@ -46,8 +52,8 @@ class LoginBloc extends BlocBase
       super.errorSubject.sink.add(model);
       requestStateSubject.sink
           .add(RequestState(status: RequestStatus.ERROR, message: 'ERROR'));
-      emailSubject.sink.addError('error from api');
       passwordSubject.sink.addError('error from api');
+      confirmPasswordSubject.sink.addError('error from api');
     }
   }
 
@@ -56,7 +62,7 @@ class LoginBloc extends BlocBase
     // TODO: implement dispose
     requestStateSubject.close();
     obscureTextSubject.close();
-    emailSubject.close();
+    confirmPasswordSubject.close();
     passwordSubject.close();
   }
 }

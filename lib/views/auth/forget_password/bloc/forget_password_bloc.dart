@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:rasid_jack/base/api_bloc_mixin.dart';
 import 'package:rasid_jack/base/bloc_provider.dart';
@@ -7,43 +8,46 @@ import 'package:rasid_jack/common/models/user_model.dart';
 import 'package:rasid_jack/common/request_state.dart';
 import 'package:rasid_jack/common/request_status.dart';
 import 'package:rasid_jack/utilities/validations.dart';
-import 'package:rasid_jack/views/auth/view/change_password_view.dart';
-import 'package:rasid_jack/views/auth/view/model/pin_code_model.dart';
-import 'package:rasid_jack/views/auth/view/repo/pin_code_repo.dart';
+import 'package:rasid_jack/views/auth/pin_code/view/pin_code_view.dart';
+import 'package:rasid_jack/views/auth/forget_password/model/forget_model.dart';
+import 'package:rasid_jack/views/auth/forget_password/repo/forget_repo.dart';
+import 'package:rasid_jack/views/auth/login/repo/login_repo.dart';
 import 'package:rxdart/rxdart.dart';
 
-class PinCodeBloc extends BlocBase
-    with APIBlocMixin<PinCodeModel, ErrorModel>, PinCodeRepo, Validations {
+class ForgetPasswordBloc extends BlocBase
+    with
+        APIBlocMixin<ForgetPasswordModel, ErrorModel>,
+        ForgetPasswordRepo,
+        Validations {
   BehaviorSubject<RequestState> requestStateSubject = BehaviorSubject.seeded(
       RequestState(status: RequestStatus.LOADING, message: ''));
-
-  BehaviorSubject<String> pinCodeSubject = BehaviorSubject.seeded("");
+  BehaviorSubject<String> emailSubject = BehaviorSubject.seeded("");
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final pinCodeTextEditingController = BehaviorSubject();
-  Function(String) get updatepinCode => pinCodeTextEditingController.sink.add;
-
-  FocusNode pinCodeFocusNode = FocusNode();
-  pinCode(context, String email) async {
+  TextEditingController emailTextEditingController = TextEditingController();
+  FocusNode emailFocusNode = FocusNode();
+  forgetPassword(context) async {
     Map<String, dynamic> params = new Map();
-    params['email'] = email;
-    params['forget_code'] = pinCodeTextEditingController.value.toString();
+    params['email'] = emailTextEditingController.value.text;
 
     requestStateSubject.sink
         .add(RequestState(status: RequestStatus.LOADING, message: 'LOADING'));
-    var model = await pinCodeRequest(params);
+    var model = await forgetPasswordRequest(params);
 
-    if (model is PinCodeModel) {
+    if (model is ForgetPasswordModel) {
       super.successSubject.sink.add(model);
       requestStateSubject.sink
           .add(RequestState(status: RequestStatus.SUCCESS, message: 'SUCCESS'));
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ChangePasswordView()));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  PinCodeView(email: emailTextEditingController.value.text)));
     }
     if (model is ErrorModel) {
       super.errorSubject.sink.add(model);
       requestStateSubject.sink
           .add(RequestState(status: RequestStatus.ERROR, message: 'ERROR'));
-      pinCodeSubject.sink.addError('error from api');
+      emailSubject.sink.addError('error from api');
     }
   }
 
@@ -51,7 +55,6 @@ class PinCodeBloc extends BlocBase
   void dispose() {
     // TODO: implement dispose
     requestStateSubject.close();
-    pinCodeSubject.close();
-    pinCodeTextEditingController.close();
+    emailSubject.close();
   }
 }
